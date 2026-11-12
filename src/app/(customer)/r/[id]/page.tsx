@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Price, cn } from "@/components/ui";
+import { Price, ScrollRow, cn } from "@/components/ui";
 import { NotFound } from "@/lib/errors";
 import { getSession } from "@/lib/session";
 import { getRestaurant } from "@/modules/catalog";
@@ -85,7 +85,7 @@ export default async function RestaurantPage({ params }: { params: Promise<{ id:
           aria-label="Menu categories"
           className="sticky top-[var(--topbar-h)] z-20 -mx-4 border-b border-line bg-surface/95 backdrop-blur md:-mx-6"
         >
-          <ul className="no-scrollbar flex gap-1 overflow-x-auto px-2 md:px-4">
+          <ScrollRow as="ul" className="flex gap-1 px-2 md:px-4">
             {r.categories.map((c) => (
               <li key={c.id} className="shrink-0">
                 <a
@@ -96,7 +96,7 @@ export default async function RestaurantPage({ params }: { params: Promise<{ id:
                 </a>
               </li>
             ))}
-          </ul>
+          </ScrollRow>
         </nav>
       )}
 

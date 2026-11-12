@@ -4,3 +4,4 @@ export { Chip } from "./Chip";
 export { Price } from "./Price";
 export { Sheet } from "./Sheet";
 export { cn } from "./cn";
+export { ScrollRow } from "./ScrollRow";

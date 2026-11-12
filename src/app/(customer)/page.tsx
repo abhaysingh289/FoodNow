@@ -2,6 +2,7 @@ import { getSession } from "@/lib/session";
 import { getHomeGroups, listRestaurants, type RestaurantFilters } from "@/modules/catalog";
 import { FilterBar, type FilterState } from "./_components/FilterBar";
 import { RestaurantCard } from "./_components/RestaurantCard";
+import { ScrollRow } from "@/components/ui";
 
 type Params = Record<string, string | string[] | undefined>;
 
@@ -66,7 +67,10 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
           .map((g) => (
             <section key={g.key} data-testid={`group-${g.key}`} aria-label={g.title} className="space-y-3">
               <h2 className="text-lg font-semibold tracking-tight">{g.title}</h2>
-              <div className="no-scrollbar -mx-4 -my-1.5 flex snap-x scroll-px-4 gap-4 overflow-x-auto px-4 py-1.5 md:-mx-6 md:scroll-px-6 md:px-6">
+              <ScrollRow
+                testId={`group-row-${g.key}`}
+                className="-mx-4 -my-1.5 flex snap-x scroll-px-4 gap-4 px-4 py-1.5 md:-mx-6 md:scroll-px-6 md:px-6"
+              >
                 {g.restaurants.map((r) => (
                   <RestaurantCard
                     key={r.id}
@@ -76,7 +80,7 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
                     compact
                   />
                 ))}
-              </div>
+              </ScrollRow>
             </section>
           ))}
 

@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { Chip } from "@/components/ui";
+import { Chip, ScrollRow } from "@/components/ui";
 
 export type FilterState = {
   q: string; // free-text search (restaurant, cuisine or dish name)
@@ -104,7 +104,7 @@ export function FilterBar({ initial, cuisines }: { initial: FilterState; cuisine
         </label>
       </form>
 
-      <div className="no-scrollbar -mx-4 -my-1.5 flex gap-2 overflow-x-auto px-4 py-1.5 md:-mx-6 md:px-6">
+      <ScrollRow testId="filter-row" className="-mx-4 -my-1.5 flex gap-2 px-4 py-1.5 md:-mx-6 md:px-6">
         <label className="relative flex shrink-0 items-center">
           <span className="sr-only">Sort by</span>
           <select
@@ -162,7 +162,7 @@ export function FilterBar({ initial, cuisines }: { initial: FilterState; cuisine
             {c}
           </Chip>
         ))}
-      </div>
+      </ScrollRow>
     </section>
   );
 }
