@@ -14,6 +14,7 @@ export function Sheet({
   variant = "bottom",
   children,
   testId,
+  dismissible = true,
 }: {
   open: boolean;
   onClose: () => void;
@@ -21,6 +22,8 @@ export function Sheet({
   variant?: "bottom" | "center";
   children: ReactNode;
   testId?: string;
+  /** false removes every dismiss path (close button, Esc, backdrop) so the content must resolve it. */
+  dismissible?: boolean;
 }) {
   const ref = useRef<HTMLDialogElement>(null);
 
@@ -46,8 +49,11 @@ export function Sheet({
       data-testid={testId}
       aria-label={title}
       onClose={onClose}
+      onCancel={(e) => {
+        if (!dismissible) e.preventDefault();
+      }}
       onClick={(e) => {
-        if (e.target === ref.current) onClose();
+        if (dismissible && e.target === ref.current) onClose();
       }}
       className={cn(
         "m-0 w-full max-w-md bg-surface p-0 text-ink shadow-sheet",
@@ -56,6 +62,17 @@ export function Sheet({
           : "fixed inset-0 m-auto h-fit w-[calc(100%-2rem)] rounded-sheet",
       )}
     >
+      {open && dismissible && (
+        <button
+          type="button"
+          aria-label="Close"
+          data-testid="sheet-close"
+          onClick={onClose}
+          className="absolute right-3 top-3 z-10 inline-flex h-9 w-9 items-center justify-center rounded-chip text-xl leading-none text-muted hover:bg-brand-soft hover:text-ink"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
+      )}
       {open && children}
     </dialog>
   );

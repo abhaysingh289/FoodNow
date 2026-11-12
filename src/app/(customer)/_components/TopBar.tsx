@@ -61,6 +61,9 @@ export function TopBar({ country, userId, addressId, users, addresses, cartQty }
             </button>
           ))}
         </div>
+        <Link href="/orders" data-testid="nav-orders" className="text-sm font-semibold text-muted hover:text-ink">
+          Orders
+        </Link>
         <Link
           href="/cart"
           aria-label={cartQty > 0 ? `Cart, ${cartQty} items` : "Cart"}
