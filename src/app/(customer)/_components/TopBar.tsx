@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { COUNTRY_CONFIG, type CountryCode } from "@/lib/countries";
 import { cn } from "@/components/ui";
 import { callApi } from "./api";
@@ -16,12 +16,29 @@ type Props = {
   cartQty: number;
 };
 
-const selectClass =
-  "h-9 min-w-0 flex-1 rounded-control border border-line bg-surface px-2 text-sm text-ink";
+function Chevron({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 20 20" className={className} fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+      <path d="m5 8 5 5 5-5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
 
 export function TopBar({ country, userId, addressId, users, addresses, cartQty }: Props) {
   const router = useRouter();
   const [error, setError] = useState<string | null>(null);
+  const headerRef = useRef<HTMLElement>(null);
+
+  // Publish the bar's height so sticky rows below it (restaurant category tabs) can sit right under it.
+  useEffect(() => {
+    const el = headerRef.current;
+    if (!el || typeof ResizeObserver === "undefined") return;
+    const ro = new ResizeObserver(() => {
+      document.documentElement.style.setProperty("--topbar-h", `${el.offsetHeight}px`);
+    });
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
 
   async function update(body: { userId?: string; country?: string; addressId?: string }) {
     // Write the changed cookies immediately so a navigation right after the click already sees
@@ -38,85 +55,105 @@ export function TopBar({ country, userId, addressId, users, addresses, cartQty }
     router.refresh();
   }
 
+  const currentAddress = addresses.find((a) => a.id === addressId);
+
   return (
-    <header className="sticky top-0 z-30 border-b border-line bg-canvas/95 px-4 pb-3 pt-3 backdrop-blur">
-      <div className="flex items-center justify-between gap-3">
-        <Link href="/" className="font-display text-2xl font-extrabold tracking-tight text-brand">
-          Food<span className="text-ink">Now</span>
+    <header ref={headerRef} className="sticky top-0 z-30 border-b border-line bg-surface/95 backdrop-blur">
+      <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center gap-x-3 gap-y-1 px-4 py-2 md:flex-nowrap md:gap-x-6 md:px-6 md:py-3">
+        <Link href="/" className="flex h-11 items-center text-[22px] font-extrabold tracking-tight text-ink">
+          Food<span className="text-brand">Now</span>
         </Link>
-        <div role="group" aria-label="Country" className="flex rounded-chip border border-line bg-surface p-0.5">
-          {(Object.keys(COUNTRY_CONFIG) as CountryCode[]).map((c) => (
-            <button
-              key={c}
-              type="button"
-              data-testid={`country-${c}`}
-              aria-pressed={c === country}
-              onClick={() => c !== country && update({ country: c })}
-              className={cn(
-                "h-8 rounded-chip px-3 text-sm font-semibold transition-colors",
-                c === country ? "bg-ink text-white" : "text-muted hover:text-ink",
-              )}
-            >
-              {c}
-            </button>
-          ))}
-        </div>
-        <Link href="/orders" data-testid="nav-orders" className="text-sm font-semibold text-muted hover:text-ink">
-          Orders
-        </Link>
-        <Link
-          href="/cart"
-          aria-label={cartQty > 0 ? `Cart, ${cartQty} items` : "Cart"}
-          className="relative inline-flex h-10 w-10 items-center justify-center rounded-chip border border-line bg-surface"
-        >
-          <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-            <path d="M5 7h14l-1.2 11a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8L5 7Z" strokeLinejoin="round" />
-            <path d="M9 7a3 3 0 0 1 6 0" strokeLinecap="round" />
+
+        {/* Delivery address: the main control of the bar. Full-width second row on mobile. */}
+        <div className="order-last flex w-full min-w-0 items-center gap-2 md:order-none md:w-auto md:flex-1">
+          <svg viewBox="0 0 24 24" className="h-5 w-5 shrink-0 text-brand" fill="currentColor" aria-hidden="true">
+            <path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z" />
           </svg>
-          {cartQty > 0 && (
-            <span
-              data-testid="cart-badge"
-              className="absolute -right-1.5 -top-1.5 flex h-5 min-w-5 items-center justify-center rounded-chip bg-brand px-1 text-xs font-bold text-white"
-            >
-              {cartQty}
+          <label className="relative flex min-w-0 flex-1 flex-col md:max-w-sm">
+            <span aria-hidden="true" className="text-xs leading-tight text-muted">
+              Deliver to
             </span>
-          )}
-        </Link>
-      </div>
-      <div className="mt-3 flex gap-2">
-        <label className="flex min-w-0 flex-1">
-          <span className="sr-only">Demo user</span>
-          <select
-            data-testid="user-switch"
-            className={selectClass}
-            value={userId}
-            onChange={(e) => update({ userId: e.target.value })}
-          >
-            {users.map((u) => (
-              <option key={u.id} value={u.id}>
-                {u.name}
-              </option>
+            <span className="sr-only">Delivery address</span>
+            <select
+              data-testid="address-switch"
+              className="h-7 w-full min-w-0 cursor-pointer appearance-none truncate bg-transparent pr-6 text-[15px] font-semibold text-ink"
+              value={addressId}
+              title={currentAddress ? `${currentAddress.label} · ${currentAddress.line1}` : undefined}
+              onChange={(e) => update({ addressId: e.target.value })}
+            >
+              {addresses.map((a) => (
+                <option key={a.id} value={a.id}>
+                  {a.label} · {a.line1}
+                </option>
+              ))}
+            </select>
+            <Chevron className="pointer-events-none absolute bottom-1.5 right-0 h-4 w-4 text-muted" />
+          </label>
+          <label className="relative flex shrink-0">
+            <span className="sr-only">Demo user</span>
+            <select
+              data-testid="user-switch"
+              className="h-11 cursor-pointer appearance-none rounded-chip bg-transparent pl-2 pr-6 text-sm text-muted hover:text-ink md:h-9"
+              value={userId}
+              onChange={(e) => update({ userId: e.target.value })}
+            >
+              {users.map((u) => (
+                <option key={u.id} value={u.id}>
+                  {u.name}
+                </option>
+              ))}
+            </select>
+            <Chevron className="pointer-events-none absolute right-1 top-1/2 h-4 w-4 -translate-y-1/2 text-muted" />
+          </label>
+        </div>
+
+        <div className="ml-auto flex items-center gap-1 md:ml-0 md:gap-2">
+          <div role="group" aria-label="Country" className="flex rounded-chip bg-fill p-0.5">
+            {(Object.keys(COUNTRY_CONFIG) as CountryCode[]).map((c) => (
+              <button
+                key={c}
+                type="button"
+                data-testid={`country-${c}`}
+                aria-pressed={c === country}
+                onClick={() => c !== country && update({ country: c })}
+                className={cn(
+                  "h-10 min-w-11 rounded-chip px-3 text-sm font-semibold transition-colors md:h-8",
+                  c === country ? "bg-surface text-ink shadow-[0_1px_3px_rgb(0_0_0/0.12)]" : "text-muted hover:text-ink",
+                )}
+              >
+                {c}
+              </button>
             ))}
-          </select>
-        </label>
-        <label className="flex min-w-0 flex-[1.4]">
-          <span className="sr-only">Delivery address</span>
-          <select
-            data-testid="address-switch"
-            className={selectClass}
-            value={addressId}
-            onChange={(e) => update({ addressId: e.target.value })}
+          </div>
+          <Link
+            href="/orders"
+            data-testid="nav-orders"
+            className="inline-flex h-11 items-center rounded-chip px-3 text-sm font-semibold text-ink hover:bg-fill md:h-10"
           >
-            {addresses.map((a) => (
-              <option key={a.id} value={a.id}>
-                {a.label} · {a.line1}
-              </option>
-            ))}
-          </select>
-        </label>
+            Orders
+          </Link>
+          <Link
+            href="/cart"
+            aria-label={cartQty > 0 ? `Cart, ${cartQty} items` : "Cart"}
+            className="relative inline-flex h-11 w-11 items-center justify-center rounded-chip text-ink hover:bg-fill md:h-10 md:w-10"
+          >
+            <svg viewBox="0 0 24 24" className="h-[22px] w-[22px]" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+              <path d="M5 7h14l-1.2 11a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8L5 7Z" strokeLinejoin="round" />
+              <path d="M9 7a3 3 0 0 1 6 0" strokeLinecap="round" />
+            </svg>
+            {cartQty > 0 && (
+              <span
+                data-testid="cart-badge"
+                className="absolute right-0.5 top-0.5 flex h-5 min-w-5 items-center justify-center rounded-chip bg-brand px-1 text-xs font-bold tabular-nums text-white ring-2 ring-surface"
+              >
+                {cartQty}
+              </span>
+            )}
+          </Link>
+        </div>
       </div>
       {error && (
-        <p role="alert" className="mt-2 text-sm text-danger">
+        <p role="alert" className="mx-auto max-w-6xl px-4 pb-2 text-sm text-danger md:px-6">
           {error}
         </p>
       )}

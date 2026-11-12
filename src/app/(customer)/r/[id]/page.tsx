@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Price } from "@/components/ui";
+import { Price, cn } from "@/components/ui";
 import { NotFound } from "@/lib/errors";
 import { getSession } from "@/lib/session";
 import { getRestaurant } from "@/modules/catalog";
@@ -19,36 +19,96 @@ export default async function RestaurantPage({ params }: { params: Promise<{ id:
   }
 
   return (
-    <div className="space-y-5">
-      <Link href="/" className="inline-block text-sm font-semibold text-brand">
+    <div>
+      <Link
+        href="/"
+        className="-ml-2 mb-2 inline-flex h-11 items-center rounded-chip px-2 text-sm font-semibold text-ink hover:bg-fill md:h-9"
+      >
         ← All restaurants
       </Link>
 
-      <div className="overflow-hidden rounded-card border border-line bg-surface shadow-card">
-        <div className="relative h-36 bg-brand-soft">
-          <Image src={r.imageUrl} alt="" fill unoptimized className="object-cover" />
+      <div className="relative -mx-4 aspect-video overflow-hidden bg-fill md:mx-0 md:aspect-[16/5] md:rounded-card">
+        <Image
+          src={r.imageUrl}
+          alt=""
+          fill
+          unoptimized
+          priority
+          className={cn("object-cover", !r.isOpen && "grayscale")}
+        />
+      </div>
+
+      <div className="space-y-2 border-b border-line py-5">
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+          <h1 className="text-[26px] font-bold leading-tight tracking-tight md:text-[28px]">{r.name}</h1>
+          <span
+            className={cn(
+              "rounded-chip px-2.5 py-0.5 text-xs font-semibold",
+              r.isOpen ? "bg-ok-soft text-ok" : "bg-fill-strong text-ink",
+            )}
+          >
+            {r.isOpen ? "Open now" : "Closed"}
+          </span>
         </div>
-        <div className="space-y-1 p-4">
-          <h1 className="font-display text-3xl font-extrabold leading-tight">{r.name}</h1>
-          <p className="text-muted">{r.cuisines.join(" · ")}</p>
-          {r.description && <p className="text-sm text-muted">{r.description}</p>}
-          <p className="pt-1 text-sm font-medium">
-            {r.rating.toFixed(1)} ★ · {r.etaMinutes} min · {r.distanceKm.toFixed(1)} km ·{" "}
+        <p className="text-muted">{r.cuisines.join(", ")}</p>
+        {r.description && <p className="max-w-2xl text-sm text-muted">{r.description}</p>}
+        <p className="flex flex-wrap items-center gap-x-2 gap-y-1 pt-1 text-sm">
+          <span className="font-semibold tabular-nums">
+            <span aria-hidden="true">★</span> {r.rating.toFixed(1)}
+            <span className="sr-only"> rating</span>
+          </span>
+          <span aria-hidden="true" className="text-line-strong">
+            ·
+          </span>
+          <span className="tabular-nums">{r.etaMinutes} min</span>
+          <span aria-hidden="true" className="text-line-strong">
+            ·
+          </span>
+          <span className="tabular-nums">{r.distanceKm.toFixed(1)} km</span>
+          <span aria-hidden="true" className="text-line-strong">
+            ·
+          </span>
+          <span>
             <Price cents={r.deliveryFeeCents} country={session.country} /> delivery
-          </p>
-        </div>
+          </span>
+        </p>
       </div>
 
       {!r.isOpen && (
-        <p role="status" className="rounded-card bg-ink p-3 text-center text-sm font-semibold text-white">
+        <p role="status" className="mt-4 rounded-card bg-fill p-4 text-sm font-medium text-ink">
           This restaurant is closed right now. You can browse the menu, but ordering is paused.
         </p>
       )}
 
+      {r.categories.length > 1 && (
+        <nav
+          aria-label="Menu categories"
+          className="sticky top-[var(--topbar-h)] z-20 -mx-4 border-b border-line bg-surface/95 backdrop-blur md:-mx-6"
+        >
+          <ul className="no-scrollbar flex gap-1 overflow-x-auto px-2 md:px-4">
+            {r.categories.map((c) => (
+              <li key={c.id} className="shrink-0">
+                <a
+                  href={`#cat-${c.id}`}
+                  className="inline-flex h-12 items-center whitespace-nowrap rounded-chip px-3 text-sm font-medium text-muted hover:text-ink"
+                >
+                  {c.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )}
+
       {r.categories.map((c) => (
-        <section key={c.id} aria-label={c.name} className="space-y-1">
-          <h2 className="font-display text-xl font-bold">{c.name}</h2>
-          <div className="divide-y divide-line rounded-card border border-line bg-surface">
+        <section
+          key={c.id}
+          id={`cat-${c.id}`}
+          aria-label={c.name}
+          className="scroll-mt-[calc(var(--topbar-h)+3.5rem)] pt-7"
+        >
+          <h2 className="text-lg font-semibold tracking-tight">{c.name}</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-10">
             {c.items.map((item) => (
               <ItemSheet
                 key={item.id}

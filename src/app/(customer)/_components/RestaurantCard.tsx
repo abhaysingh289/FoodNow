@@ -1,9 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Card, Price, cn } from "@/components/ui";
+import { Price, cn } from "@/components/ui";
 import type { CountryCode } from "@/lib/countries";
 import type { RestaurantCardData } from "@/modules/catalog";
 
+/** Photo-first restaurant card: 16:9 photo, then name + rating, then one muted meta line. */
 export function RestaurantCard({
   restaurant: r,
   country,
@@ -20,38 +21,47 @@ export function RestaurantCard({
       href={`/r/${r.id}`}
       data-testid={testId}
       aria-label={r.isOpen ? r.name : `${r.name} (closed)`}
-      className={cn("block shrink-0 rounded-card", compact && "w-60")}
+      className={cn("group block min-w-0 rounded-card", compact && "w-72 shrink-0 snap-start md:w-80")}
     >
-      <Card className={cn("overflow-hidden transition-shadow hover:shadow-md", !r.isOpen && "opacity-60 grayscale")}>
-        <div className="relative h-28 bg-brand-soft">
-          <Image src={r.imageUrl} alt="" fill unoptimized className="object-cover" />
-          {!r.isOpen && (
-            <span className="absolute left-3 top-3 rounded-chip bg-ink px-2.5 py-1 text-xs font-semibold text-white">
-              Closed
-            </span>
+      <div className="relative aspect-video overflow-hidden rounded-card bg-fill">
+        <Image
+          src={r.imageUrl}
+          alt=""
+          fill
+          unoptimized
+          className={cn(
+            "object-cover transition-transform duration-300 group-hover:scale-[1.03]",
+            !r.isOpen && "opacity-60 grayscale",
           )}
-          {r.hasPromo && r.isOpen && (
-            <span className="absolute left-3 top-3 rounded-chip bg-accent px-2.5 py-1 text-xs font-bold text-ink">
-              Deal
-            </span>
-          )}
+        />
+        {r.hasPromo && r.isOpen && (
+          <span className="absolute left-3 top-3 rounded-chip bg-brand px-2.5 py-1 text-xs font-bold text-white">
+            Promo
+          </span>
+        )}
+        {!r.isOpen && (
+          <span className="absolute inset-0 flex items-center justify-center bg-white/30">
+            <span className="rounded-chip bg-ink/85 px-3 py-1.5 text-sm font-semibold text-white">Closed</span>
+          </span>
+        )}
+      </div>
+      <div className="mt-2.5 space-y-0.5 px-0.5">
+        <div className="flex items-baseline justify-between gap-3">
+          <h3 className={cn("truncate text-base font-semibold", !r.isOpen && "text-muted")}>{r.name}</h3>
+          <span className="shrink-0 text-sm font-semibold tabular-nums">
+            <span aria-hidden="true" className="text-ink">
+              ★
+            </span>{" "}
+            {r.rating.toFixed(1)}
+            <span className="sr-only"> rating</span>
+          </span>
         </div>
-        <div className="space-y-1 p-3">
-          <div className="flex items-start justify-between gap-2">
-            <h3 className="font-display text-lg font-bold leading-tight">{r.name}</h3>
-            <span className="shrink-0 rounded-chip bg-brand-soft px-2 py-0.5 text-sm font-semibold text-brand-strong">
-              {r.rating.toFixed(1)} ★
-            </span>
-          </div>
-          <p className="truncate text-sm text-muted">
-            {r.cuisines.join(" · ")} · {"$".repeat(r.priceLevel)}
-          </p>
-          <p className="text-sm text-muted">
-            {r.etaMinutes} min · {r.distanceKm.toFixed(1)} km · <Price cents={r.deliveryFeeCents} country={country} />{" "}
-            delivery
-          </p>
-        </div>
-      </Card>
+        <p className="truncate text-[13px] text-muted">
+          {r.cuisines.join(", ")} · <span className="tabular-nums">{r.distanceKm.toFixed(1)} km</span> ·{" "}
+          <span className="tabular-nums">{r.etaMinutes} min</span> ·{" "}
+          <Price cents={r.deliveryFeeCents} country={country} /> delivery
+        </p>
+      </div>
     </Link>
   );
 }

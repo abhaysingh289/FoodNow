@@ -1,6 +1,7 @@
 import { prisma } from "@/lib/db";
 import { getSession } from "@/lib/session";
 import { getCart } from "@/modules/cart";
+import { CartBar } from "./_components/CartBar";
 import { TopBar } from "./_components/TopBar";
 
 export const dynamic = "force-dynamic";
@@ -19,7 +20,7 @@ export default async function CustomerLayout({ children }: { children: React.Rea
   const cartQty = cart.lines.reduce((n, l) => n + l.qty, 0);
 
   return (
-    <div className="mx-auto min-h-screen w-full max-w-md bg-canvas shadow-[0_0_0_1px_var(--color-line)]">
+    <div className="min-h-screen bg-canvas">
       <TopBar
         country={session.country}
         userId={session.user.id}
@@ -28,7 +29,10 @@ export default async function CustomerLayout({ children }: { children: React.Rea
         addresses={addresses}
         cartQty={cartQty}
       />
-      <main className="px-4 pb-24 pt-4">{children}</main>
+      <main className="mx-auto w-full max-w-6xl px-4 pb-28 pt-4 md:px-6 md:pt-6">{children}</main>
+      {cart.restaurant && cartQty > 0 && (
+        <CartBar qty={cartQty} subtotalCents={cart.price.subtotalCents} country={cart.restaurant.country} />
+      )}
     </div>
   );
 }

@@ -50,7 +50,7 @@ export function PromoForm({
             ref={inputRef}
             placeholder="Promo code"
             autoCapitalize="characters"
-            className="h-11 w-full rounded-control border border-line bg-surface px-3 text-base uppercase placeholder:normal-case"
+            className="h-11 w-full rounded-control border border-line-strong bg-surface px-3 text-base uppercase placeholder:normal-case placeholder:text-muted"
           />
         </label>
         <Button type="submit" variant="secondary" data-testid="promo-apply" disabled={busy}>
@@ -58,14 +58,14 @@ export function PromoForm({
         </Button>
       </form>
       {appliedCode && (
-        <p className="flex items-center justify-between text-sm text-ok">
+        <p className="flex items-center justify-between text-sm font-medium text-ok">
           <span>
             Code <strong>{appliedCode}</strong> applied
           </span>
           <button
             type="button"
             data-testid="promo-remove"
-            className="font-semibold underline"
+            className="-my-2 inline-flex h-11 items-center px-2 font-semibold underline md:h-8"
             disabled={busy}
             onClick={() => submit(null)}
           >

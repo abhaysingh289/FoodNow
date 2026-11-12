@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, DM_Sans } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 
-const display = Bricolage_Grotesque({ variable: "--ff-display", subsets: ["latin"] });
-const body = DM_Sans({ variable: "--ff-body", subsets: ["latin"] });
+const sans = Plus_Jakarta_Sans({ variable: "--ff-sans", subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "FoodNow",
@@ -13,7 +12,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${display.variable} ${body.variable} min-h-screen`}>{children}</body>
+      <body className={`${sans.variable} min-h-screen`}>{children}</body>
     </html>
   );
 }

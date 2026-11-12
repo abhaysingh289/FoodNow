@@ -5,9 +5,9 @@ import { SimulationPanel } from "./_components/SimulationPanel";
 
 export default function OpsPage() {
   return (
-    <div className="grid grid-cols-[minmax(0,1fr)_22rem] gap-6">
+    <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_22rem]">
       <OrdersBoard />
-      <aside className="space-y-4">
+      <aside className="divide-y divide-line border-line lg:border-l lg:pl-6">
         <ProviderPanel />
         <RidersPanel />
         <SimulationPanel />

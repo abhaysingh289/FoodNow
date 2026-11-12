@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Card, Price, buttonClasses } from "@/components/ui";
+import { Price, buttonClasses } from "@/components/ui";
 import { getSession } from "@/lib/session";
 import { getCart } from "@/modules/cart";
 import { PayButton } from "../_components/PayButton";
@@ -11,8 +11,8 @@ export default async function CheckoutPage() {
 
   if (!cart.restaurant || cart.lines.length === 0) {
     return (
-      <div data-testid="checkout-empty" className="space-y-4 py-16 text-center">
-        <h1 className="font-display text-3xl font-extrabold">Nothing to check out</h1>
+      <div data-testid="checkout-empty" className="mx-auto max-w-md space-y-4 py-16 text-center">
+        <h1 className="text-[26px] font-bold tracking-tight">Nothing to check out</h1>
         <p className="text-muted">Your cart is empty.</p>
         <Link href="/" className={buttonClasses({ size: "lg" })}>
           Browse restaurants
@@ -23,39 +23,46 @@ export default async function CheckoutPage() {
 
   const { restaurant, lines, price } = cart;
   return (
-    <div className="space-y-4">
-      <h1 className="font-display text-3xl font-extrabold">Checkout</h1>
+    <div className="mx-auto max-w-2xl">
+      <h1 className="pb-4 text-[26px] font-bold leading-tight tracking-tight md:text-[28px]">Checkout</h1>
 
-      <Card className="space-y-1 p-4">
-        <p className="text-sm font-semibold text-muted">Deliver to</p>
-        <p data-testid="checkout-address" className="font-semibold">
-          {session.address.label} · {session.address.line1}
-        </p>
-        <Link href="/cart" className="text-sm font-semibold text-brand">
-          Back to cart (change the address in the top bar)
-        </Link>
-      </Card>
+      <div className="divide-y divide-line border-y border-line">
+        <section aria-label="Delivery address" className="space-y-1 py-5">
+          <h2 className="text-[13px] font-medium text-muted">Deliver to</h2>
+          <p data-testid="checkout-address" className="font-semibold">
+            {session.address.label} · {session.address.line1}
+          </p>
+          <Link href="/cart" className="inline-block text-sm font-medium text-muted underline hover:text-ink">
+            Back to cart (change the address in the top bar)
+          </Link>
+        </section>
 
-      <Card className="p-4">
-        <p className="font-semibold">{restaurant.name}</p>
-        <ul className="mt-2 divide-y divide-line">
-          {lines.map((l) => (
-            <li key={l.id} className="flex justify-between gap-3 py-2 text-sm">
-              <span>
-                {l.qty} × {l.name}
-                {l.options.length > 0 && <span className="block text-muted">{l.options.map((o) => o.name).join(", ")}</span>}
-              </span>
-              <Price cents={l.unitPriceCents * l.qty} country={restaurant.country} />
-            </li>
-          ))}
-        </ul>
-      </Card>
+        <section aria-label="Your order" className="py-5">
+          <h2 className="text-[13px] font-medium text-muted">Your order</h2>
+          <p className="font-semibold">{restaurant.name}</p>
+          <ul className="mt-2 space-y-2">
+            {lines.map((l) => (
+              <li key={l.id} className="flex justify-between gap-3 text-[15px]">
+                <span>
+                  <span className="tabular-nums text-muted">{l.qty} ×</span> {l.name}
+                  {l.options.length > 0 && (
+                    <span className="block text-[13px] text-muted">{l.options.map((o) => o.name).join(", ")}</span>
+                  )}
+                </span>
+                <Price cents={l.unitPriceCents * l.qty} country={restaurant.country} />
+              </li>
+            ))}
+          </ul>
+        </section>
+      </div>
 
-      <Card className="p-4">
+      <section aria-label="Total" className="mt-5 rounded-card bg-fill p-4 md:p-5">
         <PriceBreakdown price={price} country={restaurant.country} />
-      </Card>
+      </section>
 
-      <PayButton />
+      <div className="mt-5">
+        <PayButton />
+      </div>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Button, Card } from "@/components/ui";
+import { Button } from "@/components/ui";
 import { usePolling } from "./usePolling";
 
 type Item = {
@@ -44,8 +44,8 @@ export function ProviderPanel() {
     );
 
   return (
-    <Card className="p-3">
-      <h2 className="mb-2 font-display text-lg font-bold">Payment provider</h2>
+    <section className="py-4 first:pt-0">
+      <h2 className="mb-3 text-base font-semibold">Payment provider</h2>
       {error && (
         <p role="alert" className="mb-2 text-sm text-danger">
           {error}
@@ -61,17 +61,23 @@ export function ProviderPanel() {
             <li
               key={`${i.kind}-${i.ref}`}
               data-testid={`provider-item-${i.ref}`}
-              className="rounded-control border border-line p-2 text-xs"
+              className="space-y-0.5 rounded-control border border-line p-2.5 text-xs"
             >
               <p className="flex justify-between gap-2">
                 <span className="font-semibold uppercase">{i.kind}</span>
-                <span>
+                <span className="tabular-nums">
                   {(i.amountCents / 100).toFixed(2)} {i.currency}
                 </span>
               </p>
               <p className="truncate font-mono text-muted">{i.ref}</p>
-              <p className="font-medium">{i.status}</p>
-              <div className="mt-1 flex flex-wrap gap-1">
+              <p
+                className={
+                  i.status === "SUCCEEDED" ? "font-medium text-ok" : i.status === "FAILED" ? "font-medium text-danger" : "font-medium"
+                }
+              >
+                {i.status}
+              </p>
+              <div className="flex flex-wrap gap-1 pt-1.5">
                 {UNDECIDED.includes(i.status) ? (
                   <>
                     <Button size="sm" data-testid="provider-succeed" onClick={() => void decide(i, "succeed")}>
@@ -114,6 +120,6 @@ export function ProviderPanel() {
           ))}
         </ul>
       )}
-    </Card>
+    </section>
   );
 }

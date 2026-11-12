@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Card } from "@/components/ui";
 
 type Settings = { autoMode: boolean; stepDelaySeconds: number };
 
@@ -60,8 +59,8 @@ export function SimulationPanel() {
   }
 
   return (
-    <Card className="space-y-3 p-3">
-      <h2 className="font-display text-lg font-bold">Simulation</h2>
+    <section className="space-y-3 py-4 last:pb-0">
+      <h2 className="text-base font-semibold">Simulation</h2>
       {error && (
         <p role="alert" className="text-sm text-danger">
           {error}
@@ -93,10 +92,10 @@ export function SimulationPanel() {
             const n = Number(e.target.value);
             if (Number.isInteger(n) && n >= 1 && n <= 60) void patch({ stepDelaySeconds: n });
           }}
-          className="h-9 w-20 rounded-control border border-line bg-surface px-2 text-right"
+          className="h-9 w-20 rounded-control border border-line-strong bg-surface px-2 text-right tabular-nums"
         />
       </label>
       <p className="text-xs text-muted">Auto mode runs while this page is open.</p>
-    </Card>
+    </section>
   );
 }

@@ -34,8 +34,8 @@ export function ResetButton() {
         Reset data
       </Button>
       <Sheet open={open} onClose={() => setOpen(false)} title="Reset data" variant="center" testId="reset-dialog">
-        <div className="space-y-3 p-5">
-          <h2 className="font-display text-lg font-bold">Reset all data?</h2>
+        <div className="space-y-3 p-6">
+          <h2 className="pr-10 text-lg font-bold tracking-tight">Reset all data?</h2>
           <p className="text-sm text-muted">
             This wipes all orders, payments, carts and webhooks, then reseeds the demo data. It cannot be undone.
           </p>

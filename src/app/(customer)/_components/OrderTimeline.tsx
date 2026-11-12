@@ -5,10 +5,13 @@ export type EventView = { id: string; toStatus: string; actor: string; note: str
 
 export function OrderTimeline({ events, country }: { events: EventView[]; country: CountryCode }) {
   return (
-    <ol className="space-y-3 border-l-2 border-line pl-4">
+    <ol className="space-y-4 border-l border-line-strong pl-5">
       {events.map((e) => (
         <li key={e.id} data-testid="timeline-event" className="relative">
-          <span className="absolute -left-[1.4rem] top-1.5 h-2.5 w-2.5 rounded-chip bg-brand" aria-hidden="true" />
+          <span
+            className="absolute -left-[1.6rem] top-1.5 h-2.5 w-2.5 rounded-full border-2 border-surface bg-muted"
+            aria-hidden="true"
+          />
           <p className="text-sm font-semibold">{e.toStatus.replaceAll("_", " ")}</p>
           <p className="text-xs text-muted">
             {e.actor} ·{" "}

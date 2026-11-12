@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Button, Card, Price } from "@/components/ui";
+import { Button, Price } from "@/components/ui";
 import type { CountryCode } from "@/lib/countries";
 import { formatMoney } from "@/lib/money";
 import { formatTime } from "@/lib/time";
@@ -116,91 +116,106 @@ export function OrderTracker({ initial }: { initial: OrderView }) {
   const showEta = (order.etaMinutes ?? 0) > 0 && ETA_STATUSES.includes(status);
 
   return (
-    <div className="space-y-4">
-      <div>
-        <Link href="/orders" className="text-sm font-semibold text-brand">
-          ← Your orders
-        </Link>
-        <h1 className="font-display text-3xl font-extrabold">{order.restaurant.name}</h1>
+    <div className="mx-auto max-w-2xl">
+      <Link
+        href="/orders"
+        className="-ml-2 inline-flex h-11 items-center rounded-chip px-2 text-sm font-semibold text-ink hover:bg-fill md:h-9"
+      >
+        ← Your orders
+      </Link>
+      <h1 className="mt-1 text-[26px] font-bold leading-tight tracking-tight md:text-[28px]">{order.restaurant.name}</h1>
+
+      <div className="mt-4 divide-y divide-line border-y border-line">
+        <section aria-label="Order status" className="space-y-5 py-5">
+          <div className="space-y-1">
+            <p data-testid="order-status" role="status" className="text-xl font-bold leading-snug tracking-tight">
+              {message}
+            </p>
+            {showEta && (
+              <p data-testid="order-eta" className="text-[15px] font-semibold">
+                Arriving in ~{order.etaMinutes} min{" "}
+                <span className="font-normal text-muted">
+                  (as of {formatTime(order.updatedAt, order.country)})
+                </span>
+              </p>
+            )}
+          </div>
+          <StatusProgress status={status} />
+          {rider && (
+            <p data-testid="rider-card" className="flex items-center gap-3 rounded-card bg-fill p-3 text-sm">
+              <span
+                aria-hidden="true"
+                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-surface text-base font-bold"
+              >
+                {rider.name.charAt(0)}
+              </span>
+              <span>
+                <span className="block text-[13px] text-muted">Your rider</span>
+                <span className="font-semibold">{rider.name}</span> · {rider.vehicle.toLowerCase()}
+              </span>
+            </p>
+          )}
+          {refund && (
+            <p data-testid="refund-status" className="rounded-card bg-fill p-4 text-sm font-semibold">
+              {refund}
+            </p>
+          )}
+
+          {showPayment && payment && (
+            <PaymentAction
+              payment={payment}
+              country={order.country}
+              onDone={refresh}
+              onLeavePending={() => setHiddenPaymentId(payment.id)}
+            />
+          )}
+
+          {(canRetry || can("ABANDON") || can("CANCEL")) && (
+            <div className="flex gap-2">
+              {canRetry && (
+                <Button data-testid="retry-payment" block disabled={busy} onClick={() => act("retry-payment")}>
+                  Retry payment
+                </Button>
+              )}
+              {can("ABANDON") && (
+                <Button data-testid="abandon-order" variant="secondary" block disabled={busy} onClick={() => act("abandon")}>
+                  Cancel order
+                </Button>
+              )}
+              {can("CANCEL") && (
+                <Button data-testid="cancel-order" variant="secondary" block disabled={busy} onClick={() => act("cancel")}>
+                  Cancel order
+                </Button>
+              )}
+            </div>
+          )}
+          {error && (
+            <p role="alert" data-testid="order-error" className="rounded-control bg-danger-soft p-3 text-sm font-semibold text-danger">
+              {error.message}
+            </p>
+          )}
+        </section>
+
+        <section aria-label="Your order" className="py-5">
+          <h2 className="mb-2 text-lg font-semibold tracking-tight">Your order</h2>
+          <ul className="space-y-1.5 text-[15px]">
+            {order.items.map((i) => (
+              <li key={i.id}>
+                <span className="tabular-nums text-muted">{i.qty} ×</span> {i.nameSnapshot}
+              </li>
+            ))}
+          </ul>
+          <p className="mt-3 flex justify-between border-t border-line pt-3 font-bold">
+            <span>Total</span>
+            <Price cents={order.totalCents} country={order.country} />
+          </p>
+        </section>
+
+        <section aria-label="Timeline" className="space-y-3 py-5">
+          <h2 className="text-lg font-semibold tracking-tight">Timeline</h2>
+          <OrderTimeline events={order.events} country={order.country} />
+        </section>
       </div>
-
-      <Card className="space-y-3 p-4">
-        <p data-testid="order-status" role="status" className="text-lg font-bold">
-          {message}
-        </p>
-        <StatusProgress status={status} />
-        {showEta && (
-          <p data-testid="order-eta" className="text-sm font-semibold">
-            Arriving in ~{order.etaMinutes} min{" "}
-            <span className="font-normal text-muted">
-              (as of {formatTime(order.updatedAt, order.country)})
-            </span>
-          </p>
-        )}
-        {rider && (
-          <p data-testid="rider-card" className="rounded-control bg-brand-soft p-3 text-sm">
-            <span className="font-semibold">{rider.name}</span> · {rider.vehicle.toLowerCase()}
-          </p>
-        )}
-        {refund && (
-          <p data-testid="refund-status" className="rounded-control bg-brand-soft p-3 text-sm font-semibold">
-            {refund}
-          </p>
-        )}
-      </Card>
-
-      {showPayment && payment && (
-        <PaymentAction
-          payment={payment}
-          country={order.country}
-          onDone={refresh}
-          onLeavePending={() => setHiddenPaymentId(payment.id)}
-        />
-      )}
-
-      {(canRetry || can("ABANDON") || can("CANCEL")) && (
-        <div className="flex gap-2">
-          {canRetry && (
-            <Button data-testid="retry-payment" block disabled={busy} onClick={() => act("retry-payment")}>
-              Retry payment
-            </Button>
-          )}
-          {can("ABANDON") && (
-            <Button data-testid="abandon-order" variant="secondary" block disabled={busy} onClick={() => act("abandon")}>
-              Cancel order
-            </Button>
-          )}
-          {can("CANCEL") && (
-            <Button data-testid="cancel-order" variant="secondary" block disabled={busy} onClick={() => act("cancel")}>
-              Cancel order
-            </Button>
-          )}
-        </div>
-      )}
-      {error && (
-        <p role="alert" data-testid="order-error" className="rounded-control bg-danger-soft p-3 text-sm font-semibold text-danger">
-          {error.message}
-        </p>
-      )}
-
-      <Card className="p-4">
-        <ul className="divide-y divide-line text-sm">
-          {order.items.map((i) => (
-            <li key={i.id} className="py-1.5">
-              {i.qty} × {i.nameSnapshot}
-            </li>
-          ))}
-        </ul>
-        <p className="mt-2 flex justify-between border-t border-line pt-2 font-bold">
-          <span>Total</span>
-          <Price cents={order.totalCents} country={order.country} />
-        </p>
-      </Card>
-
-      <section className="space-y-2">
-        <h2 className="font-display text-xl font-bold">Timeline</h2>
-        <OrderTimeline events={order.events} country={order.country} />
-      </section>
     </div>
   );
 }

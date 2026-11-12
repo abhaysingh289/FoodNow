@@ -56,10 +56,11 @@ export function Sheet({
         if (dismissible && e.target === ref.current) onClose();
       }}
       className={cn(
-        "m-0 w-full max-w-md bg-surface p-0 text-ink shadow-sheet",
+        "m-0 bg-surface p-0 text-ink shadow-sheet",
         variant === "bottom"
-          ? "fixed inset-x-0 bottom-0 mx-auto max-h-[90vh] overflow-y-auto rounded-t-sheet"
-          : "fixed inset-0 m-auto h-fit w-[calc(100%-2rem)] rounded-sheet",
+          ? // Mobile: top-rounded sheet pinned to the bottom. Desktop: centred modal.
+            "fixed inset-x-0 top-auto bottom-0 mx-auto max-h-[90vh] w-full max-w-none overflow-y-auto rounded-t-sheet md:inset-0 md:m-auto md:h-fit md:max-h-[85vh] md:max-w-lg md:rounded-sheet"
+          : "fixed inset-0 m-auto h-fit w-[calc(100%-2rem)] max-w-md rounded-sheet",
       )}
     >
       {open && dismissible && (
@@ -68,9 +69,11 @@ export function Sheet({
           aria-label="Close"
           data-testid="sheet-close"
           onClick={onClose}
-          className="absolute right-3 top-3 z-10 inline-flex h-9 w-9 items-center justify-center rounded-chip text-xl leading-none text-muted hover:bg-brand-soft hover:text-ink"
+          className="absolute right-3 top-3 z-10 inline-flex h-11 w-11 items-center justify-center rounded-chip bg-surface/95 text-ink shadow-[0_1px_4px_rgb(0_0_0/0.12)] hover:bg-fill md:h-9 md:w-9"
         >
-          <span aria-hidden="true">×</span>
+          <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+            <path d="M6 6l12 12M18 6 6 18" strokeLinecap="round" />
+          </svg>
         </button>
       )}
       {open && children}

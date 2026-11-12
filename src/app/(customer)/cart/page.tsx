@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Card, buttonClasses } from "@/components/ui";
+import { buttonClasses } from "@/components/ui";
 import { getSession } from "@/lib/session";
 import { getCart } from "@/modules/cart";
 import { CartLines } from "../_components/CartLines";
@@ -14,7 +14,7 @@ export default async function CartPage({
   const { skipped: rawSkipped } = await searchParams;
   const skipped = rawSkipped === undefined ? [] : Array.isArray(rawSkipped) ? rawSkipped : [rawSkipped];
   const skippedNotice = skipped.length > 0 && (
-    <p role="status" data-testid="reorder-skipped" className="rounded-card bg-accent/30 p-3 text-sm font-semibold">
+    <p role="status" data-testid="reorder-skipped" className="rounded-card bg-fill p-4 text-sm font-semibold">
       Some items are no longer available: {skipped.join(", ")}
     </p>
   );
@@ -23,9 +23,9 @@ export default async function CartPage({
 
   if (!cart.restaurant) {
     return (
-      <div className="space-y-4 py-16 text-center">
+      <div className="mx-auto max-w-md space-y-4 py-16 text-center">
         {skippedNotice}
-        <h1 className="font-display text-3xl font-extrabold">Your cart is empty</h1>
+        <h1 className="text-[26px] font-bold tracking-tight">Your cart is empty</h1>
         <p className="text-muted">Pick something tasty from a restaurant near you.</p>
         <Link href="/" className={buttonClasses({ size: "lg" })}>
           Browse restaurants
@@ -38,38 +38,37 @@ export default async function CartPage({
   const blocked = !restaurant.isOpen || lines.some((l) => !l.isAvailable);
 
   return (
-    <div className="space-y-4">
+    <div className="mx-auto max-w-2xl space-y-5">
       {skippedNotice}
       <div>
-        <h1 className="font-display text-3xl font-extrabold">Your cart</h1>
-        <Link href={`/r/${restaurant.id}`} className="font-semibold text-brand">
+        <h1 className="text-[26px] font-bold leading-tight tracking-tight md:text-[28px]">Your cart</h1>
+        <Link href={`/r/${restaurant.id}`} className="text-[15px] font-medium text-muted hover:text-ink hover:underline">
           {restaurant.name}
         </Link>
       </div>
 
       {!restaurant.isOpen && (
-        <p role="status" className="rounded-card bg-ink p-3 text-sm font-semibold text-white">
+        <p role="status" className="rounded-card bg-fill p-4 text-sm font-semibold">
           {restaurant.name} is closed right now, so you can&apos;t check out yet.
         </p>
       )}
 
-      <Card className="px-4">
+      <section aria-label="Items" className="border-y border-line">
         <CartLines lines={lines} country={restaurant.country} />
-      </Card>
+      </section>
 
-      <Card className="p-4">
+      <section aria-label="Promo and total" className="space-y-5 rounded-card bg-fill p-4 md:p-5">
         <PromoForm appliedCode={price.promoCode} serverError={price.promoError} />
-      </Card>
-
-      <Card className="p-4">
-        <PriceBreakdown price={price} country={restaurant.country} />
-      </Card>
+        <div className="border-t border-line-strong pt-4">
+          <PriceBreakdown price={price} country={restaurant.country} />
+        </div>
+      </section>
 
       {blocked ? (
         <span
           data-testid="go-checkout"
           aria-disabled="true"
-          className={`${buttonClasses({ size: "lg", block: true })} cursor-not-allowed bg-line text-muted`}
+          className="inline-flex h-12 w-full cursor-not-allowed items-center justify-center rounded-control bg-fill-strong px-5 font-semibold text-muted"
         >
           Checkout unavailable
         </span>

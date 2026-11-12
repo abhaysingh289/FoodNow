@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Chip } from "@/components/ui";
 
 export type FilterState = {
+  q: string; // free-text search (restaurant, cuisine or dish name)
   toggles: string[]; // subset of halal | vegetarian | rating | fast | promo | open
   cuisines: string[];
   prices: number[];
@@ -29,6 +30,7 @@ const SORTS: { value: string; label: string }[] = [
 
 function toQuery(s: FilterState): string {
   const p = new URLSearchParams();
+  if (s.q) p.set("q", s.q);
   for (const t of s.toggles) p.set(t, "1");
   for (const c of s.cuisines) p.append("cuisine", c);
   for (const n of s.prices) p.append("price", String(n));
@@ -45,6 +47,7 @@ function toggleIn<T>(list: T[], v: T): T[] {
 export function FilterBar({ initial, cuisines }: { initial: FilterState; cuisines: string[] }) {
   const router = useRouter();
   const [state, setState] = useState(initial);
+  const [query, setQuery] = useState(initial.q);
 
   function apply(next: FilterState) {
     setState(next);
@@ -52,8 +55,69 @@ export function FilterBar({ initial, cuisines }: { initial: FilterState; cuisine
   }
 
   return (
-    <section aria-label="Filters" className="space-y-2">
-      <div className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1">
+    <section aria-label="Filters" className="space-y-3">
+      <form
+        role="search"
+        className="relative md:max-w-2xl"
+        onSubmit={(e) => {
+          e.preventDefault();
+          apply({ ...state, q: query.trim() });
+        }}
+      >
+        <svg
+          viewBox="0 0 24 24"
+          className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          aria-hidden="true"
+        >
+          <circle cx="11" cy="11" r="7" />
+          <path d="m20 20-3.5-3.5" strokeLinecap="round" />
+        </svg>
+        <label>
+          <span className="sr-only">Search restaurants or dishes</span>
+          <input
+            type="search"
+            data-testid="search-input"
+            value={query}
+            enterKeyHint="search"
+            onChange={(e) => {
+              setQuery(e.target.value);
+              if (e.target.value === "" && state.q) apply({ ...state, q: "" });
+            }}
+            placeholder="Search restaurants or dishes"
+            className="h-12 w-full rounded-chip border border-transparent bg-fill pl-12 pr-4 text-[15px] text-ink placeholder:text-muted focus:border-line-strong focus:bg-surface"
+          />
+        </label>
+      </form>
+
+      <div className="no-scrollbar -mx-4 flex gap-2 overflow-x-auto px-4 md:-mx-6 md:px-6">
+        <label className="relative flex shrink-0 items-center">
+          <span className="sr-only">Sort by</span>
+          <select
+            data-testid="sort"
+            value={state.sort}
+            onChange={(e) => apply({ ...state, sort: e.target.value })}
+            className="h-11 cursor-pointer appearance-none rounded-chip border border-line-strong bg-surface pl-4 pr-9 text-sm font-medium text-ink hover:bg-fill md:h-9"
+          >
+            {SORTS.map((s) => (
+              <option key={s.value} value={s.value}>
+                {s.label}
+              </option>
+            ))}
+          </select>
+          <svg
+            viewBox="0 0 20 20"
+            className="pointer-events-none absolute right-3 h-4 w-4 text-muted"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.8"
+            aria-hidden="true"
+          >
+            <path d="m5 8 5 5 5-5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </label>
         {TOGGLES.map((t) => (
           <Chip
             key={t.key}
@@ -75,8 +139,7 @@ export function FilterBar({ initial, cuisines }: { initial: FilterState; cuisine
             {"$".repeat(n)}
           </Chip>
         ))}
-      </div>
-      <div className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1">
+        {cuisines.length > 0 && <span aria-hidden="true" className="my-auto h-6 w-px shrink-0 bg-line-strong" />}
         {cuisines.map((c) => (
           <Chip
             key={c}
@@ -88,21 +151,6 @@ export function FilterBar({ initial, cuisines }: { initial: FilterState; cuisine
           </Chip>
         ))}
       </div>
-      <label className="flex items-center justify-end gap-2 text-sm text-muted">
-        Sort by
-        <select
-          data-testid="sort"
-          value={state.sort}
-          onChange={(e) => apply({ ...state, sort: e.target.value })}
-          className="h-9 rounded-control border border-line bg-surface px-2 text-ink"
-        >
-          {SORTS.map((s) => (
-            <option key={s.value} value={s.value}>
-              {s.label}
-            </option>
-          ))}
-        </select>
-      </label>
     </section>
   );
 }

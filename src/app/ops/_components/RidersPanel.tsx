@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Button, Card } from "@/components/ui";
+import { Button } from "@/components/ui";
 import { usePolling } from "./usePolling";
 import type { OpsRider } from "./OrderCard";
 
@@ -30,10 +30,10 @@ function Group({ country, onError }: { country: "HK" | "SG"; onError: (m: string
 
   return (
     <div>
-      <h3 className="mb-1 text-xs font-bold uppercase tracking-wide text-muted">{country}</h3>
-      <ul className="space-y-1.5">
+      <h3 className="mb-1 text-xs font-semibold uppercase tracking-wide text-muted">{country}</h3>
+      <ul className="divide-y divide-line">
         {(riders ?? []).map((r) => (
-          <li key={r.id} className="flex items-center justify-between gap-2 text-sm">
+          <li key={r.id} className="flex items-center justify-between gap-2 py-2 text-sm">
             <span>
               <span className="font-semibold">{r.name}</span> <span className="text-muted">({r.vehicle})</span>
               <br />
@@ -54,8 +54,8 @@ function Group({ country, onError }: { country: "HK" | "SG"; onError: (m: string
 export function RidersPanel() {
   const [error, setError] = useState<string | null>(null);
   return (
-    <Card className="space-y-3 p-3">
-      <h2 className="font-display text-lg font-bold">Riders</h2>
+    <section className="space-y-3 py-4">
+      <h2 className="text-base font-semibold">Riders</h2>
       {error && (
         <p role="alert" className="text-sm text-danger">
           {error}
@@ -63,6 +63,6 @@ export function RidersPanel() {
       )}
       <Group country="HK" onError={setError} />
       <Group country="SG" onError={setError} />
-    </Card>
+    </section>
   );
 }

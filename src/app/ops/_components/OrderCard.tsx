@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Button, Card } from "@/components/ui";
+import { Button, Card, cn } from "@/components/ui";
 import type { CountryCode } from "@/lib/countries";
 import { formatMoney } from "@/lib/money";
 import { formatTime } from "@/lib/time";
@@ -31,6 +31,7 @@ export type OpsOrder = {
 export type OpsRider = { id: string; name: string; vehicle: string; country: string; isAvailable: boolean };
 
 const DANGER: OrderAction[] = ["REJECT", "NO_RIDER", "FAIL_DELIVERY", "CANCEL"];
+const FINISHED: OrderStatus[] = ["DELIVERED", "CANCELLED", "REFUNDED"];
 
 export function OrderCard({
   order,
@@ -77,15 +78,27 @@ export function OrderCard({
   return (
     <Card data-testid={`ops-order-${order.id}`} className="space-y-2 p-3 text-sm">
       <div className="flex items-start justify-between gap-2">
-        <Link href={`/ops/orders/${order.id}`} className="font-mono text-xs font-bold text-brand hover:underline">
+        <Link href={`/ops/orders/${order.id}`} className="font-mono text-xs font-bold text-ink underline-offset-2 hover:underline">
           #{order.id.slice(-6)}
         </Link>
-        <span className="text-xs text-muted">
+        <span className="text-xs tabular-nums text-muted">
           {order.country} · {formatTime(order.createdAt, country)}
         </span>
       </div>
       <p className="font-semibold leading-tight">{order.restaurantName}</p>
-      <p className="font-semibold">{formatMoney(order.totalCents, country)}</p>
+      <div className="flex items-center justify-between gap-2">
+        <p className="font-semibold tabular-nums">{formatMoney(order.totalCents, country)}</p>
+        {FINISHED.includes(order.status) && (
+          <span
+            className={cn(
+              "rounded-chip px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide",
+              order.status === "DELIVERED" ? "bg-ok-soft text-ok" : "bg-danger-soft text-danger",
+            )}
+          >
+            {order.status.toLowerCase()}
+          </span>
+        )}
+      </div>
       {order.etaMinutes != null && ETA_STATUSES.includes(order.status) && (
         <p className="text-xs text-muted">ETA ~{order.etaMinutes} min</p>
       )}
@@ -99,7 +112,7 @@ export function OrderCard({
           aria-label="Rider"
           value={riderId}
           onChange={(e) => setRiderId(e.target.value)}
-          className="h-9 w-full rounded-control border border-line bg-surface px-2 text-sm"
+          className="h-9 w-full rounded-control border border-line-strong bg-surface px-2 text-sm"
         >
           <option value="">Choose rider</option>
           {riders.map((r) => (
