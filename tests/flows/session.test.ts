@@ -1,5 +1,6 @@
 import { beforeAll, describe, expect, it } from "vitest";
 import { resolveSession } from "@/lib/session";
+import { prisma } from "@/lib/db";
 import { resetDb } from "../helpers/db";
 
 describe("resolveSession", () => {
@@ -34,5 +35,15 @@ describe("resolveSession", () => {
   it("falls back when the address belongs to another user", async () => {
     const t = await resolveSession({ userId: "u_mei", country: "HK", addressId: "a_arjun_hk" });
     expect(t.address.id).toBe("a_mei_hk");
+  });
+
+  it("throws NotFound when the user has no address in the country", async () => {
+    await prisma.user.create({ data: { id: "u_tmp_hk", name: "Tmp", phone: "0", defaultCountry: "HK" } });
+    await prisma.address.create({
+      data: { id: "a_tmp_hk", userId: "u_tmp_hk", country: "HK", districtId: "d_hk_mongkok", label: "H", line1: "x", lat: 22.3, lng: 114.1 },
+    });
+    await expect(resolveSession({ userId: "u_tmp_hk", country: "SG" })).rejects.toThrow(/No SG address/);
+    await prisma.address.delete({ where: { id: "a_tmp_hk" } });
+    await prisma.user.delete({ where: { id: "u_tmp_hk" } });
   });
 });

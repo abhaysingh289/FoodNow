@@ -9,20 +9,22 @@ export const SESSION_COOKIES = {
   address: "fn_address",
 } as const;
 
+export const DEFAULT_USER_ID = "u_mei";
+
 export type Session = { user: User; country: CountryCode; address: Address };
 
 export type RawSession = { userId?: string; country?: string; addressId?: string };
 
 /**
  * Resolves possibly stale cookie values into a consistent session.
- * Fallback chain: user (first in seed order) -> country (user's default) -> address
+ * Fallback chain: user (DEFAULT_USER_ID, else first by id) -> country (user's default) -> address
  * (must belong to the user and the country, else the user's first address in that country).
  */
 export async function resolveSession(raw: RawSession): Promise<Session> {
   const user =
     (raw.userId ? await prisma.user.findUnique({ where: { id: raw.userId } }) : null) ??
-    // No orderBy: ordering by id would pick u_arjun; insertion (seed) order yields the demo default u_mei.
-    (await prisma.user.findFirst());
+    (await prisma.user.findUnique({ where: { id: DEFAULT_USER_ID } })) ??
+    (await prisma.user.findFirst({ orderBy: { id: "asc" } }));
   if (!user) throw new NotFound("No users found");
 
   const country: CountryCode = isCountryCode(raw.country)
