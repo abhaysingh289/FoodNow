@@ -14,6 +14,8 @@ import {
   type OrderStatus,
 } from "@/modules/orders/stateMachine";
 
+const ETA_STATUSES: OrderStatus[] = ["ACCEPTED", "RIDER_ASSIGNED", "PICKED_UP"];
+
 export type OpsOrder = {
   id: string;
   restaurantName: string;
@@ -84,7 +86,9 @@ export function OrderCard({
       </div>
       <p className="font-semibold leading-tight">{order.restaurantName}</p>
       <p className="font-semibold">{formatMoney(order.totalCents, country)}</p>
-      {order.etaMinutes != null && <p className="text-xs text-muted">ETA ~{order.etaMinutes} min</p>}
+      {order.etaMinutes != null && ETA_STATUSES.includes(order.status) && (
+        <p className="text-xs text-muted">ETA ~{order.etaMinutes} min</p>
+      )}
       {order.riderName && <p className="text-xs text-muted">Rider: {order.riderName}</p>}
       {order.failureReason && (
         <p className="text-xs font-medium text-danger">{FAILURE_REASON_LABELS[order.failureReason]}</p>

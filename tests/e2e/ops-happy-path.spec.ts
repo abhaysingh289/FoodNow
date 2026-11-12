@@ -47,8 +47,11 @@ test("ops side panels: rider toggle, simulation settings, reset confirm", async 
   await page.goto("/ops");
   const toggle = page.getByTestId(/^rider-toggle-/).first();
   await expect(toggle).toHaveText("Set busy");
-  await toggle.click();
-  await expect(toggle).toHaveText("Set available");
+  // The first click can land before hydration and be dropped; retry until the toggle takes effect.
+  await expect(async () => {
+    await toggle.click();
+    await expect(toggle).toHaveText("Set available", { timeout: 1500 });
+  }).toPass({ timeout: 10_000 });
   await toggle.click();
   await expect(toggle).toHaveText("Set busy");
 

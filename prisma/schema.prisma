@@ -201,7 +201,7 @@ model Payment {
   currency       String
   status         String
   failureReason  String?
-  idempotencyKey String
+  idempotencyKey String   @unique
   createdAt      DateTime @default(now())
   refunds        Refund[]
 }
@@ -216,7 +216,7 @@ model Refund {
   status         String
   reason         String
   failureReason  String?
-  idempotencyKey String
+  idempotencyKey String   @unique
   createdAt      DateTime @default(now())
 }
 

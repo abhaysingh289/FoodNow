@@ -46,6 +46,7 @@ export async function getOrderDetail(orderId: string): Promise<OrderDetail> {
   const payments = order.payments.map(({ refunds: _refunds, ...p }) => p);
   const flags: string[] = [];
   if (webhookLogs.some((l) => l.result === "MISMATCH")) flags.push("AMOUNT_MISMATCH");
+  if (refunds.some((r) => r.reason === "late_payment")) flags.push("LATE_PAYMENT_REFUNDED");
   return { ...order, payments, refunds, webhookLogs, flags };
 }
 

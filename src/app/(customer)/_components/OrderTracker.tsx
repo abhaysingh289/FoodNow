@@ -109,6 +109,10 @@ export function OrderTracker({ initial }: { initial: OrderView }) {
   const showPayment =
     status === "PENDING_PAYMENT" && payment?.status === "PENDING" && payment.id !== hiddenPaymentId;
   const can = (a: OrderAction) => order.allowedActions.includes(a);
+  // A payment start that failed leaves PENDING_PAYMENT with nothing to wait on: offer the resumable retry.
+  const canRetry =
+    can("RETRY_PAYMENT") ||
+    (status === "PENDING_PAYMENT" && !order.payments.some((p) => p.status === "PENDING"));
   const showEta = (order.etaMinutes ?? 0) > 0 && ETA_STATUSES.includes(status);
 
   return (
@@ -154,9 +158,9 @@ export function OrderTracker({ initial }: { initial: OrderView }) {
         />
       )}
 
-      {(can("RETRY_PAYMENT") || can("ABANDON") || can("CANCEL")) && (
+      {(canRetry || can("ABANDON") || can("CANCEL")) && (
         <div className="flex gap-2">
-          {can("RETRY_PAYMENT") && (
+          {canRetry && (
             <Button data-testid="retry-payment" block disabled={busy} onClick={() => act("retry-payment")}>
               Retry payment
             </Button>

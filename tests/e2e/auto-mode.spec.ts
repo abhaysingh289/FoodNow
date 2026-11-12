@@ -31,7 +31,7 @@ test("auto mode completes an order unattended", async ({ context }) => {
   await expect(events.first()).toContainText("PENDING PAYMENT");
   const texts = await events.allInnerTexts();
   const after = texts.slice(1);
-  expect(after.length).toBeGreaterThan(0);
+  expect(after.filter((t) => !t.includes("PROVIDER")).length).toBeGreaterThanOrEqual(4);
   expect(after.filter((t) => t.includes("PROVIDER"))).toHaveLength(1);
   expect(after.filter((t) => t.includes("PROVIDER"))[0]).toContain("PLACED");
   for (const t of after.filter((t) => !t.includes("PROVIDER"))) expect(t).toContain("AUTO");

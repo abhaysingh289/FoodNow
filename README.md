@@ -53,7 +53,7 @@ To see failures, repeat the loop and use the controls below instead of the happy
 | Accept / Reject | Restaurant accepts, or rejects (reason `RESTAURANT_REJECTED`, refund follows) |
 | Assign rider / No rider | Assign an available rider of the order's country, or declare none found (`NO_RIDER`, refund follows) |
 | Picked up / Delivered | Normal progression |
-| Delivery failed | After pickup (`DELIVERY_FAILED`, refund follows) |
+| Delivery failed | After a rider is assigned or the order is picked up (`DELIVERY_FAILED`, refund follows) |
 | Retry refund | When a refund has failed |
 
 **Failure paths** you can walk through:
@@ -63,13 +63,14 @@ To see failures, repeat the loop and use the controls below instead of the happy
 - **No rider:** Accept, then No rider.
 - **Delivery failed:** Accept, assign, pick up, then Delivery failed.
 - **Customer cancels:** press Cancel on the customer order page while it is still PLACED.
+- **Payment start failed:** if starting the payment errors, the tracking page shows a **Retry payment** button for the order stuck in "Processing payment…".
 - **Refund fails:** Fail the pending refund in the provider panel, then use Retry refund.
 
 **Payment provider panel** (the "provider's side" of the fake provider):
 
 - **Succeed / Fail:** decide a pending payment (left pending via **Leave pending** on the fake sheet) or a pending refund.
 - **Succeed x2:** the provider delivers the same webhook twice; the second is logged as a duplicate and changes nothing.
-- **Bad signature:** delivers a webhook with an invalid signature; it is rejected and logged.
+- **Bad signature:** delivers a webhook with an invalid signature; it is rejected and logged (linked to its order when the body names a known payment or refund). The order stays in "Processing payment…" until you use **Resend webhook**, which delivers it properly.
 - **Resend webhook:** re-delivers a past event.
 
 **Riders:** toggle each rider busy or available. **Simulation:** auto mode and step delay. **Data:** **Reset & reseed** wipes orders, payments, refunds, webhook logs, fake provider state and carts, and restores riders and settings.
@@ -114,7 +115,7 @@ Only the `payments` module knows a provider exists, so no changes are needed in 
 1. Implement `StripeProvider` / `AirwallexProvider` (or similar) against the `PaymentProvider` interface in `src/modules/payments/provider.ts`, and register it in `src/modules/payments/registry.ts`.
 2. Add a renderer for its `ClientAction` in checkout (the fake provider's is the fake payment sheet).
 3. Point the provider's dashboard webhooks to `/api/webhooks/payments/<name>`.
-4. Set `PAYMENT_PROVIDER=<name>` and the provider's keys in `.env.local`.
+4. Set `PAYMENT_PROVIDER=<name>` and the provider's keys in `.env` (the Prisma CLI reads only `.env`).
 5. Run the shared provider contract test suite (under `tests/contract`) against the provider's test mode.
 
 ## GST display simplification
