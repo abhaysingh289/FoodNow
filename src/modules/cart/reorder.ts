@@ -31,6 +31,9 @@ export async function reorder(userId: string, orderId: string): Promise<{ skippe
     kept.push({ menuItemId: item.id, qty: line.qty, optionIds: optionIds as string[], note: line.note });
   }
 
+  // Nothing orderable: leave the user's existing cart (possibly another restaurant's) alone.
+  if (kept.length === 0) return { skipped };
+
   await prisma.$transaction(async (tx) => {
     const cart = await tx.cart.upsert({ where: { userId }, create: { userId }, update: {} });
     await tx.cartItem.deleteMany({ where: { cartId: cart.id } });
@@ -47,7 +50,7 @@ export async function reorder(userId: string, orderId: string): Promise<{ skippe
     }
     await tx.cart.update({
       where: { id: cart.id },
-      data: { restaurantId: kept.length > 0 ? order.restaurantId : null, promoCode: null },
+      data: { restaurantId: order.restaurantId, promoCode: null },
     });
   });
   return { skipped };

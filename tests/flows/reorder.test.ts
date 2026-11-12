@@ -1,7 +1,7 @@
 import { beforeAll, beforeEach, describe, expect, it } from "vitest";
 import { prisma } from "@/lib/db";
 import { NotFound, RestaurantClosed } from "@/lib/errors";
-import { clearCart, getCart, reorder } from "@/modules/cart";
+import { addItem, clearCart, getCart, reorder } from "@/modules/cart";
 import { listRiders } from "@/modules/delivery";
 import { applyOpsAction } from "@/modules/orders/actions";
 import { handleWebhook } from "@/modules/payments";
@@ -77,6 +77,21 @@ describe("reorder", () => {
     const { skipped } = await reorder("u_mei", o);
     expect(skipped).toHaveLength(2);
     expect((await getCart("u_mei", await addr())).lines).toHaveLength(0);
+  });
+
+  it("keeps an existing cart when every line is skipped", async () => {
+    const o = await wontonAndLobster();
+    await prisma.menuItem.updateMany({
+      where: { id: { in: ["hk_gd_wonton", "hk_gd_lobster"] } },
+      data: { isAvailable: false },
+    });
+    await clearCart("u_mei");
+    await addItem("u_mei", { menuItemId: "hk_gd_har_gow", qty: 3, optionIds: [] });
+    const { skipped } = await reorder("u_mei", o);
+    expect(skipped).toHaveLength(2);
+    const cart = await getCart("u_mei", await addr());
+    expect(cart.lines).toHaveLength(1);
+    expect(cart.lines[0]).toMatchObject({ menuItemId: "hk_gd_har_gow", qty: 3 });
   });
 
   it("fails RestaurantClosed when the restaurant is closed", async () => {
