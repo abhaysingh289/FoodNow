@@ -1,4 +1,6 @@
 import { beforeAll, describe, expect, it } from "vitest";
+import { existsSync } from "node:fs";
+import path from "node:path";
 import { prisma } from "@/lib/db";
 import { resetDb } from "../helpers/db";
 
@@ -44,6 +46,18 @@ describe("seed data", () => {
       expect(r.categories.length, r.id).toBeLessThanOrEqual(4);
       expect(items.filter((i) => i.groups.length > 0).length, r.id).toBeGreaterThanOrEqual(3);
       expect(r.imageUrl.startsWith("/images/")).toBe(true);
+    }
+  });
+
+  it("every image the seed points at exists in public/, and the four photo menus have dish photos", async () => {
+    const rs = await prisma.restaurant.findMany({ include: { categories: { include: { items: true } } } });
+    const urls = rs.flatMap((r) => [r.imageUrl, ...r.categories.flatMap((c) => c.items.map((i) => i.imageUrl))]);
+    for (const url of urls.filter((u): u is string => u !== null)) {
+      expect(existsSync(path.join(process.cwd(), "public", url)), url).toBe(true);
+    }
+    for (const id of ["hk_golden_dragon", "hk_burger_lab", "sg_tampines_laksa", "sg_bugis_kimchi"]) {
+      const items = rs.find((r) => r.id === id)!.categories.flatMap((c) => c.items);
+      expect(items.filter((i) => i.imageUrl !== null).length, id).toBeGreaterThanOrEqual(7);
     }
   });
 

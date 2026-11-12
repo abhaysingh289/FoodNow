@@ -55,7 +55,7 @@ model MenuItem {
   name        String
   description String          @default("")
   priceCents  Int
-  imageUrl    String
+  imageUrl    String?
   isAvailable Boolean         @default(true)
   groups      ModifierGroup[]
   cartItems   CartItem[]

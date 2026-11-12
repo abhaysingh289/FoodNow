@@ -12,7 +12,7 @@ export type SheetItem = {
   name: string;
   description: string;
   priceCents: number;
-  imageUrl: string;
+  imageUrl: string | null;
   isAvailable: boolean;
   groups: {
     id: string;
@@ -125,9 +125,11 @@ export function ItemSheet({
           )}
         </p>
       </div>
-      <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-control bg-brand-soft">
-        <Image src={item.imageUrl} alt="" fill unoptimized className="object-cover" />
-      </div>
+      {item.imageUrl && (
+        <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-control bg-brand-soft">
+          <Image src={item.imageUrl} alt="" fill unoptimized className="object-cover" />
+        </div>
+      )}
     </>
   );
 

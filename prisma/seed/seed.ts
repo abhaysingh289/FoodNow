@@ -8,7 +8,7 @@ const load = <T>(file: string): T => JSON.parse(readFileSync(path.join(dir, file
 
 type Option = { id: string; name: string; priceDeltaCents: number };
 type Group = { id: string; name: string; required: boolean; minSelect: number; maxSelect: number; options: Option[] };
-type Item = { id: string; name: string; description: string; priceCents: number; imageUrl: string; isAvailable: boolean; groups: Group[] };
+type Item = { id: string; name: string; description: string; priceCents: number; imageUrl: string | null; isAvailable: boolean; groups: Group[] };
 type Category = { id: string; name: string; sort: number; items: Item[] };
 type RestaurantSeed = {
   id: string; country: string; districtId: string; name: string; description: string; cuisines: string[]; tags: string[];

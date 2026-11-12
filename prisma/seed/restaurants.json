@@ -15,7 +15,7 @@
     "prepMinutes": 15,
     "lat": 22.2988,
     "lng": 114.1722,
-    "imageUrl": "/images/dimsum.svg",
+    "imageUrl": "/images/restaurants/hk_golden_dragon.jpg",
     "isOpen": true,
     "hasPromo": true,
     "categories": [
@@ -29,7 +29,7 @@
             "name": "Har Gow (4 pcs)",
             "description": "Har Gow (4 pcs), made fresh to order.",
             "priceCents": 4200,
-            "imageUrl": "/images/dimsum.svg",
+            "imageUrl": "/images/dishes/hk_gd_har_gow.jpg",
             "isAvailable": true,
             "groups": []
           },
@@ -38,7 +38,7 @@
             "name": "BBQ Pork Bun",
             "description": "BBQ Pork Bun, made fresh to order.",
             "priceCents": 3200,
-            "imageUrl": "/images/dimsum.svg",
+            "imageUrl": "/images/dishes/hk_gd_bbq_bun.jpg",
             "isAvailable": true,
             "groups": []
           },
@@ -47,7 +47,7 @@
             "name": "Siu Mai (4 pcs)",
             "description": "Siu Mai (4 pcs), made fresh to order.",
             "priceCents": 3800,
-            "imageUrl": "/images/dimsum.svg",
+            "imageUrl": "/images/dishes/hk_gd_siu_mai.jpg",
             "isAvailable": true,
             "groups": []
           },
@@ -56,7 +56,7 @@
             "name": "Prawn Cheung Fun",
             "description": "Prawn Cheung Fun, made fresh to order.",
             "priceCents": 4600,
-            "imageUrl": "/images/dimsum.svg",
+            "imageUrl": "/images/dishes/hk_gd_cheung_fun.jpg",
             "isAvailable": true,
             "groups": [
               {
@@ -85,7 +85,7 @@
             "name": "Lobster Dumplings",
             "description": "Lobster Dumplings, made fresh to order.",
             "priceCents": 8800,
-            "imageUrl": "/images/dimsum.svg",
+            "imageUrl": "/images/dishes/hk_gd_lobster.jpg",
             "isAvailable": false,
             "groups": []
           }
@@ -101,7 +101,7 @@
             "name": "Wonton Noodle Soup",
             "description": "Wonton Noodle Soup, made fresh to order.",
             "priceCents": 5800,
-            "imageUrl": "/images/dimsum.svg",
+            "imageUrl": "/images/dishes/hk_gd_wonton.jpg",
             "isAvailable": true,
             "groups": [
               {
@@ -149,7 +149,7 @@
             "name": "Beef Brisket Noodles",
             "description": "Beef Brisket Noodles, made fresh to order.",
             "priceCents": 6200,
-            "imageUrl": "/images/dimsum.svg",
+            "imageUrl": "/images/dishes/hk_gd_beef_noodle.jpg",
             "isAvailable": true,
             "groups": [
               {
@@ -178,7 +178,7 @@
             "name": "Yangzhou Fried Rice",
             "description": "Yangzhou Fried Rice, made fresh to order.",
             "priceCents": 5400,
-            "imageUrl": "/images/dimsum.svg",
+            "imageUrl": "/images/dishes/hk_gd_fried_rice.jpg",
             "isAvailable": true,
             "groups": [
               {
@@ -214,7 +214,7 @@
             "name": "Egg Tart (2 pcs)",
             "description": "Egg Tart (2 pcs), made fresh to order.",
             "priceCents": 2800,
-            "imageUrl": "/images/dimsum.svg",
+            "imageUrl": "/images/dishes/hk_gd_egg_tart.jpg",
             "isAvailable": true,
             "groups": []
           },
@@ -223,7 +223,7 @@
             "name": "Hong Kong Milk Tea",
             "description": "Hong Kong Milk Tea, made fresh to order.",
             "priceCents": 2200,
-            "imageUrl": "/images/dimsum.svg",
+            "imageUrl": "/images/dishes/hk_gd_milk_tea.jpg",
             "isAvailable": true,
             "groups": [
               {
@@ -267,7 +267,7 @@
     "prepMinutes": 12,
     "lat": 22.3213,
     "lng": 114.1724,
-    "imageUrl": "/images/japanese.svg",
+    "imageUrl": "/images/restaurants/hk_midnight_ramen.jpg",
     "isOpen": false,
     "hasPromo": false,
     "categories": [
@@ -281,7 +281,7 @@
             "name": "Tonkotsu Ramen",
             "description": "Tonkotsu Ramen, made fresh to order.",
             "priceCents": 7800,
-            "imageUrl": "/images/japanese.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": [
               {
@@ -334,7 +334,7 @@
             "name": "Shoyu Ramen",
             "description": "Shoyu Ramen, made fresh to order.",
             "priceCents": 7200,
-            "imageUrl": "/images/japanese.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": [
               {
@@ -363,7 +363,7 @@
             "name": "Spicy Miso Ramen",
             "description": "Spicy Miso Ramen, made fresh to order.",
             "priceCents": 8200,
-            "imageUrl": "/images/japanese.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": [
               {
@@ -416,7 +416,7 @@
             "name": "Tsukemen",
             "description": "Tsukemen, made fresh to order.",
             "priceCents": 8600,
-            "imageUrl": "/images/japanese.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           }
@@ -432,7 +432,7 @@
             "name": "Gyoza (5 pcs)",
             "description": "Gyoza (5 pcs), made fresh to order.",
             "priceCents": 3600,
-            "imageUrl": "/images/japanese.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           },
@@ -441,7 +441,7 @@
             "name": "Karaage",
             "description": "Karaage, made fresh to order.",
             "priceCents": 4200,
-            "imageUrl": "/images/japanese.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           },
@@ -450,7 +450,7 @@
             "name": "Edamame",
             "description": "Edamame, made fresh to order.",
             "priceCents": 2400,
-            "imageUrl": "/images/japanese.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           },
@@ -459,7 +459,7 @@
             "name": "Chashu Rice Bowl",
             "description": "Chashu Rice Bowl, made fresh to order.",
             "priceCents": 4800,
-            "imageUrl": "/images/japanese.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           }
@@ -475,7 +475,7 @@
             "name": "Ramune",
             "description": "Ramune, made fresh to order.",
             "priceCents": 1800,
-            "imageUrl": "/images/japanese.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           }
@@ -499,7 +499,7 @@
     "prepMinutes": 14,
     "lat": 22.2832,
     "lng": 114.1818,
-    "imageUrl": "/images/burgers.svg",
+    "imageUrl": "/images/restaurants/hk_burger_lab.jpg",
     "isOpen": true,
     "hasPromo": true,
     "categories": [
@@ -513,7 +513,7 @@
             "name": "Classic Smash Burger",
             "description": "Classic Smash Burger, made fresh to order.",
             "priceCents": 6800,
-            "imageUrl": "/images/burgers.svg",
+            "imageUrl": "/images/dishes/hk_bl_classic.jpg",
             "isAvailable": true,
             "groups": [
               {
@@ -566,7 +566,7 @@
             "name": "Double Cheese Burger",
             "description": "Double Cheese Burger, made fresh to order.",
             "priceCents": 8800,
-            "imageUrl": "/images/burgers.svg",
+            "imageUrl": "/images/dishes/hk_bl_double.jpg",
             "isAvailable": true,
             "groups": []
           },
@@ -575,7 +575,7 @@
             "name": "Crispy Chicken Burger",
             "description": "Crispy Chicken Burger, made fresh to order.",
             "priceCents": 6400,
-            "imageUrl": "/images/burgers.svg",
+            "imageUrl": "/images/dishes/hk_bl_chicken.jpg",
             "isAvailable": true,
             "groups": [
               {
@@ -604,7 +604,7 @@
             "name": "Mushroom Swiss Burger",
             "description": "Mushroom Swiss Burger, made fresh to order.",
             "priceCents": 7400,
-            "imageUrl": "/images/burgers.svg",
+            "imageUrl": "/images/dishes/hk_bl_mushroom.jpg",
             "isAvailable": true,
             "groups": []
           }
@@ -620,7 +620,7 @@
             "name": "Fries",
             "description": "Fries, made fresh to order.",
             "priceCents": 2800,
-            "imageUrl": "/images/burgers.svg",
+            "imageUrl": "/images/dishes/hk_bl_fries.jpg",
             "isAvailable": true,
             "groups": [
               {
@@ -649,7 +649,7 @@
             "name": "Onion Rings",
             "description": "Onion Rings, made fresh to order.",
             "priceCents": 3200,
-            "imageUrl": "/images/burgers.svg",
+            "imageUrl": "/images/dishes/hk_bl_rings.jpg",
             "isAvailable": true,
             "groups": []
           },
@@ -658,7 +658,7 @@
             "name": "Buffalo Wings",
             "description": "Buffalo Wings, made fresh to order.",
             "priceCents": 5200,
-            "imageUrl": "/images/burgers.svg",
+            "imageUrl": "/images/dishes/hk_bl_wings.jpg",
             "isAvailable": true,
             "groups": [
               {
@@ -699,7 +699,7 @@
             "name": "Chocolate Shake",
             "description": "Chocolate Shake, made fresh to order.",
             "priceCents": 3800,
-            "imageUrl": "/images/burgers.svg",
+            "imageUrl": "/images/dishes/hk_bl_choc.jpg",
             "isAvailable": true,
             "groups": []
           },
@@ -708,7 +708,7 @@
             "name": "Vanilla Shake",
             "description": "Vanilla Shake, made fresh to order.",
             "priceCents": 3800,
-            "imageUrl": "/images/burgers.svg",
+            "imageUrl": "/images/dishes/hk_bl_vanilla.jpg",
             "isAvailable": true,
             "groups": []
           }
@@ -733,7 +733,7 @@
     "prepMinutes": 18,
     "lat": 22.2756,
     "lng": 114.1768,
-    "imageUrl": "/images/thai.svg",
+    "imageUrl": "/images/restaurants/hk_bangkok_spice.jpg",
     "isOpen": true,
     "hasPromo": false,
     "categories": [
@@ -747,7 +747,7 @@
             "name": "Pad Thai",
             "description": "Pad Thai, made fresh to order.",
             "priceCents": 5600,
-            "imageUrl": "/images/thai.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": [
               {
@@ -800,7 +800,7 @@
             "name": "Green Curry",
             "description": "Green Curry, made fresh to order.",
             "priceCents": 6200,
-            "imageUrl": "/images/thai.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": [
               {
@@ -834,7 +834,7 @@
             "name": "Tom Yum Soup",
             "description": "Tom Yum Soup, made fresh to order.",
             "priceCents": 5800,
-            "imageUrl": "/images/thai.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": [
               {
@@ -868,7 +868,7 @@
             "name": "Pad Kra Pao",
             "description": "Pad Kra Pao, made fresh to order.",
             "priceCents": 5400,
-            "imageUrl": "/images/thai.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": [
               {
@@ -909,7 +909,7 @@
             "name": "Spring Rolls (4 pcs)",
             "description": "Spring Rolls (4 pcs), made fresh to order.",
             "priceCents": 3400,
-            "imageUrl": "/images/thai.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           },
@@ -918,7 +918,7 @@
             "name": "Chicken Satay",
             "description": "Chicken Satay, made fresh to order.",
             "priceCents": 4200,
-            "imageUrl": "/images/thai.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           },
@@ -927,7 +927,7 @@
             "name": "Som Tam Salad",
             "description": "Som Tam Salad, made fresh to order.",
             "priceCents": 3800,
-            "imageUrl": "/images/thai.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           }
@@ -943,7 +943,7 @@
             "name": "Mango Sticky Rice",
             "description": "Mango Sticky Rice, made fresh to order.",
             "priceCents": 3600,
-            "imageUrl": "/images/thai.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           },
@@ -952,7 +952,7 @@
             "name": "Thai Iced Tea",
             "description": "Thai Iced Tea, made fresh to order.",
             "priceCents": 2400,
-            "imageUrl": "/images/thai.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           }
@@ -977,7 +977,7 @@
     "prepMinutes": 20,
     "lat": 22.3858,
     "lng": 114.19,
-    "imageUrl": "/images/indian.svg",
+    "imageUrl": "/images/restaurants/hk_taj_kitchen.jpg",
     "isOpen": true,
     "hasPromo": true,
     "categories": [
@@ -991,7 +991,7 @@
             "name": "Butter Chicken",
             "description": "Butter Chicken, made fresh to order.",
             "priceCents": 6800,
-            "imageUrl": "/images/indian.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": [
               {
@@ -1025,7 +1025,7 @@
             "name": "Lamb Rogan Josh",
             "description": "Lamb Rogan Josh, made fresh to order.",
             "priceCents": 7800,
-            "imageUrl": "/images/indian.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": [
               {
@@ -1059,7 +1059,7 @@
             "name": "Palak Paneer",
             "description": "Palak Paneer, made fresh to order.",
             "priceCents": 5800,
-            "imageUrl": "/images/indian.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": [
               {
@@ -1093,7 +1093,7 @@
             "name": "Dal Makhani",
             "description": "Dal Makhani, made fresh to order.",
             "priceCents": 4800,
-            "imageUrl": "/images/indian.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           }
@@ -1109,7 +1109,7 @@
             "name": "Garlic Naan",
             "description": "Garlic Naan, made fresh to order.",
             "priceCents": 1800,
-            "imageUrl": "/images/indian.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           },
@@ -1118,7 +1118,7 @@
             "name": "Chicken Biryani",
             "description": "Chicken Biryani, made fresh to order.",
             "priceCents": 6400,
-            "imageUrl": "/images/indian.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": [
               {
@@ -1147,7 +1147,7 @@
             "name": "Steamed Basmati",
             "description": "Steamed Basmati, made fresh to order.",
             "priceCents": 1600,
-            "imageUrl": "/images/indian.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           }
@@ -1163,7 +1163,7 @@
             "name": "Mango Lassi",
             "description": "Mango Lassi, made fresh to order.",
             "priceCents": 2600,
-            "imageUrl": "/images/indian.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": [
               {
@@ -1204,7 +1204,7 @@
     "prepMinutes": 10,
     "lat": 22.2849,
     "lng": 114.154,
-    "imageUrl": "/images/vegetarian.svg",
+    "imageUrl": "/images/restaurants/hk_green_leaf.jpg",
     "isOpen": true,
     "hasPromo": false,
     "categories": [
@@ -1218,7 +1218,7 @@
             "name": "Buddha Bowl",
             "description": "Buddha Bowl, made fresh to order.",
             "priceCents": 8200,
-            "imageUrl": "/images/vegetarian.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": [
               {
@@ -1271,7 +1271,7 @@
             "name": "Tofu Poke Bowl",
             "description": "Tofu Poke Bowl, made fresh to order.",
             "priceCents": 8600,
-            "imageUrl": "/images/vegetarian.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           },
@@ -1280,7 +1280,7 @@
             "name": "Quinoa Power Bowl",
             "description": "Quinoa Power Bowl, made fresh to order.",
             "priceCents": 8400,
-            "imageUrl": "/images/vegetarian.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": [
               {
@@ -1316,7 +1316,7 @@
             "name": "Falafel Wrap",
             "description": "Falafel Wrap, made fresh to order.",
             "priceCents": 6200,
-            "imageUrl": "/images/vegetarian.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           },
@@ -1325,7 +1325,7 @@
             "name": "Grilled Halloumi Wrap",
             "description": "Grilled Halloumi Wrap, made fresh to order.",
             "priceCents": 6800,
-            "imageUrl": "/images/vegetarian.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           },
@@ -1334,7 +1334,7 @@
             "name": "Hummus Plate",
             "description": "Hummus Plate, made fresh to order.",
             "priceCents": 5200,
-            "imageUrl": "/images/vegetarian.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           }
@@ -1350,7 +1350,7 @@
             "name": "Green Detox Juice",
             "description": "Green Detox Juice, made fresh to order.",
             "priceCents": 4400,
-            "imageUrl": "/images/vegetarian.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": [
               {
@@ -1379,7 +1379,7 @@
             "name": "Berry Smoothie",
             "description": "Berry Smoothie, made fresh to order.",
             "priceCents": 4600,
-            "imageUrl": "/images/vegetarian.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           }
@@ -1404,7 +1404,7 @@
     "prepMinutes": 8,
     "lat": 22.3163,
     "lng": 114.1674,
-    "imageUrl": "/images/dessert.svg",
+    "imageUrl": "/images/restaurants/hk_sweet_spot.jpg",
     "isOpen": true,
     "hasPromo": true,
     "categories": [
@@ -1418,7 +1418,7 @@
             "name": "Mango Pomelo Sago",
             "description": "Mango Pomelo Sago, made fresh to order.",
             "priceCents": 4800,
-            "imageUrl": "/images/dessert.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": [
               {
@@ -1447,7 +1447,7 @@
             "name": "Red Bean Soup",
             "description": "Red Bean Soup, made fresh to order.",
             "priceCents": 3600,
-            "imageUrl": "/images/dessert.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           },
@@ -1456,7 +1456,7 @@
             "name": "Black Sesame Soup",
             "description": "Black Sesame Soup, made fresh to order.",
             "priceCents": 3800,
-            "imageUrl": "/images/dessert.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           },
@@ -1465,7 +1465,7 @@
             "name": "Tofu Pudding",
             "description": "Tofu Pudding, made fresh to order.",
             "priceCents": 3200,
-            "imageUrl": "/images/dessert.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": [
               {
@@ -1501,7 +1501,7 @@
             "name": "Egg Waffle",
             "description": "Egg Waffle, made fresh to order.",
             "priceCents": 3400,
-            "imageUrl": "/images/dessert.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": [
               {
@@ -1535,7 +1535,7 @@
             "name": "Mochi Box (6 pcs)",
             "description": "Mochi Box (6 pcs), made fresh to order.",
             "priceCents": 5200,
-            "imageUrl": "/images/dessert.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           },
@@ -1544,7 +1544,7 @@
             "name": "Basque Cheesecake",
             "description": "Basque Cheesecake, made fresh to order.",
             "priceCents": 4800,
-            "imageUrl": "/images/dessert.svg",
+            "imageUrl": null,
             "isAvailable": false,
             "groups": []
           }
@@ -1560,7 +1560,7 @@
             "name": "Yuenyeung Iced",
             "description": "Yuenyeung Iced, made fresh to order.",
             "priceCents": 2600,
-            "imageUrl": "/images/dessert.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           }
@@ -1584,7 +1584,7 @@
     "prepMinutes": 12,
     "lat": 22.2786,
     "lng": 114.1698,
-    "imageUrl": "/images/cantonese.svg",
+    "imageUrl": "/images/restaurants/hk_roast_house.jpg",
     "isOpen": true,
     "hasPromo": false,
     "categories": [
@@ -1598,7 +1598,7 @@
             "name": "Crispy Pork Rice",
             "description": "Crispy Pork Rice, made fresh to order.",
             "priceCents": 4800,
-            "imageUrl": "/images/cantonese.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": [
               {
@@ -1627,7 +1627,7 @@
             "name": "Char Siu Rice",
             "description": "Char Siu Rice, made fresh to order.",
             "priceCents": 4600,
-            "imageUrl": "/images/cantonese.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": [
               {
@@ -1656,7 +1656,7 @@
             "name": "Roast Goose Rice",
             "description": "Roast Goose Rice, made fresh to order.",
             "priceCents": 6800,
-            "imageUrl": "/images/cantonese.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": [
               {
@@ -1685,7 +1685,7 @@
             "name": "Two-Roast Combo Rice",
             "description": "Two-Roast Combo Rice, made fresh to order.",
             "priceCents": 5800,
-            "imageUrl": "/images/cantonese.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           }
@@ -1701,7 +1701,7 @@
             "name": "Choy Sum",
             "description": "Choy Sum, made fresh to order.",
             "priceCents": 2600,
-            "imageUrl": "/images/cantonese.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           },
@@ -1710,7 +1710,7 @@
             "name": "Preserved Egg Tofu",
             "description": "Preserved Egg Tofu, made fresh to order.",
             "priceCents": 2800,
-            "imageUrl": "/images/cantonese.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           },
@@ -1719,7 +1719,7 @@
             "name": "Daily Soup",
             "description": "Daily Soup, made fresh to order.",
             "priceCents": 2200,
-            "imageUrl": "/images/cantonese.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           }
@@ -1735,7 +1735,7 @@
             "name": "Iced Lemon Tea",
             "description": "Iced Lemon Tea, made fresh to order.",
             "priceCents": 1800,
-            "imageUrl": "/images/cantonese.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           }
@@ -1761,7 +1761,7 @@
     "prepMinutes": 10,
     "lat": 1.354,
     "lng": 103.943,
-    "imageUrl": "/images/hawker.svg",
+    "imageUrl": "/images/restaurants/sg_tampines_laksa.jpg",
     "isOpen": true,
     "hasPromo": true,
     "categories": [
@@ -1775,7 +1775,7 @@
             "name": "Laksa",
             "description": "Laksa, made fresh to order.",
             "priceCents": 850,
-            "imageUrl": "/images/hawker.svg",
+            "imageUrl": "/images/dishes/sg_tl_laksa.jpg",
             "isAvailable": true,
             "groups": [
               {
@@ -1809,7 +1809,7 @@
             "name": "Prawn Mee",
             "description": "Prawn Mee, made fresh to order.",
             "priceCents": 800,
-            "imageUrl": "/images/hawker.svg",
+            "imageUrl": "/images/dishes/sg_tl_prawn_mee.jpg",
             "isAvailable": true,
             "groups": [
               {
@@ -1843,7 +1843,7 @@
             "name": "Mee Siam",
             "description": "Mee Siam, made fresh to order.",
             "priceCents": 650,
-            "imageUrl": "/images/hawker.svg",
+            "imageUrl": "/images/dishes/sg_tl_mee_siam.jpg",
             "isAvailable": true,
             "groups": []
           }
@@ -1859,7 +1859,7 @@
             "name": "Chicken Rice",
             "description": "Chicken Rice, made fresh to order.",
             "priceCents": 600,
-            "imageUrl": "/images/hawker.svg",
+            "imageUrl": "/images/dishes/sg_tl_chicken_rice.jpg",
             "isAvailable": true,
             "groups": []
           },
@@ -1868,7 +1868,7 @@
             "name": "Roasted Chicken Rice",
             "description": "Roasted Chicken Rice, made fresh to order.",
             "priceCents": 650,
-            "imageUrl": "/images/hawker.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": [
               {
@@ -1897,7 +1897,7 @@
             "name": "Nasi Lemak",
             "description": "Nasi Lemak, made fresh to order.",
             "priceCents": 700,
-            "imageUrl": "/images/hawker.svg",
+            "imageUrl": "/images/dishes/sg_tl_nasi_lemak.jpg",
             "isAvailable": true,
             "groups": [
               {
@@ -1938,7 +1938,7 @@
             "name": "Otah (3 pcs)",
             "description": "Otah (3 pcs), made fresh to order.",
             "priceCents": 450,
-            "imageUrl": "/images/hawker.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           },
@@ -1947,7 +1947,7 @@
             "name": "Teh Tarik",
             "description": "Teh Tarik, made fresh to order.",
             "priceCents": 280,
-            "imageUrl": "/images/hawker.svg",
+            "imageUrl": "/images/dishes/sg_tl_tarik.jpg",
             "isAvailable": true,
             "groups": []
           },
@@ -1956,7 +1956,7 @@
             "name": "Sugarcane Juice",
             "description": "Sugarcane Juice, made fresh to order.",
             "priceCents": 320,
-            "imageUrl": "/images/hawker.svg",
+            "imageUrl": "/images/dishes/sg_tl_sugarcane.jpg",
             "isAvailable": false,
             "groups": []
           }
@@ -1979,7 +1979,7 @@
     "prepMinutes": 16,
     "lat": 1.3068,
     "lng": 103.8288,
-    "imageUrl": "/images/chinese.svg",
+    "imageUrl": "/images/restaurants/sg_orchard_wok.jpg",
     "isOpen": true,
     "hasPromo": false,
     "categories": [
@@ -1993,7 +1993,7 @@
             "name": "Sambal Kangkong",
             "description": "Sambal Kangkong, made fresh to order.",
             "priceCents": 1400,
-            "imageUrl": "/images/chinese.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           },
@@ -2002,7 +2002,7 @@
             "name": "Sweet & Sour Pork",
             "description": "Sweet & Sour Pork, made fresh to order.",
             "priceCents": 1800,
-            "imageUrl": "/images/chinese.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": [
               {
@@ -2031,7 +2031,7 @@
             "name": "Kung Pao Chicken",
             "description": "Kung Pao Chicken, made fresh to order.",
             "priceCents": 1700,
-            "imageUrl": "/images/chinese.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": [
               {
@@ -2065,7 +2065,7 @@
             "name": "Beef Hor Fun",
             "description": "Beef Hor Fun, made fresh to order.",
             "priceCents": 1600,
-            "imageUrl": "/images/chinese.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": [
               {
@@ -2101,7 +2101,7 @@
             "name": "Egg Fried Rice",
             "description": "Egg Fried Rice, made fresh to order.",
             "priceCents": 1200,
-            "imageUrl": "/images/chinese.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": [
               {
@@ -2130,7 +2130,7 @@
             "name": "Hokkien Mee",
             "description": "Hokkien Mee, made fresh to order.",
             "priceCents": 1500,
-            "imageUrl": "/images/chinese.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           },
@@ -2139,7 +2139,7 @@
             "name": "Century Egg Congee",
             "description": "Century Egg Congee, made fresh to order.",
             "priceCents": 1000,
-            "imageUrl": "/images/chinese.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           }
@@ -2155,7 +2155,7 @@
             "name": "Chrysanthemum Tea",
             "description": "Chrysanthemum Tea, made fresh to order.",
             "priceCents": 350,
-            "imageUrl": "/images/chinese.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           }
@@ -2179,7 +2179,7 @@
     "prepMinutes": 18,
     "lat": 1.282,
     "lng": 103.8532,
-    "imageUrl": "/images/western.svg",
+    "imageUrl": "/images/restaurants/sg_raffles_bistro.jpg",
     "isOpen": true,
     "hasPromo": true,
     "categories": [
@@ -2193,7 +2193,7 @@
             "name": "Ribeye Steak",
             "description": "Ribeye Steak, made fresh to order.",
             "priceCents": 3800,
-            "imageUrl": "/images/western.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": [
               {
@@ -2246,7 +2246,7 @@
             "name": "Grilled Salmon",
             "description": "Grilled Salmon, made fresh to order.",
             "priceCents": 2800,
-            "imageUrl": "/images/western.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           },
@@ -2255,7 +2255,7 @@
             "name": "Chicken Chop",
             "description": "Chicken Chop, made fresh to order.",
             "priceCents": 2200,
-            "imageUrl": "/images/western.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": [
               {
@@ -2284,7 +2284,7 @@
             "name": "Wagyu Burger",
             "description": "Wagyu Burger, made fresh to order.",
             "priceCents": 2600,
-            "imageUrl": "/images/western.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           }
@@ -2300,7 +2300,7 @@
             "name": "Carbonara",
             "description": "Carbonara, made fresh to order.",
             "priceCents": 2000,
-            "imageUrl": "/images/western.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           },
@@ -2309,7 +2309,7 @@
             "name": "Aglio Olio Prawn",
             "description": "Aglio Olio Prawn, made fresh to order.",
             "priceCents": 2200,
-            "imageUrl": "/images/western.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": [
               {
@@ -2343,7 +2343,7 @@
             "name": "Beef Bolognese",
             "description": "Beef Bolognese, made fresh to order.",
             "priceCents": 2000,
-            "imageUrl": "/images/western.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           }
@@ -2359,7 +2359,7 @@
             "name": "Tiramisu",
             "description": "Tiramisu, made fresh to order.",
             "priceCents": 1200,
-            "imageUrl": "/images/western.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           }
@@ -2382,7 +2382,7 @@
     "prepMinutes": 15,
     "lat": 1.3019,
     "lng": 103.8589,
-    "imageUrl": "/images/korean.svg",
+    "imageUrl": "/images/restaurants/sg_bugis_kimchi.jpg",
     "isOpen": true,
     "hasPromo": false,
     "categories": [
@@ -2396,7 +2396,7 @@
             "name": "Bibimbap",
             "description": "Bibimbap, made fresh to order.",
             "priceCents": 1600,
-            "imageUrl": "/images/korean.svg",
+            "imageUrl": "/images/dishes/sg_bk_bibimbap.jpg",
             "isAvailable": true,
             "groups": [
               {
@@ -2430,7 +2430,7 @@
             "name": "Beef Bulgogi Plate",
             "description": "Beef Bulgogi Plate, made fresh to order.",
             "priceCents": 1900,
-            "imageUrl": "/images/korean.svg",
+            "imageUrl": "/images/dishes/sg_bk_bulgogi.jpg",
             "isAvailable": true,
             "groups": [
               {
@@ -2459,7 +2459,7 @@
             "name": "Kimchi Jjigae",
             "description": "Kimchi Jjigae, made fresh to order.",
             "priceCents": 1700,
-            "imageUrl": "/images/korean.svg",
+            "imageUrl": "/images/dishes/sg_bk_kimchi_stew.jpg",
             "isAvailable": true,
             "groups": [
               {
@@ -2493,7 +2493,7 @@
             "name": "Korean Fried Chicken",
             "description": "Korean Fried Chicken, made fresh to order.",
             "priceCents": 2200,
-            "imageUrl": "/images/korean.svg",
+            "imageUrl": "/images/dishes/sg_bk_fried_chicken.jpg",
             "isAvailable": true,
             "groups": [
               {
@@ -2553,7 +2553,7 @@
             "name": "Japchae",
             "description": "Japchae, made fresh to order.",
             "priceCents": 1400,
-            "imageUrl": "/images/korean.svg",
+            "imageUrl": "/images/dishes/sg_bk_japchae.jpg",
             "isAvailable": true,
             "groups": []
           },
@@ -2562,7 +2562,7 @@
             "name": "Tteokbokki",
             "description": "Tteokbokki, made fresh to order.",
             "priceCents": 1300,
-            "imageUrl": "/images/korean.svg",
+            "imageUrl": "/images/dishes/sg_bk_tteok.jpg",
             "isAvailable": true,
             "groups": [
               {
@@ -2596,7 +2596,7 @@
             "name": "Kimbap Roll",
             "description": "Kimbap Roll, made fresh to order.",
             "priceCents": 1100,
-            "imageUrl": "/images/korean.svg",
+            "imageUrl": "/images/dishes/sg_bk_kimbap.jpg",
             "isAvailable": true,
             "groups": []
           }
@@ -2612,7 +2612,7 @@
             "name": "Yuja Tea",
             "description": "Yuja Tea, made fresh to order.",
             "priceCents": 400,
-            "imageUrl": "/images/korean.svg",
+            "imageUrl": "/images/dishes/sg_bk_yuja.jpg",
             "isAvailable": false,
             "groups": []
           }
@@ -2637,7 +2637,7 @@
     "prepMinutes": 14,
     "lat": 1.3349,
     "lng": 103.7416,
-    "imageUrl": "/images/indian.svg",
+    "imageUrl": "/images/restaurants/sg_masala_house.jpg",
     "isOpen": true,
     "hasPromo": true,
     "categories": [
@@ -2651,7 +2651,7 @@
             "name": "Masala Thosai",
             "description": "Masala Thosai, made fresh to order.",
             "priceCents": 600,
-            "imageUrl": "/images/indian.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": [
               {
@@ -2680,7 +2680,7 @@
             "name": "Mutton Biryani",
             "description": "Mutton Biryani, made fresh to order.",
             "priceCents": 1100,
-            "imageUrl": "/images/indian.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": [
               {
@@ -2709,7 +2709,7 @@
             "name": "Butter Chicken Set",
             "description": "Butter Chicken Set, made fresh to order.",
             "priceCents": 1200,
-            "imageUrl": "/images/indian.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": [
               {
@@ -2743,7 +2743,7 @@
             "name": "Fish Head Curry",
             "description": "Fish Head Curry, made fresh to order.",
             "priceCents": 2400,
-            "imageUrl": "/images/indian.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": [
               {
@@ -2784,7 +2784,7 @@
             "name": "Prata (2 pcs)",
             "description": "Prata (2 pcs), made fresh to order.",
             "priceCents": 400,
-            "imageUrl": "/images/indian.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           },
@@ -2793,7 +2793,7 @@
             "name": "Cheese Naan",
             "description": "Cheese Naan, made fresh to order.",
             "priceCents": 450,
-            "imageUrl": "/images/indian.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           },
@@ -2802,7 +2802,7 @@
             "name": "Chicken Murtabak",
             "description": "Chicken Murtabak, made fresh to order.",
             "priceCents": 800,
-            "imageUrl": "/images/indian.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           }
@@ -2818,7 +2818,7 @@
             "name": "Teh Tarik",
             "description": "Teh Tarik, made fresh to order.",
             "priceCents": 250,
-            "imageUrl": "/images/indian.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           },
@@ -2827,7 +2827,7 @@
             "name": "Mango Lassi",
             "description": "Mango Lassi, made fresh to order.",
             "priceCents": 400,
-            "imageUrl": "/images/indian.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": [
               {
@@ -2872,7 +2872,7 @@
     "prepMinutes": 12,
     "lat": 1.434,
     "lng": 103.7885,
-    "imageUrl": "/images/vegetarian.svg",
+    "imageUrl": "/images/restaurants/sg_green_bowl.jpg",
     "isOpen": true,
     "hasPromo": false,
     "categories": [
@@ -2886,7 +2886,7 @@
             "name": "Vegetarian Rice Bowl",
             "description": "Vegetarian Rice Bowl, made fresh to order.",
             "priceCents": 900,
-            "imageUrl": "/images/vegetarian.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": [
               {
@@ -2915,7 +2915,7 @@
             "name": "Mock Duck Noodles",
             "description": "Mock Duck Noodles, made fresh to order.",
             "priceCents": 1000,
-            "imageUrl": "/images/vegetarian.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": [
               {
@@ -2949,7 +2949,7 @@
             "name": "Teriyaki Tofu Bowl",
             "description": "Teriyaki Tofu Bowl, made fresh to order.",
             "priceCents": 1100,
-            "imageUrl": "/images/vegetarian.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": [
               {
@@ -3004,7 +3004,7 @@
             "name": "Mock Meat Curry",
             "description": "Mock Meat Curry, made fresh to order.",
             "priceCents": 1000,
-            "imageUrl": "/images/vegetarian.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": [
               {
@@ -3038,7 +3038,7 @@
             "name": "Vegetarian Spring Rolls",
             "description": "Vegetarian Spring Rolls, made fresh to order.",
             "priceCents": 600,
-            "imageUrl": "/images/vegetarian.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           },
@@ -3047,7 +3047,7 @@
             "name": "Vegetarian Bee Hoon",
             "description": "Vegetarian Bee Hoon, made fresh to order.",
             "priceCents": 800,
-            "imageUrl": "/images/vegetarian.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           }
@@ -3063,7 +3063,7 @@
             "name": "Fresh Soy Milk",
             "description": "Fresh Soy Milk, made fresh to order.",
             "priceCents": 300,
-            "imageUrl": "/images/vegetarian.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           },
@@ -3072,7 +3072,7 @@
             "name": "Chrysanthemum Tea",
             "description": "Chrysanthemum Tea, made fresh to order.",
             "priceCents": 250,
-            "imageUrl": "/images/vegetarian.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           }
@@ -3096,7 +3096,7 @@
     "prepMinutes": 10,
     "lat": 1.2989,
     "lng": 103.8539,
-    "imageUrl": "/images/chinese.svg",
+    "imageUrl": "/images/restaurants/sg_night_noodle.jpg",
     "isOpen": false,
     "hasPromo": false,
     "categories": [
@@ -3110,7 +3110,7 @@
             "name": "Wanton Mee",
             "description": "Wanton Mee, made fresh to order.",
             "priceCents": 650,
-            "imageUrl": "/images/chinese.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": [
               {
@@ -3139,7 +3139,7 @@
             "name": "Fishball Noodles",
             "description": "Fishball Noodles, made fresh to order.",
             "priceCents": 600,
-            "imageUrl": "/images/chinese.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": [
               {
@@ -3168,7 +3168,7 @@
             "name": "Bak Chor Mee",
             "description": "Bak Chor Mee, made fresh to order.",
             "priceCents": 700,
-            "imageUrl": "/images/chinese.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": [
               {
@@ -3216,7 +3216,7 @@
             "name": "Dumpling Soup",
             "description": "Dumpling Soup, made fresh to order.",
             "priceCents": 650,
-            "imageUrl": "/images/chinese.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           }
@@ -3232,7 +3232,7 @@
             "name": "Fried Wanton",
             "description": "Fried Wanton, made fresh to order.",
             "priceCents": 400,
-            "imageUrl": "/images/chinese.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           },
@@ -3241,7 +3241,7 @@
             "name": "Braised Egg",
             "description": "Braised Egg, made fresh to order.",
             "priceCents": 150,
-            "imageUrl": "/images/chinese.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           },
@@ -3250,7 +3250,7 @@
             "name": "Blanched Greens",
             "description": "Blanched Greens, made fresh to order.",
             "priceCents": 400,
-            "imageUrl": "/images/chinese.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           }
@@ -3266,7 +3266,7 @@
             "name": "Barley Drink",
             "description": "Barley Drink, made fresh to order.",
             "priceCents": 200,
-            "imageUrl": "/images/chinese.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           }
@@ -3289,7 +3289,7 @@
     "prepMinutes": 13,
     "lat": 1.3309,
     "lng": 103.7466,
-    "imageUrl": "/images/japanese.svg",
+    "imageUrl": "/images/restaurants/sg_jurong_sushi.jpg",
     "isOpen": true,
     "hasPromo": false,
     "categories": [
@@ -3303,7 +3303,7 @@
             "name": "Salmon Nigiri (4 pcs)",
             "description": "Salmon Nigiri (4 pcs), made fresh to order.",
             "priceCents": 1200,
-            "imageUrl": "/images/japanese.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           },
@@ -3312,7 +3312,7 @@
             "name": "California Maki",
             "description": "California Maki, made fresh to order.",
             "priceCents": 1000,
-            "imageUrl": "/images/japanese.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           },
@@ -3321,7 +3321,7 @@
             "name": "Chirashi Bowl",
             "description": "Chirashi Bowl, made fresh to order.",
             "priceCents": 1800,
-            "imageUrl": "/images/japanese.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": [
               {
@@ -3350,7 +3350,7 @@
             "name": "Spicy Tuna Temaki",
             "description": "Spicy Tuna Temaki, made fresh to order.",
             "priceCents": 900,
-            "imageUrl": "/images/japanese.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": [
               {
@@ -3391,7 +3391,7 @@
             "name": "Beef Udon",
             "description": "Beef Udon, made fresh to order.",
             "priceCents": 1400,
-            "imageUrl": "/images/japanese.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": [
               {
@@ -3439,7 +3439,7 @@
             "name": "Chicken Katsu Don",
             "description": "Chicken Katsu Don, made fresh to order.",
             "priceCents": 1400,
-            "imageUrl": "/images/japanese.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           },
@@ -3448,7 +3448,7 @@
             "name": "Tempura Set",
             "description": "Tempura Set, made fresh to order.",
             "priceCents": 1600,
-            "imageUrl": "/images/japanese.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           }
@@ -3464,7 +3464,7 @@
             "name": "Green Tea",
             "description": "Green Tea, made fresh to order.",
             "priceCents": 250,
-            "imageUrl": "/images/japanese.svg",
+            "imageUrl": null,
             "isAvailable": true,
             "groups": []
           }
