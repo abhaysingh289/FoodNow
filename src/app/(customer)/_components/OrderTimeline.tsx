@@ -1,6 +1,9 @@
+import type { CountryCode } from "@/lib/countries";
+import { formatTime } from "@/lib/time";
+
 export type EventView = { id: string; toStatus: string; actor: string; note: string | null; createdAt: string };
 
-export function OrderTimeline({ events }: { events: EventView[] }) {
+export function OrderTimeline({ events, country }: { events: EventView[]; country: CountryCode }) {
   return (
     <ol className="space-y-3 border-l-2 border-line pl-4">
       {events.map((e) => (
@@ -9,8 +12,8 @@ export function OrderTimeline({ events }: { events: EventView[] }) {
           <p className="text-sm font-semibold">{e.toStatus.replaceAll("_", " ")}</p>
           <p className="text-xs text-muted">
             {e.actor} ·{" "}
-            <time dateTime={e.createdAt} suppressHydrationWarning>
-              {new Date(e.createdAt).toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit", second: "2-digit" })}
+            <time dateTime={e.createdAt}>
+              {formatTime(e.createdAt, country)}
             </time>
           </p>
           {e.note && <p className="text-sm text-muted">{e.note}</p>}

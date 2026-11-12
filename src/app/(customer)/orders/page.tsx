@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { Card, Price, buttonClasses, cn } from "@/components/ui";
+import type { CountryCode } from "@/lib/countries";
+import { formatDateTime } from "@/lib/time";
 import { getSession } from "@/lib/session";
 import { listOrdersForUser } from "@/modules/orders";
 import { ReorderButton } from "../_components/ReorderButton";
@@ -52,12 +54,12 @@ export default async function OrdersPage({ searchParams }: { searchParams: Promi
                 <Link href={`/orders/${o.id}`} className="block">
                   <span className="flex items-start justify-between gap-3">
                     <span className="font-semibold">{o.restaurantName}</span>
-                    <Price cents={o.totalCents} country={o.country as "HK" | "SG"} className="font-semibold" />
+                    <Price cents={o.totalCents} country={o.country as CountryCode} className="font-semibold" />
                   </span>
                   <span className="mt-0.5 flex justify-between gap-3 text-sm text-muted">
                     <span>{o.status.replaceAll("_", " ").toLowerCase()}</span>
                     <time dateTime={o.createdAt.toISOString()}>
-                      {o.createdAt.toLocaleString("en-GB", { dateStyle: "medium", timeStyle: "short" })}
+                      {formatDateTime(o.createdAt, o.country as CountryCode)}
                     </time>
                   </span>
                 </Link>

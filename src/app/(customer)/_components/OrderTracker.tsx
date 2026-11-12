@@ -5,6 +5,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { Button, Card, Price } from "@/components/ui";
 import type { CountryCode } from "@/lib/countries";
 import { formatMoney } from "@/lib/money";
+import { formatTime } from "@/lib/time";
 import type { FailureReason, OrderAction, OrderStatus } from "@/modules/orders/stateMachine";
 import { callApi, type ApiError } from "./api";
 import { OrderTimeline, type EventView } from "./OrderTimeline";
@@ -34,7 +35,6 @@ const POLL_MS = 2000;
 const STOP_POLLING: OrderStatus[] = ["DELIVERED", "CANCELLED", "REFUNDED"];
 const ETA_STATUSES: OrderStatus[] = ["ACCEPTED", "RIDER_ASSIGNED", "PICKED_UP"];
 
-const hhmm = (iso: string) => new Date(iso).toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" });
 
 function refundText(order: OrderView): string | null {
   const refunded = order.refunds.filter((r) => r.status === "SUCCEEDED").reduce((n, r) => n + r.amountCents, 0);
@@ -128,8 +128,8 @@ export function OrderTracker({ initial }: { initial: OrderView }) {
         {showEta && (
           <p data-testid="order-eta" className="text-sm font-semibold">
             Arriving in ~{order.etaMinutes} min{" "}
-            <span className="font-normal text-muted" suppressHydrationWarning>
-              (as of {hhmm(order.updatedAt)})
+            <span className="font-normal text-muted">
+              (as of {formatTime(order.updatedAt, order.country)})
             </span>
           </p>
         )}
@@ -195,7 +195,7 @@ export function OrderTracker({ initial }: { initial: OrderView }) {
 
       <section className="space-y-2">
         <h2 className="font-display text-xl font-bold">Timeline</h2>
-        <OrderTimeline events={order.events} />
+        <OrderTimeline events={order.events} country={order.country} />
       </section>
     </div>
   );

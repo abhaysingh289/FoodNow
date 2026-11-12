@@ -8,6 +8,7 @@ export const COUNTRY_CONFIG: Record<
     currency: "HKD" | "SGD";
     symbol: string;
     taxRate: number;
+    timeZone: string;
     fee: { baseCents: number; perKmCents: number; capCents: number };
   }
 > = {
@@ -17,6 +18,7 @@ export const COUNTRY_CONFIG: Record<
     currency: "HKD",
     symbol: "HK$",
     taxRate: 0,
+    timeZone: "Asia/Hong_Kong",
     fee: { baseCents: 1000, perKmCents: 300, capCents: 3500 },
   },
   SG: {
@@ -25,6 +27,7 @@ export const COUNTRY_CONFIG: Record<
     currency: "SGD",
     symbol: "S$",
     taxRate: 0.09,
+    timeZone: "Asia/Singapore",
     fee: { baseCents: 200, perKmCents: 60, capCents: 700 },
   },
 };
