@@ -4,6 +4,7 @@ import { prisma } from "@/lib/db";
 import { ConcurrentModification, InvalidTransition } from "@/lib/errors";
 import { transition } from "@/modules/orders/transition";
 import { getProvider } from "./registry";
+import { startRefund } from "./service";
 import type { ProviderEvent } from "./provider";
 
 export type WebhookResult = "PROCESSED" | "DUPLICATE" | "REJECTED" | "UNMATCHED" | "MISMATCH";
@@ -120,18 +121,29 @@ async function processEvent(provider: string, event: ProviderEvent): Promise<Web
     if (!refund) return log("UNMATCHED");
     const orderId = refund.payment.orderId;
     if (event.amountCents !== refund.amountCents) return log("MISMATCH", orderId);
-    // Updates the Refund row only; the order-level refund transition belongs to the refund flow.
+    const refundOk = event.type === "refund.succeeded";
+    const refundUpdate = {
+      status: refundOk ? "SUCCEEDED" : "FAILED",
+      failureReason: refundOk ? null : (event.reason ?? null),
+    };
+    const order = await prisma.order.findUniqueOrThrow({ where: { id: orderId } });
+    if (refund.status === "PENDING" && order.status === "REFUND_PENDING") {
+      await transition(orderId, refundOk ? "REFUND_SUCCEEDED" : "REFUND_FAILED", "PROVIDER", {
+        inTx: async (tx) => {
+          await tx.webhookLog.create({ data: { ...base, result: "PROCESSED", orderId } });
+          const decided = await tx.refund.updateMany({
+            where: { id: refund.id, status: "PENDING" },
+            data: refundUpdate,
+          });
+          if (decided.count === 0) throw new ConcurrentModification("Refund already decided");
+        },
+      });
+      return { httpStatus: 200, result: "PROCESSED" };
+    }
+    // The order has moved on (or the refund is already decided): record only.
     await prisma.$transaction(async (tx) => {
       await tx.webhookLog.create({ data: { ...base, result: "PROCESSED", orderId } });
-      if (refund.status === "PENDING") {
-        await tx.refund.updateMany({
-          where: { id: refund.id, status: "PENDING" },
-          data: {
-            status: event.type === "refund.succeeded" ? "SUCCEEDED" : "FAILED",
-            failureReason: event.type === "refund.failed" ? (event.reason ?? null) : null,
-          },
-        });
-      }
+      await tx.refund.updateMany({ where: { id: refund.id, status: "PENDING" }, data: refundUpdate });
     });
     return { httpStatus: 200, result: "PROCESSED" };
   }
@@ -167,5 +179,9 @@ async function processEvent(provider: string, event: ProviderEvent): Promise<Web
     await tx.webhookLog.create({ data: { ...base, result: "PROCESSED", orderId } });
     await tx.payment.updateMany({ where: { id: payment.id, status: "PENDING" }, data: paymentUpdate });
   });
+  // Safety net: money arrived for an order that already moved on. Refund it; the order is untouched.
+  if (succeeded && payment.status === "PENDING") {
+    await startRefund(orderId, { reason: "late_payment", transitionOrder: false });
+  }
   return { httpStatus: 200, result: "PROCESSED" };
 }
