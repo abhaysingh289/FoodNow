@@ -57,7 +57,7 @@ export function OrderCard({
         const body = (await res.json().catch(() => null)) as { error?: { code: string; message: string } } | null;
         const code = body?.error?.code;
         onError(
-          res.status === 409 || code === "CONCURRENT_MODIFICATION" || code === "INVALID_TRANSITION"
+          code === "CONCURRENT_MODIFICATION" || code === "INVALID_TRANSITION"
             ? "Order already moved"
             : (body?.error?.message ?? "Something went wrong"),
         );

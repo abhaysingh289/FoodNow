@@ -1,5 +1,10 @@
 import { test, expect } from "@playwright/test";
 
+// Specs share one database: always leave it seeded with auto mode off.
+test.afterEach(async ({ request }) => {
+  await request.post("/api/ops/reset");
+});
+
 test("HK happy path driven from ops", async ({ context }) => {
   const customer = await context.newPage();
   const ops = await context.newPage();
@@ -65,4 +70,32 @@ test("ops side panels: rider toggle, simulation settings, reset confirm", async 
   await expect(page.getByTestId("reset-dialog")).toContainText("wipes all orders, payments, carts and webhooks");
   await page.getByTestId("reset-confirm").click();
   await expect(page.getByTestId("reset-dialog")).toBeHidden({ timeout: 30_000 });
+});
+
+test("stale rider pick shows the server message, not 'Order already moved'", async ({ context }) => {
+  const customer = await context.newPage();
+  const ops = await context.newPage();
+  await customer.request.post("/api/session", { data: { userId: "u_mei", country: "HK" } });
+  await customer.request.post("/api/cart/items", {
+    data: { menuItemId: "hk_gd_har_gow", qty: 1, optionIds: [], replaceCart: true },
+  });
+  await customer.goto("/checkout");
+  await customer.getByTestId("pay-button").click();
+  await customer.getByTestId("fake-approve").click();
+  await expect(customer.getByTestId("order-status")).toHaveText("Waiting for restaurant to confirm");
+  const orderId = customer.url().split("/").pop()!;
+
+  await ops.goto("/ops");
+  const card = ops.getByTestId(`ops-order-${orderId}`);
+  await card.getByTestId("ops-action-ACCEPT").click();
+  await card.getByTestId("rider-picker").selectOption({ index: 1 });
+  const riderId = await card.getByTestId("rider-picker").inputValue();
+  // Another ops tab makes that rider unavailable after this board loaded.
+  const patch = await ops.request.patch(`/api/ops/riders/${riderId}`, { data: { isAvailable: false } });
+  expect(patch.ok()).toBeTruthy();
+  await card.getByTestId("ops-action-ASSIGN_RIDER").click();
+  const toast = ops.getByTestId("ops-toast");
+  await expect(toast).toContainText("is not available");
+  await expect(toast).not.toContainText("Order already moved");
+  await expect(ops.getByTestId("ops-column-ACCEPTED").getByTestId(`ops-order-${orderId}`)).toBeVisible();
 });
