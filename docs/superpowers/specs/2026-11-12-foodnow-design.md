@@ -131,7 +131,7 @@ Lists such as `cuisines`, `tags`, `selectedOptionIds`, and snapshots are stored 
 | Entity | Fields |
 |---|---|
 | `District` | id, country (`HK`\|`SG`), name, lat, lng |
-| `Restaurant` | id, country, districtId, name, description, cuisines (json), tags (json: `halal`, `vegetarian`), rating (1.0–5.0), priceLevel (1–3), prepMinutes, lat, lng, imageUrl, isOpen |
+| `Restaurant` | id, country, districtId, name, description, cuisines (json), tags (json: `halal`, `vegetarian`), rating (1.0–5.0), priceLevel (1–3), prepMinutes, lat, lng, imageUrl, isOpen, hasPromo (drives the promo badge and the *Deals* row) |
 | `MenuCategory` | id, restaurantId, name, sort |
 | `MenuItem` | id, categoryId, name, description, priceCents, imageUrl, isAvailable |
 | `ModifierGroup` | id, menuItemId, name, required, minSelect, maxSelect |
@@ -173,7 +173,7 @@ Every demo user has **at least one address in each country**, so switching count
 | `WebhookLog` | id, provider, eventId (unique per provider), eventType, payload (json), signatureValid, result (`PROCESSED`\|`DUPLICATE`\|`REJECTED`\|`UNMATCHED`\|`MISMATCH`), receivedAt |
 
 - An order has 0–n `Payment`s (one per attempt) and at most one **succeeded** payment.
-- A succeeded payment has 0–n `Refund` attempts; at most one may succeed. All attempts for the same order share one `idempotencyKey` so a retry can never double-refund.
+- A succeeded payment has 0–n `Refund` attempts; at most one may succeed. Each attempt has its own `idempotencyKey` (`refund_<orderId>_<attemptNo>`), because providers return the original result for a reused key, so a retry with the same key would just return the same failure. Double refunds are prevented by a guard: a new refund attempt is refused while another attempt for that payment is `PENDING` or `SUCCEEDED`.
 
 ### 5.6 Fake provider (the provider's side — app code must not read these)
 
@@ -289,11 +289,11 @@ Seed promos:
 | `PICKED_UP` | `REFUND_PENDING` | Delivery failed (`OPS`) | `failureReason = DELIVERY_FAILED`; release rider; start refund |
 | `REFUND_PENDING` | `REFUNDED` | `refund.succeeded` webhook (`PROVIDER`) | Refund → SUCCEEDED |
 | `REFUND_PENDING` | `REFUND_FAILED` | `refund.failed` webhook (`PROVIDER`) or provider call error (`SYSTEM`) | Refund → FAILED |
-| `REFUND_FAILED` | `REFUND_PENDING` | Retry refund (`OPS`/`AUTO`) | New Refund attempt, same idempotency key |
+| `REFUND_FAILED` | `REFUND_PENDING` | Retry refund (`OPS`/`AUTO`) | New Refund attempt with a new idempotency key; refused if another attempt is `PENDING`/`SUCCEEDED` |
 
 ### 10.3 Transition mechanics
-- `transition(orderId, to, actor, note?)`:
-  1. Loads order, checks `(from, to, actor)` against the table.
+- `transition(orderId, action, actor, opts?)`, keyed by **action** (e.g. `REJECT`, `CANCEL`) rather than target status, because several triggers share the same `from → to` (e.g. reject and cancel both go `PLACED → REFUND_PENDING`):
+  1. Loads order, checks `(from, action, actor)` against the table and resolves `to` + `failureReason`.
   2. In **one DB transaction**: conditional update `WHERE id = ? AND status = from` (guards against races), inserts `OrderEvent`, applies DB side effects.
   3. If the conditional update affects 0 rows → `ConcurrentModification` (HTTP 409).
   4. External side effects (calling the provider's `createPayment` / `refund`) run **after** commit; a provider error on refund transitions to `REFUND_FAILED` with actor `SYSTEM`.
