@@ -32,21 +32,29 @@ export async function startPayment(orderId: string): Promise<ClientAction> {
 }
 
 /**
- * Starts a refund for an order's SUCCEEDED payment (spec 5.5). A no-op while a refund is PENDING or SUCCEEDED.
+ * Starts a refund for an order's SUCCEEDED payment (spec 5.5). A no-op while a refund of that payment is PENDING or SUCCEEDED.
  * The Refund row is written before the provider call; a provider error is recorded, never rethrown.
  */
 export async function startRefund(
   orderId: string,
-  opts: { reason?: string; transitionOrder?: boolean } = {},
+  opts: { reason?: string; transitionOrder?: boolean; paymentId?: string } = {},
 ): Promise<void> {
   const order = await prisma.order.findUnique({ where: { id: orderId } });
   if (!order) throw new NotFound("Order not found");
-  const payment = await prisma.payment.findFirst({ where: { orderId, status: "SUCCEEDED" } });
+  // Without a paymentId, refund the order's live payment: the oldest SUCCEEDED one not already refunded as late.
+  const payment = opts.paymentId
+    ? await prisma.payment.findFirst({ where: { id: opts.paymentId, orderId, status: "SUCCEEDED" } })
+    : await prisma.payment.findFirst({
+        where: { orderId, status: "SUCCEEDED", refunds: { none: { reason: "late_payment" } } },
+        orderBy: { createdAt: "asc" },
+      });
   if (!payment) throw new Error(`Order ${orderId} has no succeeded payment to refund`);
   const existing = await prisma.refund.findMany({ where: { paymentId: payment.id } });
   if (existing.some((r) => r.status === "PENDING" || r.status === "SUCCEEDED")) return;
 
-  const idempotencyKey = `refund_${orderId}_${existing.length + 1}`;
+  // Numbered across the whole order (not per payment) so keys stay unique now that the column is @unique.
+  const attempt = (await prisma.refund.count({ where: { payment: { orderId } } })) + 1;
+  const idempotencyKey = `refund_${orderId}_${attempt}`;
   const reason = opts.reason ?? order.failureReason ?? "refund";
   const provider = getProvider();
   const refund = await prisma.refund.create({
@@ -60,17 +68,21 @@ export async function startRefund(
       idempotencyKey,
     },
   });
+  let refundRef: string;
   try {
-    const { refundRef } = await provider.refund({
+    ({ refundRef } = await provider.refund({
       providerRef: payment.providerRef,
       amountCents: payment.amountCents,
       reason,
       idempotencyKey,
-    });
-    await prisma.refund.update({ where: { id: refund.id }, data: { refundRef } });
+    }));
   } catch (e) {
     const message = e instanceof Error ? e.message : String(e);
     await prisma.refund.update({ where: { id: refund.id }, data: { status: "FAILED", failureReason: message } });
     if (opts.transitionOrder !== false) await transition(orderId, "REFUND_FAILED", "SYSTEM", { note: message });
+    return;
   }
+  // The provider accepted. If this write fails we rethrow and leave the Refund PENDING: a stuck but visible
+  // order is safer than marking it FAILED and inviting a second (double) refund.
+  await prisma.refund.update({ where: { id: refund.id }, data: { refundRef } });
 }

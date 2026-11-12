@@ -36,8 +36,28 @@ function peek(rawBody: string): { eventId: string | null; eventType: string; pay
   return { eventId: null, eventType: "unknown", payload: { raw: rawBody.slice(0, 2000) } };
 }
 
+/** Best effort: find the order a (possibly untrusted) body refers to. Only used to link the log row. */
+async function peekOrderId(payload: Prisma.InputJsonValue): Promise<string | null> {
+  if (!payload || typeof payload !== "object" || Array.isArray(payload)) return null;
+  const o = payload as Record<string, unknown>;
+  try {
+    if (typeof o.providerRef === "string") {
+      const p = await prisma.payment.findUnique({ where: { providerRef: o.providerRef } });
+      if (p) return p.orderId;
+    }
+    if (typeof o.refundRef === "string") {
+      const r = await prisma.refund.findUnique({ where: { refundRef: o.refundRef }, include: { payment: true } });
+      if (r) return r.payment.orderId;
+    }
+  } catch {
+    // linking is best effort
+  }
+  return null;
+}
+
 async function reject(provider: string, rawBody: string, signatureValid: boolean): Promise<WebhookOutcome> {
   const { eventId, eventType, payload } = peek(rawBody);
+  const orderId = await peekOrderId(payload);
   await prisma.webhookLog.create({
     data: {
       provider,
@@ -46,6 +66,7 @@ async function reject(provider: string, rawBody: string, signatureValid: boolean
       payload,
       signatureValid,
       result: "REJECTED",
+      orderId,
     },
   });
   return { httpStatus: 400, result: "REJECTED" };
@@ -175,13 +196,14 @@ async function processEvent(provider: string, event: ProviderEvent): Promise<Web
   }
 
   // Attempts are final once decided; otherwise the order has moved on. Record the payment, no transition.
-  await prisma.$transaction(async (tx) => {
+  const decidedNow = await prisma.$transaction(async (tx) => {
     await tx.webhookLog.create({ data: { ...base, result: "PROCESSED", orderId } });
-    await tx.payment.updateMany({ where: { id: payment.id, status: "PENDING" }, data: paymentUpdate });
+    const r = await tx.payment.updateMany({ where: { id: payment.id, status: "PENDING" }, data: paymentUpdate });
+    return r.count;
   });
-  // Safety net: money arrived for an order that already moved on. Refund it; the order is untouched.
-  if (succeeded && payment.status === "PENDING") {
-    await startRefund(orderId, { reason: "late_payment", transitionOrder: false });
+  // Safety net: money arrived for an order that already moved on. Refund that exact payment; the order is untouched.
+  if (succeeded && decidedNow === 1) {
+    await startRefund(orderId, { reason: "late_payment", transitionOrder: false, paymentId: payment.id });
   }
   return { httpStatus: 200, result: "PROCESSED" };
 }

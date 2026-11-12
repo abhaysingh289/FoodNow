@@ -202,6 +202,25 @@ describe("payment webhooks", () => {
     expect(await prisma.webhookLog.count({ where: { result: "PROCESSED" } })).toBe(1);
   });
 
+  it("links a bad-signature delivery to its order without changing state", async () => {
+    const o = await newOrder();
+    const body = JSON.stringify({ eventId: "evt_bad", type: "payment.succeeded", providerRef: await ref(o), amountCents: 10120 });
+    expect(await handleWebhook("fake", body, new Headers({ [FAKE_SIGNATURE_HEADER]: "nope" }))).toEqual({
+      httpStatus: 400,
+      result: "REJECTED",
+    });
+    const d = await getOrderDetail(o);
+    expect(d.status).toBe("PENDING_PAYMENT");
+    expect(d.payments[0].status).toBe("PENDING");
+    expect(d.events).toHaveLength(1);
+    expect(d.webhookLogs).toHaveLength(1);
+    expect(d.webhookLogs[0]).toMatchObject({ result: "REJECTED", signatureValid: false, orderId: o });
+    // an unknown ref stays unlinked
+    const other = JSON.stringify({ eventId: "evt_z", type: "payment.succeeded", providerRef: "nope", amountCents: 1 });
+    await handleWebhook("fake", other, new Headers());
+    expect(await prisma.webhookLog.count({ where: { result: "REJECTED", orderId: null } })).toBe(1);
+  });
+
   it("rejects unparseable bodies with 400, never throwing", async () => {
     for (const body of ["not json", "null", "42", "{}", JSON.stringify({ eventId: "e" })]) {
       expect(await handleWebhook("fake", body, signedHeaders(body))).toEqual({ httpStatus: 400, result: "REJECTED" });

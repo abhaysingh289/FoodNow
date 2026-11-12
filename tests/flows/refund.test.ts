@@ -7,7 +7,7 @@ import { getOrderDetail, placeOrder, type OrderAction } from "@/modules/orders";
 import { applyOpsAction, cancelOrder } from "@/modules/orders/actions";
 import { handleWebhook } from "@/modules/payments";
 import { getFakeControls, getProvider, setWebhookTransport } from "@/modules/payments/registry";
-import { startRefund } from "@/modules/payments/service";
+import { startPayment, startRefund } from "@/modules/payments/service";
 import { paidOrder } from "../helpers/orders";
 
 beforeAll(() => {
@@ -138,5 +138,43 @@ describe("refunds", () => {
     expect(d.payments[0].status).toBe("SUCCEEDED");
     expect(d.refunds).toHaveLength(1);
     expect(d.refunds[0]).toMatchObject({ reason: "late_payment", status: "PENDING" });
+    expect(d.flags).toContain("LATE_PAYMENT_REFUNDED");
+  });
+
+  it("a failed local write after the provider accepted the refund leaves it PENDING (no double refund)", async () => {
+    const o = await paidOrder();
+    const spy = vi.spyOn(prisma.refund, "update").mockRejectedValueOnce(new Error("db write failed"));
+    await expect(applyOpsAction(o, "REJECT", "OPS")).rejects.toThrow("db write failed");
+    spy.mockRestore();
+    const d = await getOrderDetail(o);
+    expect(d.refunds).toHaveLength(1);
+    expect(d.refunds[0].status).toBe("PENDING");
+    expect(d.status).toBe("REFUND_PENDING");
+    expect(d.status).not.toBe("REFUND_FAILED");
+    // a retry is a no-op while the refund is PENDING
+    await startRefund(o);
+    expect((await getOrderDetail(o)).refunds).toHaveLength(1);
+  });
+
+  it("targets the late payment for the late refund, then the live payment on reject", async () => {
+    const o = await paidOrder();
+    const live = await prisma.payment.findFirstOrThrow({ where: { orderId: o } });
+    await startPayment(o);
+    const late = await prisma.payment.findFirstOrThrow({ where: { orderId: o, id: { not: live.id } } });
+    await getFakeControls().decideIntent(late.providerRef, "succeed");
+    let d = await getOrderDetail(o);
+    expect(d.status).toBe("PLACED");
+    expect(d.refunds).toHaveLength(1);
+    expect(d.refunds[0]).toMatchObject({ reason: "late_payment", paymentId: late.id });
+    expect(d.flags).toContain("LATE_PAYMENT_REFUNDED");
+
+    await applyOpsAction(o, "REJECT", "OPS");
+    d = await getOrderDetail(o);
+    expect(d.status).toBe("REFUND_PENDING");
+    expect(d.refunds).toHaveLength(2);
+    const reject = d.refunds.find((r) => r.reason !== "late_payment")!;
+    expect(reject.paymentId).toBe(live.id);
+    await getFakeControls().decideRefund(reject.refundRef!, "succeed");
+    expect((await getOrderDetail(o)).status).toBe("REFUNDED");
   });
 });
