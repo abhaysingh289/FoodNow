@@ -49,7 +49,19 @@ export function FilterBar({ initial, cuisines }: { initial: FilterState; cuisine
   const [state, setState] = useState(initial);
   const [query, setQuery] = useState(initial.q);
 
-  function apply(next: FilterState) {
+  // When the URL's filters change (our own replace landing, or e.g. the logo link back to "/"),
+  // adopt them so the chips and the search box always match the results shown.
+  const initialKey = toQuery(initial);
+  const [syncedKey, setSyncedKey] = useState(initialKey);
+  if (initialKey !== syncedKey) {
+    setSyncedKey(initialKey);
+    setState(initial);
+    setQuery(initial.q);
+  }
+
+  /** Every filter change also carries the text currently in the search box. */
+  function apply(patch: Partial<FilterState>) {
+    const next = { ...state, q: query.trim(), ...patch };
     setState(next);
     router.replace(toQuery(next), { scroll: false });
   }
@@ -61,7 +73,7 @@ export function FilterBar({ initial, cuisines }: { initial: FilterState; cuisine
         className="relative md:max-w-2xl"
         onSubmit={(e) => {
           e.preventDefault();
-          apply({ ...state, q: query.trim() });
+          apply({});
         }}
       >
         <svg
@@ -84,7 +96,7 @@ export function FilterBar({ initial, cuisines }: { initial: FilterState; cuisine
             enterKeyHint="search"
             onChange={(e) => {
               setQuery(e.target.value);
-              if (e.target.value === "" && state.q) apply({ ...state, q: "" });
+              if (e.target.value === "" && state.q) apply({ q: "" });
             }}
             placeholder="Search restaurants or dishes"
             className="h-12 w-full rounded-chip border border-transparent bg-fill pl-12 pr-4 text-[15px] text-ink placeholder:text-muted focus:border-line-strong focus:bg-surface"
@@ -92,13 +104,13 @@ export function FilterBar({ initial, cuisines }: { initial: FilterState; cuisine
         </label>
       </form>
 
-      <div className="no-scrollbar -mx-4 flex gap-2 overflow-x-auto px-4 md:-mx-6 md:px-6">
+      <div className="no-scrollbar -mx-4 -my-1.5 flex gap-2 overflow-x-auto px-4 py-1.5 md:-mx-6 md:px-6">
         <label className="relative flex shrink-0 items-center">
           <span className="sr-only">Sort by</span>
           <select
             data-testid="sort"
             value={state.sort}
-            onChange={(e) => apply({ ...state, sort: e.target.value })}
+            onChange={(e) => apply({ sort: e.target.value })}
             className="h-11 cursor-pointer appearance-none rounded-chip border border-line-strong bg-surface pl-4 pr-9 text-sm font-medium text-ink hover:bg-fill md:h-9"
           >
             {SORTS.map((s) => (
@@ -123,7 +135,7 @@ export function FilterBar({ initial, cuisines }: { initial: FilterState; cuisine
             key={t.key}
             data-testid={`filter-${t.key}`}
             pressed={state.toggles.includes(t.key)}
-            onClick={() => apply({ ...state, toggles: toggleIn(state.toggles, t.key) })}
+            onClick={() => apply({ toggles: toggleIn(state.toggles, t.key) })}
           >
             {t.label}
           </Chip>
@@ -134,7 +146,7 @@ export function FilterBar({ initial, cuisines }: { initial: FilterState; cuisine
             data-testid={`filter-price-${n}`}
             aria-label={`Price level ${n}`}
             pressed={state.prices.includes(n)}
-            onClick={() => apply({ ...state, prices: toggleIn(state.prices, n) })}
+            onClick={() => apply({ prices: toggleIn(state.prices, n) })}
           >
             {"$".repeat(n)}
           </Chip>
@@ -145,7 +157,7 @@ export function FilterBar({ initial, cuisines }: { initial: FilterState; cuisine
             key={c}
             data-testid={`filter-cuisine-${c}`}
             pressed={state.cuisines.includes(c)}
-            onClick={() => apply({ ...state, cuisines: toggleIn(state.cuisines, c) })}
+            onClick={() => apply({ cuisines: toggleIn(state.cuisines, c) })}
           >
             {c}
           </Chip>

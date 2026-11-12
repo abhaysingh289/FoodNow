@@ -66,7 +66,7 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
           .map((g) => (
             <section key={g.key} data-testid={`group-${g.key}`} aria-label={g.title} className="space-y-3">
               <h2 className="text-lg font-semibold tracking-tight">{g.title}</h2>
-              <div className="no-scrollbar -mx-4 flex snap-x scroll-px-4 gap-4 overflow-x-auto px-4 pb-1 md:-mx-6 md:scroll-px-6 md:px-6">
+              <div className="no-scrollbar -mx-4 -my-1.5 flex snap-x scroll-px-4 gap-4 overflow-x-auto px-4 py-1.5 md:-mx-6 md:scroll-px-6 md:px-6">
                 {g.restaurants.map((r) => (
                   <RestaurantCard
                     key={r.id}

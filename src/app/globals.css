@@ -18,6 +18,7 @@
   --color-ok-soft: #e8f5ee;
   --color-danger: #b3261e;
   --color-danger-soft: #fdecea;
+  --color-danger-soft-strong: #fbd9d5;
 
   --radius-chip: 9999px;
   --radius-control: 0.75rem;
@@ -61,9 +62,12 @@ body {
   }
 }
 
-:focus-visible {
-  outline: 2px solid var(--color-ink);
-  outline-offset: 2px;
+/* In the base layer so utilities (e.g. an inset outline-offset inside scroll rows) can override it. */
+@layer base {
+  :focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 2px;
+  }
 }
 
 dialog::backdrop {

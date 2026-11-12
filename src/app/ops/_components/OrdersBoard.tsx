@@ -75,7 +75,7 @@ export function OrdersBoard() {
       {orders === null ? (
         <p className="text-muted">Loading orders…</p>
       ) : (
-        <div className="flex gap-3 overflow-x-auto pb-3">
+        <div className="-mx-1.5 -mt-1.5 flex gap-3 overflow-x-auto px-1.5 pb-3 pt-1.5">
           {ACTIVE_COLUMNS.map((s) =>
             column(
               `ops-column-${s}`,

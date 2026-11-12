@@ -53,11 +53,11 @@ export default async function CartPage({
         </p>
       )}
 
-      <section aria-label="Items" className="border-y border-line">
+      <section className="border-y border-line">
         <CartLines lines={lines} country={restaurant.country} />
       </section>
 
-      <section aria-label="Promo and total" className="space-y-5 rounded-card bg-fill p-4 md:p-5">
+      <section className="space-y-5 rounded-card bg-fill p-4 md:p-5">
         <PromoForm appliedCode={price.promoCode} serverError={price.promoError} />
         <div className="border-t border-line-strong pt-4">
           <PriceBreakdown price={price} country={restaurant.country} />

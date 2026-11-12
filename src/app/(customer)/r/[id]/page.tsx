@@ -90,7 +90,7 @@ export default async function RestaurantPage({ params }: { params: Promise<{ id:
               <li key={c.id} className="shrink-0">
                 <a
                   href={`#cat-${c.id}`}
-                  className="inline-flex h-12 items-center whitespace-nowrap rounded-chip px-3 text-sm font-medium text-muted hover:text-ink"
+                  className="inline-flex h-12 items-center whitespace-nowrap rounded-chip px-3 text-sm font-medium text-muted hover:text-ink focus-visible:outline-offset-[-2px]"
                 >
                   {c.name}
                 </a>

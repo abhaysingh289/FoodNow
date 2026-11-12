@@ -27,7 +27,7 @@ export default async function CheckoutPage() {
       <h1 className="pb-4 text-[26px] font-bold leading-tight tracking-tight md:text-[28px]">Checkout</h1>
 
       <div className="divide-y divide-line border-y border-line">
-        <section aria-label="Delivery address" className="space-y-1 py-5">
+        <section className="space-y-1 py-5">
           <h2 className="text-[13px] font-medium text-muted">Deliver to</h2>
           <p data-testid="checkout-address" className="font-semibold">
             {session.address.label} · {session.address.line1}
@@ -37,7 +37,7 @@ export default async function CheckoutPage() {
           </Link>
         </section>
 
-        <section aria-label="Your order" className="py-5">
+        <section className="py-5">
           <h2 className="text-[13px] font-medium text-muted">Your order</h2>
           <p className="font-semibold">{restaurant.name}</p>
           <ul className="mt-2 space-y-2">
@@ -56,7 +56,7 @@ export default async function CheckoutPage() {
         </section>
       </div>
 
-      <section aria-label="Total" className="mt-5 rounded-card bg-fill p-4 md:p-5">
+      <section className="mt-5 rounded-card bg-fill p-4 md:p-5">
         <PriceBreakdown price={price} country={restaurant.country} />
       </section>
 

@@ -6,6 +6,7 @@ import { cn } from "./cn";
 /**
  * Modal built on the native <dialog> (focus trap, Esc, top layer for free).
  * `bottom` slides up as a sheet; `center` is a compact confirm dialog.
+ * Mark a child with `data-autofocus` to give it initial focus instead of the first focusable.
  */
 export function Sheet({
   open,
@@ -30,7 +31,10 @@ export function Sheet({
   useEffect(() => {
     const dlg = ref.current;
     if (!dlg) return;
-    if (open && !dlg.open) dlg.showModal();
+    if (open && !dlg.open) {
+      dlg.showModal();
+      dlg.querySelector<HTMLElement>("[data-autofocus]")?.focus();
+    }
     if (!open && dlg.open) dlg.close();
   }, [open]);
 

@@ -18,12 +18,14 @@ export default async function OrdersPage({ searchParams }: { searchParams: Promi
   const orders = await listOrdersForUser(session.user.id, tab);
   // Presentational only: the restaurant photo for each row's thumbnail.
   const photos = new Map(
-    (
-      await prisma.order.findMany({
-        where: { id: { in: orders.map((o) => o.id) } },
-        select: { id: true, restaurant: { select: { imageUrl: true } } },
-      })
-    ).map((o) => [o.id, o.restaurant.imageUrl]),
+    orders.length === 0
+      ? []
+      : (
+          await prisma.order.findMany({
+            where: { id: { in: orders.map((o) => o.id) } },
+            select: { id: true, restaurant: { select: { imageUrl: true } } },
+          })
+        ).map((o) => [o.id, o.restaurant.imageUrl] as const),
   );
 
   return (
@@ -63,12 +65,12 @@ export default async function OrdersPage({ searchParams }: { searchParams: Promi
           {orders.map((o) => {
             const photo = photos.get(o.id);
             return (
-              <li key={o.id} data-testid={`order-row-${o.id}`} className="flex items-start gap-4 py-4">
-                <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-control bg-fill">
-                  {photo && <Image src={photo} alt="" fill unoptimized className="object-cover" />}
-                </div>
-                <div className="min-w-0 flex-1 space-y-2">
-                  <Link href={`/orders/${o.id}`} className="block rounded-control">
+              <li key={o.id} data-testid={`order-row-${o.id}`} className="space-y-2 py-4">
+                <Link href={`/orders/${o.id}`} className="flex items-start gap-4 rounded-control">
+                  <span className="relative h-16 w-16 shrink-0 overflow-hidden rounded-control bg-fill">
+                    {photo && <Image src={photo} alt="" fill unoptimized className="object-cover" />}
+                  </span>
+                  <span className="min-w-0 flex-1">
                     <span className="flex items-start justify-between gap-3">
                       <span className="font-semibold">{o.restaurantName}</span>
                       <Price cents={o.totalCents} country={o.country as CountryCode} className="font-semibold" />
@@ -79,9 +81,13 @@ export default async function OrdersPage({ searchParams }: { searchParams: Promi
                         {formatDateTime(o.createdAt, o.country as CountryCode)}
                       </time>
                     </span>
-                  </Link>
-                  {tab === "history" && <ReorderButton orderId={o.id} />}
-                </div>
+                  </span>
+                </Link>
+                {tab === "history" && (
+                  <div className="pl-20">
+                    <ReorderButton orderId={o.id} />
+                  </div>
+                )}
               </li>
             );
           })}

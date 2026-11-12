@@ -117,7 +117,7 @@ export function TopBar({ country, userId, addressId, users, addresses, cartQty }
                 aria-pressed={c === country}
                 onClick={() => c !== country && update({ country: c })}
                 className={cn(
-                  "h-10 min-w-11 rounded-chip px-3 text-sm font-semibold transition-colors md:h-8",
+                  "h-11 min-w-11 rounded-chip px-3 text-sm font-semibold transition-colors md:h-8",
                   c === country ? "bg-surface text-ink shadow-[0_1px_3px_rgb(0_0_0/0.12)]" : "text-muted hover:text-ink",
                 )}
               >

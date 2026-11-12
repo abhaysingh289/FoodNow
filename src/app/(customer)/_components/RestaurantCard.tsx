@@ -56,10 +56,17 @@ export function RestaurantCard({
             <span className="sr-only"> rating</span>
           </span>
         </div>
-        <p className="truncate text-[13px] text-muted">
-          {r.cuisines.join(", ")} · <span className="tabular-nums">{r.distanceKm.toFixed(1)} km</span> ·{" "}
-          <span className="tabular-nums">{r.etaMinutes} min</span> ·{" "}
-          <Price cents={r.deliveryFeeCents} country={country} /> delivery
+        {/* Only the cuisine list truncates, so distance, ETA and fee always stay visible. */}
+        <p className="flex min-w-0 text-[13px] text-muted">
+          <span className="min-w-0 truncate">{r.cuisines.join(", ")}</span>
+          <span className="shrink-0 whitespace-pre">
+            {" · "}
+            <span className="tabular-nums">{r.distanceKm.toFixed(1)} km</span>
+            {" · "}
+            <span className="tabular-nums">{r.etaMinutes} min</span>
+            {" · "}
+            <Price cents={r.deliveryFeeCents} country={country} /> delivery
+          </span>
         </p>
       </div>
     </Link>

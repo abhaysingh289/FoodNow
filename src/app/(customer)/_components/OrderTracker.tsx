@@ -126,7 +126,7 @@ export function OrderTracker({ initial }: { initial: OrderView }) {
       <h1 className="mt-1 text-[26px] font-bold leading-tight tracking-tight md:text-[28px]">{order.restaurant.name}</h1>
 
       <div className="mt-4 divide-y divide-line border-y border-line">
-        <section aria-label="Order status" className="space-y-5 py-5">
+        <section className="space-y-5 py-5">
           <div className="space-y-1">
             <p data-testid="order-status" role="status" className="text-xl font-bold leading-snug tracking-tight">
               {message}
@@ -196,7 +196,7 @@ export function OrderTracker({ initial }: { initial: OrderView }) {
           )}
         </section>
 
-        <section aria-label="Your order" className="py-5">
+        <section className="py-5">
           <h2 className="mb-2 text-lg font-semibold tracking-tight">Your order</h2>
           <ul className="space-y-1.5 text-[15px]">
             {order.items.map((i) => (
@@ -211,7 +211,7 @@ export function OrderTracker({ initial }: { initial: OrderView }) {
           </p>
         </section>
 
-        <section aria-label="Timeline" className="space-y-3 py-5">
+        <section className="space-y-3 py-5">
           <h2 className="text-lg font-semibold tracking-tight">Timeline</h2>
           <OrderTimeline events={order.events} country={order.country} />
         </section>

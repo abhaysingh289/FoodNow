@@ -58,7 +58,7 @@ export function FakePaymentSheet({
           </p>
         )}
         <div className="border-t border-line pt-4">
-          <Button data-testid="fake-approve" size="lg" block disabled={busy} onClick={() => decide("succeed")}>
+          <Button data-testid="fake-approve" data-autofocus size="lg" block disabled={busy} onClick={() => decide("succeed")}>
             Approve payment
           </Button>
         </div>

@@ -26,16 +26,17 @@ export function StatusProgress({ status }: { status: OrderStatus }) {
     );
   }
   const current = STEPS.findIndex(([s]) => s === status); // -1 while payment is still pending
+  const finished = status === "DELIVERED"; // the last step is complete, not in progress
   return (
     <ol data-testid="status-progress" data-state="active">
       {STEPS.map(([step, label], i) => {
-        const done = i < current;
-        const isCurrent = i === current;
+        const done = i < current || (finished && i === current);
+        const isCurrent = i === current && !finished;
         return (
           <li
             key={step}
             className="relative flex items-start gap-3 pb-5 last:pb-0"
-            aria-current={isCurrent ? "step" : undefined}
+            aria-current={i === current ? "step" : undefined}
           >
             {i < STEPS.length - 1 && (
               <span aria-hidden="true" className="absolute bottom-0 left-[9px] top-5 w-0.5 bg-line" />
