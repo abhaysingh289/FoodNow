@@ -228,9 +228,11 @@ model WebhookLog {
   payload        Json
   signatureValid Boolean
   result         String
+  orderId        String?
   receivedAt     DateTime @default(now())
 
   @@unique([provider, eventId])
+  @@index([orderId])
 }
 
 model FakeProviderIntent {
