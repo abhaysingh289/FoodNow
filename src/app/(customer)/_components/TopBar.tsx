@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { COUNTRY_CONFIG, type CountryCode } from "@/lib/countries";
 import { cn } from "@/components/ui";
 import { callApi } from "./api";
+import { ViewToggle } from "@/components/view/ViewToggle";
 
 type Props = {
   country: CountryCode;
@@ -108,6 +109,9 @@ export function TopBar({ country, userId, addressId, users, addresses, cartQty }
         </div>
 
         <div className="ml-auto flex items-center gap-1 md:ml-0 md:gap-2">
+          <div className="hidden md:block">
+            <ViewToggle />
+          </div>
           <div role="group" aria-label="Country" className="flex rounded-chip bg-fill p-0.5">
             {(Object.keys(COUNTRY_CONFIG) as CountryCode[]).map((c) => (
               <button
