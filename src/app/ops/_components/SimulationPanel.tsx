@@ -30,7 +30,16 @@ export function SimulationPanel() {
   const autoMode = settings?.autoMode ?? false;
   useEffect(() => {
     if (!autoMode) return;
-    const t = setInterval(() => void fetch("/api/simulation/tick", { method: "POST" }).catch(() => undefined), 1000);
+    let busy = false;
+    const t = setInterval(() => {
+      if (busy) return; // skip this tick while the previous one is still running
+      busy = true;
+      void fetch("/api/simulation/tick", { method: "POST" })
+        .catch(() => undefined)
+        .finally(() => {
+          busy = false;
+        });
+    }, 1000);
     return () => clearInterval(t);
   }, [autoMode]);
 

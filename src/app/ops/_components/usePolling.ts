@@ -1,30 +1,29 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { createPollStore } from "./pollStore";
 
-/** GETs `url` now and every `intervalMs`. `refresh()` forces an immediate reload. */
-export function usePolling<T>(url: string, intervalMs = 2000): { data: T | null; refresh: () => Promise<void> } {
+const store = createPollStore(
+  async (url) => {
+    const res = await fetch(url, { cache: "no-store" });
+    if (!res.ok) throw new Error(`GET ${url} failed: ${res.status}`);
+    return res.json();
+  },
+  () => typeof document !== "undefined" && document.visibilityState === "hidden",
+);
+
+if (typeof document !== "undefined") {
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "visible") store.pollAll();
+  });
+}
+
+/** GETs `url` now and every 2 s, shared with every other component polling the same URL. */
+export function usePolling<T>(url: string): { data: T | null; refresh: () => Promise<void> } {
   const [data, setData] = useState<T | null>(null);
-  const alive = useRef(true);
 
-  const refresh = useCallback(async () => {
-    try {
-      const res = await fetch(url, { cache: "no-store" });
-      if (res.ok && alive.current) setData((await res.json()) as T);
-    } catch {
-      // transient network error: keep the last data, the next tick retries
-    }
-  }, [url]);
+  useEffect(() => store.subscribe(url, (d) => setData(d as T)), [url]);
 
-  useEffect(() => {
-    alive.current = true;
-    void refresh();
-    const t = setInterval(() => void refresh(), intervalMs);
-    return () => {
-      alive.current = false;
-      clearInterval(t);
-    };
-  }, [refresh, intervalMs]);
-
+  const refresh = useCallback(() => store.refresh(url), [url]);
   return { data, refresh };
 }

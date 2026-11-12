@@ -12,8 +12,10 @@ Next.js 15 (App Router) and TypeScript, Prisma 6 on SQLite, Tailwind CSS 4, Vite
 npm install
 cp .env.example .env        # on Windows PowerShell: Copy-Item .env.example .env
 npm run db:reset            # creates the SQLite schema and seeds demo data
-npm run dev                 # http://localhost:3000
+npm run app                 # builds and starts the fast production server: http://localhost:3000
 ```
+
+Use `npm run app` whenever you want to *use* the app. `npm run dev` (hot reload for editing code) is much slower: Next.js dev mode adds roughly 0.4–2 s to every request, which makes the ops console feel sluggish. After changing code, stop `npm run app` and run it again to rebuild.
 
 `.env` holds `DATABASE_URL`, `PAYMENT_PROVIDER` (default `fake`), `FAKE_WEBHOOK_SECRET` and `APP_BASE_URL` (default `http://localhost:3000`). The fake provider delivers webhooks to `APP_BASE_URL`, so keep it matching the port you run on.
 

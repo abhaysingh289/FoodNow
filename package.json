@@ -6,6 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
+    "app": "next build --turbopack && next start",
     "lint": "eslint",
     "test": "vitest run",
     "test:watch": "vitest",
