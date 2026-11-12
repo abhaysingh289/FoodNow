@@ -1,0 +1,3475 @@
+[
+  {
+    "id": "hk_golden_dragon",
+    "country": "HK",
+    "districtId": "d_hk_tst",
+    "name": "Golden Dragon Dim Sum",
+    "description": "Classic Cantonese dim sum served all day.",
+    "cuisines": [
+      "Dim Sum",
+      "Cantonese"
+    ],
+    "tags": [],
+    "rating": 4.6,
+    "priceLevel": 2,
+    "prepMinutes": 15,
+    "lat": 22.2988,
+    "lng": 114.1722,
+    "imageUrl": "/images/dimsum.svg",
+    "isOpen": true,
+    "hasPromo": true,
+    "categories": [
+      {
+        "id": "hk_golden_dragon_c1",
+        "name": "Dim Sum",
+        "sort": 0,
+        "items": [
+          {
+            "id": "hk_gd_har_gow",
+            "name": "Har Gow (4 pcs)",
+            "description": "Har Gow (4 pcs), made fresh to order.",
+            "priceCents": 4200,
+            "imageUrl": "/images/dimsum.svg",
+            "isAvailable": true,
+            "groups": []
+          },
+          {
+            "id": "hk_gd_bbq_bun",
+            "name": "BBQ Pork Bun",
+            "description": "BBQ Pork Bun, made fresh to order.",
+            "priceCents": 3200,
+            "imageUrl": "/images/dimsum.svg",
+            "isAvailable": true,
+            "groups": []
+          },
+          {
+            "id": "hk_gd_siu_mai",
+            "name": "Siu Mai (4 pcs)",
+            "description": "Siu Mai (4 pcs), made fresh to order.",
+            "priceCents": 3800,
+            "imageUrl": "/images/dimsum.svg",
+            "isAvailable": true,
+            "groups": []
+          },
+          {
+            "id": "hk_gd_cheung_fun",
+            "name": "Prawn Cheung Fun",
+            "description": "Prawn Cheung Fun, made fresh to order.",
+            "priceCents": 4600,
+            "imageUrl": "/images/dimsum.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_hk_gd_cheung_fun_extras",
+                "name": "Extras",
+                "required": false,
+                "minSelect": 0,
+                "maxSelect": 3,
+                "options": [
+                  {
+                    "id": "opt_hk_gd_cheung_fun_x1",
+                    "name": "Chili oil",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_hk_gd_cheung_fun_x2",
+                    "name": "Extra sauce",
+                    "priceDeltaCents": 300
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "hk_gd_lobster",
+            "name": "Lobster Dumplings",
+            "description": "Lobster Dumplings, made fresh to order.",
+            "priceCents": 8800,
+            "imageUrl": "/images/dimsum.svg",
+            "isAvailable": false,
+            "groups": []
+          }
+        ]
+      },
+      {
+        "id": "hk_golden_dragon_c2",
+        "name": "Noodles & Rice",
+        "sort": 1,
+        "items": [
+          {
+            "id": "hk_gd_wonton",
+            "name": "Wonton Noodle Soup",
+            "description": "Wonton Noodle Soup, made fresh to order.",
+            "priceCents": 5800,
+            "imageUrl": "/images/dimsum.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_hk_gd_wonton_size",
+                "name": "Size",
+                "required": true,
+                "minSelect": 1,
+                "maxSelect": 1,
+                "options": [
+                  {
+                    "id": "opt_wonton_regular",
+                    "name": "Regular",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_wonton_large",
+                    "name": "Large",
+                    "priceDeltaCents": 1200
+                  }
+                ]
+              },
+              {
+                "id": "g_hk_gd_wonton_extras",
+                "name": "Extras",
+                "required": false,
+                "minSelect": 0,
+                "maxSelect": 3,
+                "options": [
+                  {
+                    "id": "opt_wonton_extra",
+                    "name": "Extra wontons",
+                    "priceDeltaCents": 1500
+                  },
+                  {
+                    "id": "opt_wonton_chili",
+                    "name": "Chili oil",
+                    "priceDeltaCents": 0
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "hk_gd_beef_noodle",
+            "name": "Beef Brisket Noodles",
+            "description": "Beef Brisket Noodles, made fresh to order.",
+            "priceCents": 6200,
+            "imageUrl": "/images/dimsum.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_hk_gd_beef_noodle_size",
+                "name": "Size",
+                "required": true,
+                "minSelect": 1,
+                "maxSelect": 1,
+                "options": [
+                  {
+                    "id": "opt_hk_gd_beef_noodle_regular",
+                    "name": "Regular",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_hk_gd_beef_noodle_large",
+                    "name": "Large",
+                    "priceDeltaCents": 1200
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "hk_gd_fried_rice",
+            "name": "Yangzhou Fried Rice",
+            "description": "Yangzhou Fried Rice, made fresh to order.",
+            "priceCents": 5400,
+            "imageUrl": "/images/dimsum.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_hk_gd_fried_rice_size",
+                "name": "Size",
+                "required": true,
+                "minSelect": 1,
+                "maxSelect": 1,
+                "options": [
+                  {
+                    "id": "opt_hk_gd_fried_rice_regular",
+                    "name": "Regular",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_hk_gd_fried_rice_large",
+                    "name": "Large",
+                    "priceDeltaCents": 1200
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "hk_golden_dragon_c3",
+        "name": "Desserts & Drinks",
+        "sort": 2,
+        "items": [
+          {
+            "id": "hk_gd_egg_tart",
+            "name": "Egg Tart (2 pcs)",
+            "description": "Egg Tart (2 pcs), made fresh to order.",
+            "priceCents": 2800,
+            "imageUrl": "/images/dimsum.svg",
+            "isAvailable": true,
+            "groups": []
+          },
+          {
+            "id": "hk_gd_milk_tea",
+            "name": "Hong Kong Milk Tea",
+            "description": "Hong Kong Milk Tea, made fresh to order.",
+            "priceCents": 2200,
+            "imageUrl": "/images/dimsum.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_hk_gd_milk_tea_size",
+                "name": "Size",
+                "required": true,
+                "minSelect": 1,
+                "maxSelect": 1,
+                "options": [
+                  {
+                    "id": "opt_hk_gd_milk_tea_regular",
+                    "name": "Regular",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_hk_gd_milk_tea_large",
+                    "name": "Large",
+                    "priceDeltaCents": 1200
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hk_midnight_ramen",
+    "country": "HK",
+    "districtId": "d_hk_mongkok",
+    "name": "Midnight Ramen",
+    "description": "Late-night tonkotsu ramen bar (closed right now).",
+    "cuisines": [
+      "Japanese",
+      "Ramen"
+    ],
+    "tags": [],
+    "rating": 4.4,
+    "priceLevel": 2,
+    "prepMinutes": 12,
+    "lat": 22.3213,
+    "lng": 114.1724,
+    "imageUrl": "/images/japanese.svg",
+    "isOpen": false,
+    "hasPromo": false,
+    "categories": [
+      {
+        "id": "hk_midnight_ramen_c1",
+        "name": "Ramen",
+        "sort": 0,
+        "items": [
+          {
+            "id": "hk_mr_tonkotsu",
+            "name": "Tonkotsu Ramen",
+            "description": "Tonkotsu Ramen, made fresh to order.",
+            "priceCents": 7800,
+            "imageUrl": "/images/japanese.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_hk_mr_tonkotsu_size",
+                "name": "Size",
+                "required": true,
+                "minSelect": 1,
+                "maxSelect": 1,
+                "options": [
+                  {
+                    "id": "opt_hk_mr_tonkotsu_regular",
+                    "name": "Regular",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_hk_mr_tonkotsu_large",
+                    "name": "Large",
+                    "priceDeltaCents": 1200
+                  }
+                ]
+              },
+              {
+                "id": "g_hk_mr_tonkotsu_extras",
+                "name": "Extras",
+                "required": false,
+                "minSelect": 0,
+                "maxSelect": 3,
+                "options": [
+                  {
+                    "id": "opt_hk_mr_tonkotsu_x1",
+                    "name": "Extra egg",
+                    "priceDeltaCents": 1000
+                  },
+                  {
+                    "id": "opt_hk_mr_tonkotsu_x2",
+                    "name": "Extra chashu",
+                    "priceDeltaCents": 1800
+                  },
+                  {
+                    "id": "opt_hk_mr_tonkotsu_x3",
+                    "name": "Nori",
+                    "priceDeltaCents": 500
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "hk_mr_shoyu",
+            "name": "Shoyu Ramen",
+            "description": "Shoyu Ramen, made fresh to order.",
+            "priceCents": 7200,
+            "imageUrl": "/images/japanese.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_hk_mr_shoyu_size",
+                "name": "Size",
+                "required": true,
+                "minSelect": 1,
+                "maxSelect": 1,
+                "options": [
+                  {
+                    "id": "opt_hk_mr_shoyu_regular",
+                    "name": "Regular",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_hk_mr_shoyu_large",
+                    "name": "Large",
+                    "priceDeltaCents": 1200
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "hk_mr_spicy_miso",
+            "name": "Spicy Miso Ramen",
+            "description": "Spicy Miso Ramen, made fresh to order.",
+            "priceCents": 8200,
+            "imageUrl": "/images/japanese.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_hk_mr_spicy_miso_spice",
+                "name": "Spice level",
+                "required": true,
+                "minSelect": 1,
+                "maxSelect": 1,
+                "options": [
+                  {
+                    "id": "opt_hk_mr_spicy_miso_mild",
+                    "name": "Mild",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_hk_mr_spicy_miso_medium",
+                    "name": "Medium",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_hk_mr_spicy_miso_hot",
+                    "name": "Hot",
+                    "priceDeltaCents": 0
+                  }
+                ]
+              },
+              {
+                "id": "g_hk_mr_spicy_miso_extras",
+                "name": "Extras",
+                "required": false,
+                "minSelect": 0,
+                "maxSelect": 3,
+                "options": [
+                  {
+                    "id": "opt_hk_mr_spicy_miso_x1",
+                    "name": "Extra egg",
+                    "priceDeltaCents": 1000
+                  },
+                  {
+                    "id": "opt_hk_mr_spicy_miso_x2",
+                    "name": "Corn",
+                    "priceDeltaCents": 600
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "hk_mr_tsukemen",
+            "name": "Tsukemen",
+            "description": "Tsukemen, made fresh to order.",
+            "priceCents": 8600,
+            "imageUrl": "/images/japanese.svg",
+            "isAvailable": true,
+            "groups": []
+          }
+        ]
+      },
+      {
+        "id": "hk_midnight_ramen_c2",
+        "name": "Sides",
+        "sort": 1,
+        "items": [
+          {
+            "id": "hk_mr_gyoza",
+            "name": "Gyoza (5 pcs)",
+            "description": "Gyoza (5 pcs), made fresh to order.",
+            "priceCents": 3600,
+            "imageUrl": "/images/japanese.svg",
+            "isAvailable": true,
+            "groups": []
+          },
+          {
+            "id": "hk_mr_karaage",
+            "name": "Karaage",
+            "description": "Karaage, made fresh to order.",
+            "priceCents": 4200,
+            "imageUrl": "/images/japanese.svg",
+            "isAvailable": true,
+            "groups": []
+          },
+          {
+            "id": "hk_mr_edamame",
+            "name": "Edamame",
+            "description": "Edamame, made fresh to order.",
+            "priceCents": 2400,
+            "imageUrl": "/images/japanese.svg",
+            "isAvailable": true,
+            "groups": []
+          },
+          {
+            "id": "hk_mr_rice",
+            "name": "Chashu Rice Bowl",
+            "description": "Chashu Rice Bowl, made fresh to order.",
+            "priceCents": 4800,
+            "imageUrl": "/images/japanese.svg",
+            "isAvailable": true,
+            "groups": []
+          }
+        ]
+      },
+      {
+        "id": "hk_midnight_ramen_c3",
+        "name": "Drinks",
+        "sort": 2,
+        "items": [
+          {
+            "id": "hk_mr_ramune",
+            "name": "Ramune",
+            "description": "Ramune, made fresh to order.",
+            "priceCents": 1800,
+            "imageUrl": "/images/japanese.svg",
+            "isAvailable": true,
+            "groups": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hk_burger_lab",
+    "country": "HK",
+    "districtId": "d_hk_causeway",
+    "name": "Burger Lab",
+    "description": "Smash burgers and shakes.",
+    "cuisines": [
+      "Burgers",
+      "American"
+    ],
+    "tags": [],
+    "rating": 4.3,
+    "priceLevel": 2,
+    "prepMinutes": 14,
+    "lat": 22.2832,
+    "lng": 114.1818,
+    "imageUrl": "/images/burgers.svg",
+    "isOpen": true,
+    "hasPromo": true,
+    "categories": [
+      {
+        "id": "hk_burger_lab_c1",
+        "name": "Burgers",
+        "sort": 0,
+        "items": [
+          {
+            "id": "hk_bl_classic",
+            "name": "Classic Smash Burger",
+            "description": "Classic Smash Burger, made fresh to order.",
+            "priceCents": 6800,
+            "imageUrl": "/images/burgers.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_hk_bl_classic_size",
+                "name": "Size",
+                "required": true,
+                "minSelect": 1,
+                "maxSelect": 1,
+                "options": [
+                  {
+                    "id": "opt_hk_bl_classic_regular",
+                    "name": "Regular",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_hk_bl_classic_large",
+                    "name": "Large",
+                    "priceDeltaCents": 1200
+                  }
+                ]
+              },
+              {
+                "id": "g_hk_bl_classic_extras",
+                "name": "Extras",
+                "required": false,
+                "minSelect": 0,
+                "maxSelect": 3,
+                "options": [
+                  {
+                    "id": "opt_hk_bl_classic_x1",
+                    "name": "Bacon",
+                    "priceDeltaCents": 1200
+                  },
+                  {
+                    "id": "opt_hk_bl_classic_x2",
+                    "name": "Extra patty",
+                    "priceDeltaCents": 2200
+                  },
+                  {
+                    "id": "opt_hk_bl_classic_x3",
+                    "name": "Cheese",
+                    "priceDeltaCents": 800
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "hk_bl_double",
+            "name": "Double Cheese Burger",
+            "description": "Double Cheese Burger, made fresh to order.",
+            "priceCents": 8800,
+            "imageUrl": "/images/burgers.svg",
+            "isAvailable": true,
+            "groups": []
+          },
+          {
+            "id": "hk_bl_chicken",
+            "name": "Crispy Chicken Burger",
+            "description": "Crispy Chicken Burger, made fresh to order.",
+            "priceCents": 6400,
+            "imageUrl": "/images/burgers.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_hk_bl_chicken_size",
+                "name": "Size",
+                "required": true,
+                "minSelect": 1,
+                "maxSelect": 1,
+                "options": [
+                  {
+                    "id": "opt_hk_bl_chicken_regular",
+                    "name": "Regular",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_hk_bl_chicken_large",
+                    "name": "Large",
+                    "priceDeltaCents": 1200
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "hk_bl_mushroom",
+            "name": "Mushroom Swiss Burger",
+            "description": "Mushroom Swiss Burger, made fresh to order.",
+            "priceCents": 7400,
+            "imageUrl": "/images/burgers.svg",
+            "isAvailable": true,
+            "groups": []
+          }
+        ]
+      },
+      {
+        "id": "hk_burger_lab_c2",
+        "name": "Sides",
+        "sort": 1,
+        "items": [
+          {
+            "id": "hk_bl_fries",
+            "name": "Fries",
+            "description": "Fries, made fresh to order.",
+            "priceCents": 2800,
+            "imageUrl": "/images/burgers.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_hk_bl_fries_size",
+                "name": "Size",
+                "required": true,
+                "minSelect": 1,
+                "maxSelect": 1,
+                "options": [
+                  {
+                    "id": "opt_hk_bl_fries_regular",
+                    "name": "Regular",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_hk_bl_fries_large",
+                    "name": "Large",
+                    "priceDeltaCents": 1200
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "hk_bl_rings",
+            "name": "Onion Rings",
+            "description": "Onion Rings, made fresh to order.",
+            "priceCents": 3200,
+            "imageUrl": "/images/burgers.svg",
+            "isAvailable": true,
+            "groups": []
+          },
+          {
+            "id": "hk_bl_wings",
+            "name": "Buffalo Wings",
+            "description": "Buffalo Wings, made fresh to order.",
+            "priceCents": 5200,
+            "imageUrl": "/images/burgers.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_hk_bl_wings_spice",
+                "name": "Spice level",
+                "required": true,
+                "minSelect": 1,
+                "maxSelect": 1,
+                "options": [
+                  {
+                    "id": "opt_hk_bl_wings_mild",
+                    "name": "Mild",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_hk_bl_wings_medium",
+                    "name": "Medium",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_hk_bl_wings_hot",
+                    "name": "Hot",
+                    "priceDeltaCents": 0
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "hk_burger_lab_c3",
+        "name": "Shakes",
+        "sort": 2,
+        "items": [
+          {
+            "id": "hk_bl_choc",
+            "name": "Chocolate Shake",
+            "description": "Chocolate Shake, made fresh to order.",
+            "priceCents": 3800,
+            "imageUrl": "/images/burgers.svg",
+            "isAvailable": true,
+            "groups": []
+          },
+          {
+            "id": "hk_bl_vanilla",
+            "name": "Vanilla Shake",
+            "description": "Vanilla Shake, made fresh to order.",
+            "priceCents": 3800,
+            "imageUrl": "/images/burgers.svg",
+            "isAvailable": true,
+            "groups": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hk_bangkok_spice",
+    "country": "HK",
+    "districtId": "d_hk_wanchai",
+    "name": "Bangkok Spice",
+    "description": "Halal Thai street food classics.",
+    "cuisines": [
+      "Thai"
+    ],
+    "tags": [
+      "halal"
+    ],
+    "rating": 4.5,
+    "priceLevel": 2,
+    "prepMinutes": 18,
+    "lat": 22.2756,
+    "lng": 114.1768,
+    "imageUrl": "/images/thai.svg",
+    "isOpen": true,
+    "hasPromo": false,
+    "categories": [
+      {
+        "id": "hk_bangkok_spice_c1",
+        "name": "Mains",
+        "sort": 0,
+        "items": [
+          {
+            "id": "hk_bs_pad_thai",
+            "name": "Pad Thai",
+            "description": "Pad Thai, made fresh to order.",
+            "priceCents": 5600,
+            "imageUrl": "/images/thai.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_hk_bs_pad_thai_spice",
+                "name": "Spice level",
+                "required": true,
+                "minSelect": 1,
+                "maxSelect": 1,
+                "options": [
+                  {
+                    "id": "opt_hk_bs_pad_thai_mild",
+                    "name": "Mild",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_hk_bs_pad_thai_medium",
+                    "name": "Medium",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_hk_bs_pad_thai_hot",
+                    "name": "Hot",
+                    "priceDeltaCents": 0
+                  }
+                ]
+              },
+              {
+                "id": "g_hk_bs_pad_thai_extras",
+                "name": "Extras",
+                "required": false,
+                "minSelect": 0,
+                "maxSelect": 3,
+                "options": [
+                  {
+                    "id": "opt_hk_bs_pad_thai_x1",
+                    "name": "Extra prawns",
+                    "priceDeltaCents": 2000
+                  },
+                  {
+                    "id": "opt_hk_bs_pad_thai_x2",
+                    "name": "Fried egg",
+                    "priceDeltaCents": 600
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "hk_bs_green_curry",
+            "name": "Green Curry",
+            "description": "Green Curry, made fresh to order.",
+            "priceCents": 6200,
+            "imageUrl": "/images/thai.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_hk_bs_green_curry_spice",
+                "name": "Spice level",
+                "required": true,
+                "minSelect": 1,
+                "maxSelect": 1,
+                "options": [
+                  {
+                    "id": "opt_hk_bs_green_curry_mild",
+                    "name": "Mild",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_hk_bs_green_curry_medium",
+                    "name": "Medium",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_hk_bs_green_curry_hot",
+                    "name": "Hot",
+                    "priceDeltaCents": 0
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "hk_bs_tom_yum",
+            "name": "Tom Yum Soup",
+            "description": "Tom Yum Soup, made fresh to order.",
+            "priceCents": 5800,
+            "imageUrl": "/images/thai.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_hk_bs_tom_yum_spice",
+                "name": "Spice level",
+                "required": true,
+                "minSelect": 1,
+                "maxSelect": 1,
+                "options": [
+                  {
+                    "id": "opt_hk_bs_tom_yum_mild",
+                    "name": "Mild",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_hk_bs_tom_yum_medium",
+                    "name": "Medium",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_hk_bs_tom_yum_hot",
+                    "name": "Hot",
+                    "priceDeltaCents": 0
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "hk_bs_basil",
+            "name": "Pad Kra Pao",
+            "description": "Pad Kra Pao, made fresh to order.",
+            "priceCents": 5400,
+            "imageUrl": "/images/thai.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_hk_bs_basil_spice",
+                "name": "Spice level",
+                "required": true,
+                "minSelect": 1,
+                "maxSelect": 1,
+                "options": [
+                  {
+                    "id": "opt_hk_bs_basil_mild",
+                    "name": "Mild",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_hk_bs_basil_medium",
+                    "name": "Medium",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_hk_bs_basil_hot",
+                    "name": "Hot",
+                    "priceDeltaCents": 0
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "hk_bangkok_spice_c2",
+        "name": "Starters",
+        "sort": 1,
+        "items": [
+          {
+            "id": "hk_bs_spring_rolls",
+            "name": "Spring Rolls (4 pcs)",
+            "description": "Spring Rolls (4 pcs), made fresh to order.",
+            "priceCents": 3400,
+            "imageUrl": "/images/thai.svg",
+            "isAvailable": true,
+            "groups": []
+          },
+          {
+            "id": "hk_bs_satay",
+            "name": "Chicken Satay",
+            "description": "Chicken Satay, made fresh to order.",
+            "priceCents": 4200,
+            "imageUrl": "/images/thai.svg",
+            "isAvailable": true,
+            "groups": []
+          },
+          {
+            "id": "hk_bs_papaya",
+            "name": "Som Tam Salad",
+            "description": "Som Tam Salad, made fresh to order.",
+            "priceCents": 3800,
+            "imageUrl": "/images/thai.svg",
+            "isAvailable": true,
+            "groups": []
+          }
+        ]
+      },
+      {
+        "id": "hk_bangkok_spice_c3",
+        "name": "Sweets",
+        "sort": 2,
+        "items": [
+          {
+            "id": "hk_bs_mango_rice",
+            "name": "Mango Sticky Rice",
+            "description": "Mango Sticky Rice, made fresh to order.",
+            "priceCents": 3600,
+            "imageUrl": "/images/thai.svg",
+            "isAvailable": true,
+            "groups": []
+          },
+          {
+            "id": "hk_bs_thai_tea",
+            "name": "Thai Iced Tea",
+            "description": "Thai Iced Tea, made fresh to order.",
+            "priceCents": 2400,
+            "imageUrl": "/images/thai.svg",
+            "isAvailable": true,
+            "groups": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hk_taj_kitchen",
+    "country": "HK",
+    "districtId": "d_hk_shatin",
+    "name": "Taj Kitchen",
+    "description": "Halal North Indian curries and fresh naan.",
+    "cuisines": [
+      "Indian"
+    ],
+    "tags": [
+      "halal"
+    ],
+    "rating": 4.2,
+    "priceLevel": 2,
+    "prepMinutes": 20,
+    "lat": 22.3858,
+    "lng": 114.19,
+    "imageUrl": "/images/indian.svg",
+    "isOpen": true,
+    "hasPromo": true,
+    "categories": [
+      {
+        "id": "hk_taj_kitchen_c1",
+        "name": "Curries",
+        "sort": 0,
+        "items": [
+          {
+            "id": "hk_tk_butter_chicken",
+            "name": "Butter Chicken",
+            "description": "Butter Chicken, made fresh to order.",
+            "priceCents": 6800,
+            "imageUrl": "/images/indian.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_hk_tk_butter_chicken_spice",
+                "name": "Spice level",
+                "required": true,
+                "minSelect": 1,
+                "maxSelect": 1,
+                "options": [
+                  {
+                    "id": "opt_hk_tk_butter_chicken_mild",
+                    "name": "Mild",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_hk_tk_butter_chicken_medium",
+                    "name": "Medium",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_hk_tk_butter_chicken_hot",
+                    "name": "Hot",
+                    "priceDeltaCents": 0
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "hk_tk_lamb_rogan",
+            "name": "Lamb Rogan Josh",
+            "description": "Lamb Rogan Josh, made fresh to order.",
+            "priceCents": 7800,
+            "imageUrl": "/images/indian.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_hk_tk_lamb_rogan_spice",
+                "name": "Spice level",
+                "required": true,
+                "minSelect": 1,
+                "maxSelect": 1,
+                "options": [
+                  {
+                    "id": "opt_hk_tk_lamb_rogan_mild",
+                    "name": "Mild",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_hk_tk_lamb_rogan_medium",
+                    "name": "Medium",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_hk_tk_lamb_rogan_hot",
+                    "name": "Hot",
+                    "priceDeltaCents": 0
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "hk_tk_palak",
+            "name": "Palak Paneer",
+            "description": "Palak Paneer, made fresh to order.",
+            "priceCents": 5800,
+            "imageUrl": "/images/indian.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_hk_tk_palak_spice",
+                "name": "Spice level",
+                "required": true,
+                "minSelect": 1,
+                "maxSelect": 1,
+                "options": [
+                  {
+                    "id": "opt_hk_tk_palak_mild",
+                    "name": "Mild",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_hk_tk_palak_medium",
+                    "name": "Medium",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_hk_tk_palak_hot",
+                    "name": "Hot",
+                    "priceDeltaCents": 0
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "hk_tk_dal",
+            "name": "Dal Makhani",
+            "description": "Dal Makhani, made fresh to order.",
+            "priceCents": 4800,
+            "imageUrl": "/images/indian.svg",
+            "isAvailable": true,
+            "groups": []
+          }
+        ]
+      },
+      {
+        "id": "hk_taj_kitchen_c2",
+        "name": "Breads & Rice",
+        "sort": 1,
+        "items": [
+          {
+            "id": "hk_tk_naan",
+            "name": "Garlic Naan",
+            "description": "Garlic Naan, made fresh to order.",
+            "priceCents": 1800,
+            "imageUrl": "/images/indian.svg",
+            "isAvailable": true,
+            "groups": []
+          },
+          {
+            "id": "hk_tk_biryani",
+            "name": "Chicken Biryani",
+            "description": "Chicken Biryani, made fresh to order.",
+            "priceCents": 6400,
+            "imageUrl": "/images/indian.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_hk_tk_biryani_size",
+                "name": "Size",
+                "required": true,
+                "minSelect": 1,
+                "maxSelect": 1,
+                "options": [
+                  {
+                    "id": "opt_hk_tk_biryani_regular",
+                    "name": "Regular",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_hk_tk_biryani_large",
+                    "name": "Large",
+                    "priceDeltaCents": 1200
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "hk_tk_rice",
+            "name": "Steamed Basmati",
+            "description": "Steamed Basmati, made fresh to order.",
+            "priceCents": 1600,
+            "imageUrl": "/images/indian.svg",
+            "isAvailable": true,
+            "groups": []
+          }
+        ]
+      },
+      {
+        "id": "hk_taj_kitchen_c3",
+        "name": "Drinks",
+        "sort": 2,
+        "items": [
+          {
+            "id": "hk_tk_lassi",
+            "name": "Mango Lassi",
+            "description": "Mango Lassi, made fresh to order.",
+            "priceCents": 2600,
+            "imageUrl": "/images/indian.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_hk_tk_lassi_extras",
+                "name": "Extras",
+                "required": false,
+                "minSelect": 0,
+                "maxSelect": 3,
+                "options": [
+                  {
+                    "id": "opt_hk_tk_lassi_x1",
+                    "name": "Extra mango",
+                    "priceDeltaCents": 500
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hk_green_leaf",
+    "country": "HK",
+    "districtId": "d_hk_central",
+    "name": "Green Leaf Cafe",
+    "description": "Plant-based bowls, wraps and juices.",
+    "cuisines": [
+      "Vegetarian",
+      "Cafe"
+    ],
+    "tags": [
+      "vegetarian"
+    ],
+    "rating": 4.7,
+    "priceLevel": 3,
+    "prepMinutes": 10,
+    "lat": 22.2849,
+    "lng": 114.154,
+    "imageUrl": "/images/vegetarian.svg",
+    "isOpen": true,
+    "hasPromo": false,
+    "categories": [
+      {
+        "id": "hk_green_leaf_c1",
+        "name": "Bowls",
+        "sort": 0,
+        "items": [
+          {
+            "id": "hk_gl_buddha",
+            "name": "Buddha Bowl",
+            "description": "Buddha Bowl, made fresh to order.",
+            "priceCents": 8200,
+            "imageUrl": "/images/vegetarian.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_hk_gl_buddha_size",
+                "name": "Size",
+                "required": true,
+                "minSelect": 1,
+                "maxSelect": 1,
+                "options": [
+                  {
+                    "id": "opt_hk_gl_buddha_regular",
+                    "name": "Regular",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_hk_gl_buddha_large",
+                    "name": "Large",
+                    "priceDeltaCents": 1200
+                  }
+                ]
+              },
+              {
+                "id": "g_hk_gl_buddha_extras",
+                "name": "Extras",
+                "required": false,
+                "minSelect": 0,
+                "maxSelect": 3,
+                "options": [
+                  {
+                    "id": "opt_hk_gl_buddha_x1",
+                    "name": "Avocado",
+                    "priceDeltaCents": 1500
+                  },
+                  {
+                    "id": "opt_hk_gl_buddha_x2",
+                    "name": "Tofu",
+                    "priceDeltaCents": 1000
+                  },
+                  {
+                    "id": "opt_hk_gl_buddha_x3",
+                    "name": "Hummus",
+                    "priceDeltaCents": 800
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "hk_gl_poke",
+            "name": "Tofu Poke Bowl",
+            "description": "Tofu Poke Bowl, made fresh to order.",
+            "priceCents": 8600,
+            "imageUrl": "/images/vegetarian.svg",
+            "isAvailable": true,
+            "groups": []
+          },
+          {
+            "id": "hk_gl_quinoa",
+            "name": "Quinoa Power Bowl",
+            "description": "Quinoa Power Bowl, made fresh to order.",
+            "priceCents": 8400,
+            "imageUrl": "/images/vegetarian.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_hk_gl_quinoa_size",
+                "name": "Size",
+                "required": true,
+                "minSelect": 1,
+                "maxSelect": 1,
+                "options": [
+                  {
+                    "id": "opt_hk_gl_quinoa_regular",
+                    "name": "Regular",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_hk_gl_quinoa_large",
+                    "name": "Large",
+                    "priceDeltaCents": 1200
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "hk_green_leaf_c2",
+        "name": "Wraps",
+        "sort": 1,
+        "items": [
+          {
+            "id": "hk_gl_falafel",
+            "name": "Falafel Wrap",
+            "description": "Falafel Wrap, made fresh to order.",
+            "priceCents": 6200,
+            "imageUrl": "/images/vegetarian.svg",
+            "isAvailable": true,
+            "groups": []
+          },
+          {
+            "id": "hk_gl_halloumi",
+            "name": "Grilled Halloumi Wrap",
+            "description": "Grilled Halloumi Wrap, made fresh to order.",
+            "priceCents": 6800,
+            "imageUrl": "/images/vegetarian.svg",
+            "isAvailable": true,
+            "groups": []
+          },
+          {
+            "id": "hk_gl_hummus",
+            "name": "Hummus Plate",
+            "description": "Hummus Plate, made fresh to order.",
+            "priceCents": 5200,
+            "imageUrl": "/images/vegetarian.svg",
+            "isAvailable": true,
+            "groups": []
+          }
+        ]
+      },
+      {
+        "id": "hk_green_leaf_c3",
+        "name": "Juices",
+        "sort": 2,
+        "items": [
+          {
+            "id": "hk_gl_green",
+            "name": "Green Detox Juice",
+            "description": "Green Detox Juice, made fresh to order.",
+            "priceCents": 4400,
+            "imageUrl": "/images/vegetarian.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_hk_gl_green_size",
+                "name": "Size",
+                "required": true,
+                "minSelect": 1,
+                "maxSelect": 1,
+                "options": [
+                  {
+                    "id": "opt_hk_gl_green_regular",
+                    "name": "Regular",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_hk_gl_green_large",
+                    "name": "Large",
+                    "priceDeltaCents": 1200
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "hk_gl_berry",
+            "name": "Berry Smoothie",
+            "description": "Berry Smoothie, made fresh to order.",
+            "priceCents": 4600,
+            "imageUrl": "/images/vegetarian.svg",
+            "isAvailable": true,
+            "groups": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hk_sweet_spot",
+    "country": "HK",
+    "districtId": "d_hk_mongkok",
+    "name": "Sweet Spot Desserts",
+    "description": "Hong Kong style dessert soups and waffles.",
+    "cuisines": [
+      "Dessert"
+    ],
+    "tags": [
+      "vegetarian"
+    ],
+    "rating": 4,
+    "priceLevel": 1,
+    "prepMinutes": 8,
+    "lat": 22.3163,
+    "lng": 114.1674,
+    "imageUrl": "/images/dessert.svg",
+    "isOpen": true,
+    "hasPromo": true,
+    "categories": [
+      {
+        "id": "hk_sweet_spot_c1",
+        "name": "Dessert Soups",
+        "sort": 0,
+        "items": [
+          {
+            "id": "hk_ss_mango_pomelo",
+            "name": "Mango Pomelo Sago",
+            "description": "Mango Pomelo Sago, made fresh to order.",
+            "priceCents": 4800,
+            "imageUrl": "/images/dessert.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_hk_ss_mango_pomelo_size",
+                "name": "Size",
+                "required": true,
+                "minSelect": 1,
+                "maxSelect": 1,
+                "options": [
+                  {
+                    "id": "opt_hk_ss_mango_pomelo_regular",
+                    "name": "Regular",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_hk_ss_mango_pomelo_large",
+                    "name": "Large",
+                    "priceDeltaCents": 1200
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "hk_ss_red_bean",
+            "name": "Red Bean Soup",
+            "description": "Red Bean Soup, made fresh to order.",
+            "priceCents": 3600,
+            "imageUrl": "/images/dessert.svg",
+            "isAvailable": true,
+            "groups": []
+          },
+          {
+            "id": "hk_ss_black_sesame",
+            "name": "Black Sesame Soup",
+            "description": "Black Sesame Soup, made fresh to order.",
+            "priceCents": 3800,
+            "imageUrl": "/images/dessert.svg",
+            "isAvailable": true,
+            "groups": []
+          },
+          {
+            "id": "hk_ss_tofu_pudding",
+            "name": "Tofu Pudding",
+            "description": "Tofu Pudding, made fresh to order.",
+            "priceCents": 3200,
+            "imageUrl": "/images/dessert.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_hk_ss_tofu_pudding_extras",
+                "name": "Extras",
+                "required": false,
+                "minSelect": 0,
+                "maxSelect": 3,
+                "options": [
+                  {
+                    "id": "opt_hk_ss_tofu_pudding_x1",
+                    "name": "Ginger syrup",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_hk_ss_tofu_pudding_x2",
+                    "name": "Extra pudding",
+                    "priceDeltaCents": 800
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "hk_sweet_spot_c2",
+        "name": "Waffles & Cakes",
+        "sort": 1,
+        "items": [
+          {
+            "id": "hk_ss_egg_waffle",
+            "name": "Egg Waffle",
+            "description": "Egg Waffle, made fresh to order.",
+            "priceCents": 3400,
+            "imageUrl": "/images/dessert.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_hk_ss_egg_waffle_extras",
+                "name": "Extras",
+                "required": false,
+                "minSelect": 0,
+                "maxSelect": 3,
+                "options": [
+                  {
+                    "id": "opt_hk_ss_egg_waffle_x1",
+                    "name": "Ice cream",
+                    "priceDeltaCents": 1200
+                  },
+                  {
+                    "id": "opt_hk_ss_egg_waffle_x2",
+                    "name": "Chocolate",
+                    "priceDeltaCents": 600
+                  },
+                  {
+                    "id": "opt_hk_ss_egg_waffle_x3",
+                    "name": "Strawberry",
+                    "priceDeltaCents": 900
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "hk_ss_mochi",
+            "name": "Mochi Box (6 pcs)",
+            "description": "Mochi Box (6 pcs), made fresh to order.",
+            "priceCents": 5200,
+            "imageUrl": "/images/dessert.svg",
+            "isAvailable": true,
+            "groups": []
+          },
+          {
+            "id": "hk_ss_cheesecake",
+            "name": "Basque Cheesecake",
+            "description": "Basque Cheesecake, made fresh to order.",
+            "priceCents": 4800,
+            "imageUrl": "/images/dessert.svg",
+            "isAvailable": false,
+            "groups": []
+          }
+        ]
+      },
+      {
+        "id": "hk_sweet_spot_c3",
+        "name": "Drinks",
+        "sort": 2,
+        "items": [
+          {
+            "id": "hk_ss_yuenyeung",
+            "name": "Yuenyeung Iced",
+            "description": "Yuenyeung Iced, made fresh to order.",
+            "priceCents": 2600,
+            "imageUrl": "/images/dessert.svg",
+            "isAvailable": true,
+            "groups": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hk_roast_house",
+    "country": "HK",
+    "districtId": "d_hk_wanchai",
+    "name": "Sing Kee Roast House",
+    "description": "Cantonese roast meats over rice.",
+    "cuisines": [
+      "Cantonese",
+      "Roast"
+    ],
+    "tags": [],
+    "rating": 4.4,
+    "priceLevel": 1,
+    "prepMinutes": 12,
+    "lat": 22.2786,
+    "lng": 114.1698,
+    "imageUrl": "/images/cantonese.svg",
+    "isOpen": true,
+    "hasPromo": false,
+    "categories": [
+      {
+        "id": "hk_roast_house_c1",
+        "name": "Roast Rice",
+        "sort": 0,
+        "items": [
+          {
+            "id": "hk_rh_siu_yuk",
+            "name": "Crispy Pork Rice",
+            "description": "Crispy Pork Rice, made fresh to order.",
+            "priceCents": 4800,
+            "imageUrl": "/images/cantonese.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_hk_rh_siu_yuk_size",
+                "name": "Size",
+                "required": true,
+                "minSelect": 1,
+                "maxSelect": 1,
+                "options": [
+                  {
+                    "id": "opt_hk_rh_siu_yuk_regular",
+                    "name": "Regular",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_hk_rh_siu_yuk_large",
+                    "name": "Large",
+                    "priceDeltaCents": 1200
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "hk_rh_char_siu",
+            "name": "Char Siu Rice",
+            "description": "Char Siu Rice, made fresh to order.",
+            "priceCents": 4600,
+            "imageUrl": "/images/cantonese.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_hk_rh_char_siu_size",
+                "name": "Size",
+                "required": true,
+                "minSelect": 1,
+                "maxSelect": 1,
+                "options": [
+                  {
+                    "id": "opt_hk_rh_char_siu_regular",
+                    "name": "Regular",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_hk_rh_char_siu_large",
+                    "name": "Large",
+                    "priceDeltaCents": 1200
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "hk_rh_goose",
+            "name": "Roast Goose Rice",
+            "description": "Roast Goose Rice, made fresh to order.",
+            "priceCents": 6800,
+            "imageUrl": "/images/cantonese.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_hk_rh_goose_size",
+                "name": "Size",
+                "required": true,
+                "minSelect": 1,
+                "maxSelect": 1,
+                "options": [
+                  {
+                    "id": "opt_hk_rh_goose_regular",
+                    "name": "Regular",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_hk_rh_goose_large",
+                    "name": "Large",
+                    "priceDeltaCents": 1200
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "hk_rh_duo",
+            "name": "Two-Roast Combo Rice",
+            "description": "Two-Roast Combo Rice, made fresh to order.",
+            "priceCents": 5800,
+            "imageUrl": "/images/cantonese.svg",
+            "isAvailable": true,
+            "groups": []
+          }
+        ]
+      },
+      {
+        "id": "hk_roast_house_c2",
+        "name": "Sides",
+        "sort": 1,
+        "items": [
+          {
+            "id": "hk_rh_choy_sum",
+            "name": "Choy Sum",
+            "description": "Choy Sum, made fresh to order.",
+            "priceCents": 2600,
+            "imageUrl": "/images/cantonese.svg",
+            "isAvailable": true,
+            "groups": []
+          },
+          {
+            "id": "hk_rh_egg",
+            "name": "Preserved Egg Tofu",
+            "description": "Preserved Egg Tofu, made fresh to order.",
+            "priceCents": 2800,
+            "imageUrl": "/images/cantonese.svg",
+            "isAvailable": true,
+            "groups": []
+          },
+          {
+            "id": "hk_rh_soup",
+            "name": "Daily Soup",
+            "description": "Daily Soup, made fresh to order.",
+            "priceCents": 2200,
+            "imageUrl": "/images/cantonese.svg",
+            "isAvailable": true,
+            "groups": []
+          }
+        ]
+      },
+      {
+        "id": "hk_roast_house_c3",
+        "name": "Drinks",
+        "sort": 2,
+        "items": [
+          {
+            "id": "hk_rh_lemon_tea",
+            "name": "Iced Lemon Tea",
+            "description": "Iced Lemon Tea, made fresh to order.",
+            "priceCents": 1800,
+            "imageUrl": "/images/cantonese.svg",
+            "isAvailable": true,
+            "groups": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sg_tampines_laksa",
+    "country": "SG",
+    "districtId": "d_sg_tampines",
+    "name": "Tampines Laksa House",
+    "description": "Halal laksa and Hainanese chicken rice.",
+    "cuisines": [
+      "Hawker",
+      "Malay"
+    ],
+    "tags": [
+      "halal"
+    ],
+    "rating": 4.5,
+    "priceLevel": 1,
+    "prepMinutes": 10,
+    "lat": 1.354,
+    "lng": 103.943,
+    "imageUrl": "/images/hawker.svg",
+    "isOpen": true,
+    "hasPromo": true,
+    "categories": [
+      {
+        "id": "sg_tampines_laksa_c1",
+        "name": "Noodles",
+        "sort": 0,
+        "items": [
+          {
+            "id": "sg_tl_laksa",
+            "name": "Laksa",
+            "description": "Laksa, made fresh to order.",
+            "priceCents": 850,
+            "imageUrl": "/images/hawker.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_sg_tl_laksa_spice",
+                "name": "Spice level",
+                "required": true,
+                "minSelect": 1,
+                "maxSelect": 1,
+                "options": [
+                  {
+                    "id": "opt_laksa_mild",
+                    "name": "Mild",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_laksa_medium",
+                    "name": "Medium",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_laksa_hot",
+                    "name": "Hot",
+                    "priceDeltaCents": 0
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "sg_tl_prawn_mee",
+            "name": "Prawn Mee",
+            "description": "Prawn Mee, made fresh to order.",
+            "priceCents": 800,
+            "imageUrl": "/images/hawker.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_sg_tl_prawn_mee_spice",
+                "name": "Spice level",
+                "required": true,
+                "minSelect": 1,
+                "maxSelect": 1,
+                "options": [
+                  {
+                    "id": "opt_sg_tl_prawn_mee_mild",
+                    "name": "Mild",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_sg_tl_prawn_mee_medium",
+                    "name": "Medium",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_sg_tl_prawn_mee_hot",
+                    "name": "Hot",
+                    "priceDeltaCents": 0
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "sg_tl_mee_siam",
+            "name": "Mee Siam",
+            "description": "Mee Siam, made fresh to order.",
+            "priceCents": 650,
+            "imageUrl": "/images/hawker.svg",
+            "isAvailable": true,
+            "groups": []
+          }
+        ]
+      },
+      {
+        "id": "sg_tampines_laksa_c2",
+        "name": "Rice",
+        "sort": 1,
+        "items": [
+          {
+            "id": "sg_tl_chicken_rice",
+            "name": "Chicken Rice",
+            "description": "Chicken Rice, made fresh to order.",
+            "priceCents": 600,
+            "imageUrl": "/images/hawker.svg",
+            "isAvailable": true,
+            "groups": []
+          },
+          {
+            "id": "sg_tl_roast_rice",
+            "name": "Roasted Chicken Rice",
+            "description": "Roasted Chicken Rice, made fresh to order.",
+            "priceCents": 650,
+            "imageUrl": "/images/hawker.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_sg_tl_roast_rice_size",
+                "name": "Size",
+                "required": true,
+                "minSelect": 1,
+                "maxSelect": 1,
+                "options": [
+                  {
+                    "id": "opt_sg_tl_roast_rice_regular",
+                    "name": "Regular",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_sg_tl_roast_rice_large",
+                    "name": "Large",
+                    "priceDeltaCents": 1200
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "sg_tl_nasi_lemak",
+            "name": "Nasi Lemak",
+            "description": "Nasi Lemak, made fresh to order.",
+            "priceCents": 700,
+            "imageUrl": "/images/hawker.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_sg_tl_nasi_lemak_extras",
+                "name": "Extras",
+                "required": false,
+                "minSelect": 0,
+                "maxSelect": 3,
+                "options": [
+                  {
+                    "id": "opt_sg_tl_nasi_lemak_x1",
+                    "name": "Fried egg",
+                    "priceDeltaCents": 100
+                  },
+                  {
+                    "id": "opt_sg_tl_nasi_lemak_x2",
+                    "name": "Extra chicken",
+                    "priceDeltaCents": 300
+                  },
+                  {
+                    "id": "opt_sg_tl_nasi_lemak_x3",
+                    "name": "Otah",
+                    "priceDeltaCents": 250
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sg_tampines_laksa_c3",
+        "name": "Sides & Drinks",
+        "sort": 2,
+        "items": [
+          {
+            "id": "sg_tl_otah",
+            "name": "Otah (3 pcs)",
+            "description": "Otah (3 pcs), made fresh to order.",
+            "priceCents": 450,
+            "imageUrl": "/images/hawker.svg",
+            "isAvailable": true,
+            "groups": []
+          },
+          {
+            "id": "sg_tl_tarik",
+            "name": "Teh Tarik",
+            "description": "Teh Tarik, made fresh to order.",
+            "priceCents": 280,
+            "imageUrl": "/images/hawker.svg",
+            "isAvailable": true,
+            "groups": []
+          },
+          {
+            "id": "sg_tl_sugarcane",
+            "name": "Sugarcane Juice",
+            "description": "Sugarcane Juice, made fresh to order.",
+            "priceCents": 320,
+            "imageUrl": "/images/hawker.svg",
+            "isAvailable": false,
+            "groups": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sg_orchard_wok",
+    "country": "SG",
+    "districtId": "d_sg_orchard",
+    "name": "Orchard Wok",
+    "description": "Modern Chinese zi char.",
+    "cuisines": [
+      "Chinese"
+    ],
+    "tags": [],
+    "rating": 4.3,
+    "priceLevel": 2,
+    "prepMinutes": 16,
+    "lat": 1.3068,
+    "lng": 103.8288,
+    "imageUrl": "/images/chinese.svg",
+    "isOpen": true,
+    "hasPromo": false,
+    "categories": [
+      {
+        "id": "sg_orchard_wok_c1",
+        "name": "Zi Char",
+        "sort": 0,
+        "items": [
+          {
+            "id": "sg_ow_kangkong",
+            "name": "Sambal Kangkong",
+            "description": "Sambal Kangkong, made fresh to order.",
+            "priceCents": 1400,
+            "imageUrl": "/images/chinese.svg",
+            "isAvailable": true,
+            "groups": []
+          },
+          {
+            "id": "sg_ow_sweet_sour",
+            "name": "Sweet & Sour Pork",
+            "description": "Sweet & Sour Pork, made fresh to order.",
+            "priceCents": 1800,
+            "imageUrl": "/images/chinese.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_sg_ow_sweet_sour_size",
+                "name": "Size",
+                "required": true,
+                "minSelect": 1,
+                "maxSelect": 1,
+                "options": [
+                  {
+                    "id": "opt_sg_ow_sweet_sour_regular",
+                    "name": "Regular",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_sg_ow_sweet_sour_large",
+                    "name": "Large",
+                    "priceDeltaCents": 1200
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "sg_ow_kung_pao",
+            "name": "Kung Pao Chicken",
+            "description": "Kung Pao Chicken, made fresh to order.",
+            "priceCents": 1700,
+            "imageUrl": "/images/chinese.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_sg_ow_kung_pao_spice",
+                "name": "Spice level",
+                "required": true,
+                "minSelect": 1,
+                "maxSelect": 1,
+                "options": [
+                  {
+                    "id": "opt_sg_ow_kung_pao_mild",
+                    "name": "Mild",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_sg_ow_kung_pao_medium",
+                    "name": "Medium",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_sg_ow_kung_pao_hot",
+                    "name": "Hot",
+                    "priceDeltaCents": 0
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "sg_ow_hor_fun",
+            "name": "Beef Hor Fun",
+            "description": "Beef Hor Fun, made fresh to order.",
+            "priceCents": 1600,
+            "imageUrl": "/images/chinese.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_sg_ow_hor_fun_size",
+                "name": "Size",
+                "required": true,
+                "minSelect": 1,
+                "maxSelect": 1,
+                "options": [
+                  {
+                    "id": "opt_sg_ow_hor_fun_regular",
+                    "name": "Regular",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_sg_ow_hor_fun_large",
+                    "name": "Large",
+                    "priceDeltaCents": 1200
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sg_orchard_wok_c2",
+        "name": "Rice & Noodles",
+        "sort": 1,
+        "items": [
+          {
+            "id": "sg_ow_fried_rice",
+            "name": "Egg Fried Rice",
+            "description": "Egg Fried Rice, made fresh to order.",
+            "priceCents": 1200,
+            "imageUrl": "/images/chinese.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_sg_ow_fried_rice_extras",
+                "name": "Extras",
+                "required": false,
+                "minSelect": 0,
+                "maxSelect": 3,
+                "options": [
+                  {
+                    "id": "opt_sg_ow_fried_rice_x1",
+                    "name": "Prawns",
+                    "priceDeltaCents": 400
+                  },
+                  {
+                    "id": "opt_sg_ow_fried_rice_x2",
+                    "name": "Salted fish",
+                    "priceDeltaCents": 300
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "sg_ow_hokkien",
+            "name": "Hokkien Mee",
+            "description": "Hokkien Mee, made fresh to order.",
+            "priceCents": 1500,
+            "imageUrl": "/images/chinese.svg",
+            "isAvailable": true,
+            "groups": []
+          },
+          {
+            "id": "sg_ow_congee",
+            "name": "Century Egg Congee",
+            "description": "Century Egg Congee, made fresh to order.",
+            "priceCents": 1000,
+            "imageUrl": "/images/chinese.svg",
+            "isAvailable": true,
+            "groups": []
+          }
+        ]
+      },
+      {
+        "id": "sg_orchard_wok_c3",
+        "name": "Drinks",
+        "sort": 2,
+        "items": [
+          {
+            "id": "sg_ow_chrysan",
+            "name": "Chrysanthemum Tea",
+            "description": "Chrysanthemum Tea, made fresh to order.",
+            "priceCents": 350,
+            "imageUrl": "/images/chinese.svg",
+            "isAvailable": true,
+            "groups": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sg_raffles_bistro",
+    "country": "SG",
+    "districtId": "d_sg_raffles",
+    "name": "Raffles Grill and Co",
+    "description": "Western grill and pasta for the lunch crowd.",
+    "cuisines": [
+      "Western",
+      "Grill"
+    ],
+    "tags": [],
+    "rating": 4.6,
+    "priceLevel": 3,
+    "prepMinutes": 18,
+    "lat": 1.282,
+    "lng": 103.8532,
+    "imageUrl": "/images/western.svg",
+    "isOpen": true,
+    "hasPromo": true,
+    "categories": [
+      {
+        "id": "sg_raffles_bistro_c1",
+        "name": "Grill",
+        "sort": 0,
+        "items": [
+          {
+            "id": "sg_rb_ribeye",
+            "name": "Ribeye Steak",
+            "description": "Ribeye Steak, made fresh to order.",
+            "priceCents": 3800,
+            "imageUrl": "/images/western.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_sg_rb_ribeye_size",
+                "name": "Size",
+                "required": true,
+                "minSelect": 1,
+                "maxSelect": 1,
+                "options": [
+                  {
+                    "id": "opt_sg_rb_ribeye_regular",
+                    "name": "Regular",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_sg_rb_ribeye_large",
+                    "name": "Large",
+                    "priceDeltaCents": 1200
+                  }
+                ]
+              },
+              {
+                "id": "g_sg_rb_ribeye_extras",
+                "name": "Extras",
+                "required": false,
+                "minSelect": 0,
+                "maxSelect": 3,
+                "options": [
+                  {
+                    "id": "opt_sg_rb_ribeye_x1",
+                    "name": "Mushroom sauce",
+                    "priceDeltaCents": 300
+                  },
+                  {
+                    "id": "opt_sg_rb_ribeye_x2",
+                    "name": "Fried egg",
+                    "priceDeltaCents": 200
+                  },
+                  {
+                    "id": "opt_sg_rb_ribeye_x3",
+                    "name": "Truffle fries",
+                    "priceDeltaCents": 600
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "sg_rb_salmon",
+            "name": "Grilled Salmon",
+            "description": "Grilled Salmon, made fresh to order.",
+            "priceCents": 2800,
+            "imageUrl": "/images/western.svg",
+            "isAvailable": true,
+            "groups": []
+          },
+          {
+            "id": "sg_rb_chicken_chop",
+            "name": "Chicken Chop",
+            "description": "Chicken Chop, made fresh to order.",
+            "priceCents": 2200,
+            "imageUrl": "/images/western.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_sg_rb_chicken_chop_size",
+                "name": "Size",
+                "required": true,
+                "minSelect": 1,
+                "maxSelect": 1,
+                "options": [
+                  {
+                    "id": "opt_sg_rb_chicken_chop_regular",
+                    "name": "Regular",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_sg_rb_chicken_chop_large",
+                    "name": "Large",
+                    "priceDeltaCents": 1200
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "sg_rb_burger",
+            "name": "Wagyu Burger",
+            "description": "Wagyu Burger, made fresh to order.",
+            "priceCents": 2600,
+            "imageUrl": "/images/western.svg",
+            "isAvailable": true,
+            "groups": []
+          }
+        ]
+      },
+      {
+        "id": "sg_raffles_bistro_c2",
+        "name": "Pasta",
+        "sort": 1,
+        "items": [
+          {
+            "id": "sg_rb_carbonara",
+            "name": "Carbonara",
+            "description": "Carbonara, made fresh to order.",
+            "priceCents": 2000,
+            "imageUrl": "/images/western.svg",
+            "isAvailable": true,
+            "groups": []
+          },
+          {
+            "id": "sg_rb_aglio",
+            "name": "Aglio Olio Prawn",
+            "description": "Aglio Olio Prawn, made fresh to order.",
+            "priceCents": 2200,
+            "imageUrl": "/images/western.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_sg_rb_aglio_spice",
+                "name": "Spice level",
+                "required": true,
+                "minSelect": 1,
+                "maxSelect": 1,
+                "options": [
+                  {
+                    "id": "opt_sg_rb_aglio_mild",
+                    "name": "Mild",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_sg_rb_aglio_medium",
+                    "name": "Medium",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_sg_rb_aglio_hot",
+                    "name": "Hot",
+                    "priceDeltaCents": 0
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "sg_rb_bolognese",
+            "name": "Beef Bolognese",
+            "description": "Beef Bolognese, made fresh to order.",
+            "priceCents": 2000,
+            "imageUrl": "/images/western.svg",
+            "isAvailable": true,
+            "groups": []
+          }
+        ]
+      },
+      {
+        "id": "sg_raffles_bistro_c3",
+        "name": "Desserts",
+        "sort": 2,
+        "items": [
+          {
+            "id": "sg_rb_tiramisu",
+            "name": "Tiramisu",
+            "description": "Tiramisu, made fresh to order.",
+            "priceCents": 1200,
+            "imageUrl": "/images/western.svg",
+            "isAvailable": true,
+            "groups": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sg_bugis_kimchi",
+    "country": "SG",
+    "districtId": "d_sg_bugis",
+    "name": "Bugis Kimchi Table",
+    "description": "Korean BBQ plates and stews.",
+    "cuisines": [
+      "Korean"
+    ],
+    "tags": [],
+    "rating": 4.4,
+    "priceLevel": 2,
+    "prepMinutes": 15,
+    "lat": 1.3019,
+    "lng": 103.8589,
+    "imageUrl": "/images/korean.svg",
+    "isOpen": true,
+    "hasPromo": false,
+    "categories": [
+      {
+        "id": "sg_bugis_kimchi_c1",
+        "name": "Mains",
+        "sort": 0,
+        "items": [
+          {
+            "id": "sg_bk_bibimbap",
+            "name": "Bibimbap",
+            "description": "Bibimbap, made fresh to order.",
+            "priceCents": 1600,
+            "imageUrl": "/images/korean.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_sg_bk_bibimbap_spice",
+                "name": "Spice level",
+                "required": true,
+                "minSelect": 1,
+                "maxSelect": 1,
+                "options": [
+                  {
+                    "id": "opt_sg_bk_bibimbap_mild",
+                    "name": "Mild",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_sg_bk_bibimbap_medium",
+                    "name": "Medium",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_sg_bk_bibimbap_hot",
+                    "name": "Hot",
+                    "priceDeltaCents": 0
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "sg_bk_bulgogi",
+            "name": "Beef Bulgogi Plate",
+            "description": "Beef Bulgogi Plate, made fresh to order.",
+            "priceCents": 1900,
+            "imageUrl": "/images/korean.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_sg_bk_bulgogi_size",
+                "name": "Size",
+                "required": true,
+                "minSelect": 1,
+                "maxSelect": 1,
+                "options": [
+                  {
+                    "id": "opt_sg_bk_bulgogi_regular",
+                    "name": "Regular",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_sg_bk_bulgogi_large",
+                    "name": "Large",
+                    "priceDeltaCents": 1200
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "sg_bk_kimchi_stew",
+            "name": "Kimchi Jjigae",
+            "description": "Kimchi Jjigae, made fresh to order.",
+            "priceCents": 1700,
+            "imageUrl": "/images/korean.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_sg_bk_kimchi_stew_spice",
+                "name": "Spice level",
+                "required": true,
+                "minSelect": 1,
+                "maxSelect": 1,
+                "options": [
+                  {
+                    "id": "opt_sg_bk_kimchi_stew_mild",
+                    "name": "Mild",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_sg_bk_kimchi_stew_medium",
+                    "name": "Medium",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_sg_bk_kimchi_stew_hot",
+                    "name": "Hot",
+                    "priceDeltaCents": 0
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "sg_bk_fried_chicken",
+            "name": "Korean Fried Chicken",
+            "description": "Korean Fried Chicken, made fresh to order.",
+            "priceCents": 2200,
+            "imageUrl": "/images/korean.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_sg_bk_fried_chicken_spice",
+                "name": "Spice level",
+                "required": true,
+                "minSelect": 1,
+                "maxSelect": 1,
+                "options": [
+                  {
+                    "id": "opt_sg_bk_fried_chicken_mild",
+                    "name": "Mild",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_sg_bk_fried_chicken_medium",
+                    "name": "Medium",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_sg_bk_fried_chicken_hot",
+                    "name": "Hot",
+                    "priceDeltaCents": 0
+                  }
+                ]
+              },
+              {
+                "id": "g_sg_bk_fried_chicken_extras",
+                "name": "Extras",
+                "required": false,
+                "minSelect": 0,
+                "maxSelect": 3,
+                "options": [
+                  {
+                    "id": "opt_sg_bk_fried_chicken_x1",
+                    "name": "Cheese powder",
+                    "priceDeltaCents": 200
+                  },
+                  {
+                    "id": "opt_sg_bk_fried_chicken_x2",
+                    "name": "Extra sauce",
+                    "priceDeltaCents": 100
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sg_bugis_kimchi_c2",
+        "name": "Sides",
+        "sort": 1,
+        "items": [
+          {
+            "id": "sg_bk_japchae",
+            "name": "Japchae",
+            "description": "Japchae, made fresh to order.",
+            "priceCents": 1400,
+            "imageUrl": "/images/korean.svg",
+            "isAvailable": true,
+            "groups": []
+          },
+          {
+            "id": "sg_bk_tteok",
+            "name": "Tteokbokki",
+            "description": "Tteokbokki, made fresh to order.",
+            "priceCents": 1300,
+            "imageUrl": "/images/korean.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_sg_bk_tteok_spice",
+                "name": "Spice level",
+                "required": true,
+                "minSelect": 1,
+                "maxSelect": 1,
+                "options": [
+                  {
+                    "id": "opt_sg_bk_tteok_mild",
+                    "name": "Mild",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_sg_bk_tteok_medium",
+                    "name": "Medium",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_sg_bk_tteok_hot",
+                    "name": "Hot",
+                    "priceDeltaCents": 0
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "sg_bk_kimbap",
+            "name": "Kimbap Roll",
+            "description": "Kimbap Roll, made fresh to order.",
+            "priceCents": 1100,
+            "imageUrl": "/images/korean.svg",
+            "isAvailable": true,
+            "groups": []
+          }
+        ]
+      },
+      {
+        "id": "sg_bugis_kimchi_c3",
+        "name": "Drinks",
+        "sort": 2,
+        "items": [
+          {
+            "id": "sg_bk_yuja",
+            "name": "Yuja Tea",
+            "description": "Yuja Tea, made fresh to order.",
+            "priceCents": 400,
+            "imageUrl": "/images/korean.svg",
+            "isAvailable": false,
+            "groups": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sg_masala_house",
+    "country": "SG",
+    "districtId": "d_sg_jurong",
+    "name": "Jurong Masala House",
+    "description": "Halal South Indian meals and biryani.",
+    "cuisines": [
+      "Indian"
+    ],
+    "tags": [
+      "halal"
+    ],
+    "rating": 4.1,
+    "priceLevel": 1,
+    "prepMinutes": 14,
+    "lat": 1.3349,
+    "lng": 103.7416,
+    "imageUrl": "/images/indian.svg",
+    "isOpen": true,
+    "hasPromo": true,
+    "categories": [
+      {
+        "id": "sg_masala_house_c1",
+        "name": "Mains",
+        "sort": 0,
+        "items": [
+          {
+            "id": "sg_mh_thosai",
+            "name": "Masala Thosai",
+            "description": "Masala Thosai, made fresh to order.",
+            "priceCents": 600,
+            "imageUrl": "/images/indian.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_sg_mh_thosai_extras",
+                "name": "Extras",
+                "required": false,
+                "minSelect": 0,
+                "maxSelect": 3,
+                "options": [
+                  {
+                    "id": "opt_sg_mh_thosai_x1",
+                    "name": "Extra chutney",
+                    "priceDeltaCents": 100
+                  },
+                  {
+                    "id": "opt_sg_mh_thosai_x2",
+                    "name": "Cheese",
+                    "priceDeltaCents": 200
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "sg_mh_biryani",
+            "name": "Mutton Biryani",
+            "description": "Mutton Biryani, made fresh to order.",
+            "priceCents": 1100,
+            "imageUrl": "/images/indian.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_sg_mh_biryani_size",
+                "name": "Size",
+                "required": true,
+                "minSelect": 1,
+                "maxSelect": 1,
+                "options": [
+                  {
+                    "id": "opt_sg_mh_biryani_regular",
+                    "name": "Regular",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_sg_mh_biryani_large",
+                    "name": "Large",
+                    "priceDeltaCents": 1200
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "sg_mh_butter_chicken",
+            "name": "Butter Chicken Set",
+            "description": "Butter Chicken Set, made fresh to order.",
+            "priceCents": 1200,
+            "imageUrl": "/images/indian.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_sg_mh_butter_chicken_spice",
+                "name": "Spice level",
+                "required": true,
+                "minSelect": 1,
+                "maxSelect": 1,
+                "options": [
+                  {
+                    "id": "opt_sg_mh_butter_chicken_mild",
+                    "name": "Mild",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_sg_mh_butter_chicken_medium",
+                    "name": "Medium",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_sg_mh_butter_chicken_hot",
+                    "name": "Hot",
+                    "priceDeltaCents": 0
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "sg_mh_fish_curry",
+            "name": "Fish Head Curry",
+            "description": "Fish Head Curry, made fresh to order.",
+            "priceCents": 2400,
+            "imageUrl": "/images/indian.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_sg_mh_fish_curry_spice",
+                "name": "Spice level",
+                "required": true,
+                "minSelect": 1,
+                "maxSelect": 1,
+                "options": [
+                  {
+                    "id": "opt_sg_mh_fish_curry_mild",
+                    "name": "Mild",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_sg_mh_fish_curry_medium",
+                    "name": "Medium",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_sg_mh_fish_curry_hot",
+                    "name": "Hot",
+                    "priceDeltaCents": 0
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sg_masala_house_c2",
+        "name": "Breads",
+        "sort": 1,
+        "items": [
+          {
+            "id": "sg_mh_prata",
+            "name": "Prata (2 pcs)",
+            "description": "Prata (2 pcs), made fresh to order.",
+            "priceCents": 400,
+            "imageUrl": "/images/indian.svg",
+            "isAvailable": true,
+            "groups": []
+          },
+          {
+            "id": "sg_mh_naan",
+            "name": "Cheese Naan",
+            "description": "Cheese Naan, made fresh to order.",
+            "priceCents": 450,
+            "imageUrl": "/images/indian.svg",
+            "isAvailable": true,
+            "groups": []
+          },
+          {
+            "id": "sg_mh_murtabak",
+            "name": "Chicken Murtabak",
+            "description": "Chicken Murtabak, made fresh to order.",
+            "priceCents": 800,
+            "imageUrl": "/images/indian.svg",
+            "isAvailable": true,
+            "groups": []
+          }
+        ]
+      },
+      {
+        "id": "sg_masala_house_c3",
+        "name": "Drinks",
+        "sort": 2,
+        "items": [
+          {
+            "id": "sg_mh_teh",
+            "name": "Teh Tarik",
+            "description": "Teh Tarik, made fresh to order.",
+            "priceCents": 250,
+            "imageUrl": "/images/indian.svg",
+            "isAvailable": true,
+            "groups": []
+          },
+          {
+            "id": "sg_mh_lassi",
+            "name": "Mango Lassi",
+            "description": "Mango Lassi, made fresh to order.",
+            "priceCents": 400,
+            "imageUrl": "/images/indian.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_sg_mh_lassi_size",
+                "name": "Size",
+                "required": true,
+                "minSelect": 1,
+                "maxSelect": 1,
+                "options": [
+                  {
+                    "id": "opt_sg_mh_lassi_regular",
+                    "name": "Regular",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_sg_mh_lassi_large",
+                    "name": "Large",
+                    "priceDeltaCents": 1200
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sg_green_bowl",
+    "country": "SG",
+    "districtId": "d_sg_woodlands",
+    "name": "Green Bowl Woodlands",
+    "description": "Vegetarian bowls and Buddhist-style vegetarian dishes.",
+    "cuisines": [
+      "Vegetarian"
+    ],
+    "tags": [
+      "vegetarian"
+    ],
+    "rating": 4.3,
+    "priceLevel": 1,
+    "prepMinutes": 12,
+    "lat": 1.434,
+    "lng": 103.7885,
+    "imageUrl": "/images/vegetarian.svg",
+    "isOpen": true,
+    "hasPromo": false,
+    "categories": [
+      {
+        "id": "sg_green_bowl_c1",
+        "name": "Bowls",
+        "sort": 0,
+        "items": [
+          {
+            "id": "sg_gb_veg_rice",
+            "name": "Vegetarian Rice Bowl",
+            "description": "Vegetarian Rice Bowl, made fresh to order.",
+            "priceCents": 900,
+            "imageUrl": "/images/vegetarian.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_sg_gb_veg_rice_size",
+                "name": "Size",
+                "required": true,
+                "minSelect": 1,
+                "maxSelect": 1,
+                "options": [
+                  {
+                    "id": "opt_sg_gb_veg_rice_regular",
+                    "name": "Regular",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_sg_gb_veg_rice_large",
+                    "name": "Large",
+                    "priceDeltaCents": 1200
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "sg_gb_mock_duck",
+            "name": "Mock Duck Noodles",
+            "description": "Mock Duck Noodles, made fresh to order.",
+            "priceCents": 1000,
+            "imageUrl": "/images/vegetarian.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_sg_gb_mock_duck_spice",
+                "name": "Spice level",
+                "required": true,
+                "minSelect": 1,
+                "maxSelect": 1,
+                "options": [
+                  {
+                    "id": "opt_sg_gb_mock_duck_mild",
+                    "name": "Mild",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_sg_gb_mock_duck_medium",
+                    "name": "Medium",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_sg_gb_mock_duck_hot",
+                    "name": "Hot",
+                    "priceDeltaCents": 0
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "sg_gb_tofu_bowl",
+            "name": "Teriyaki Tofu Bowl",
+            "description": "Teriyaki Tofu Bowl, made fresh to order.",
+            "priceCents": 1100,
+            "imageUrl": "/images/vegetarian.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_sg_gb_tofu_bowl_size",
+                "name": "Size",
+                "required": true,
+                "minSelect": 1,
+                "maxSelect": 1,
+                "options": [
+                  {
+                    "id": "opt_sg_gb_tofu_bowl_regular",
+                    "name": "Regular",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_sg_gb_tofu_bowl_large",
+                    "name": "Large",
+                    "priceDeltaCents": 1200
+                  }
+                ]
+              },
+              {
+                "id": "g_sg_gb_tofu_bowl_extras",
+                "name": "Extras",
+                "required": false,
+                "minSelect": 0,
+                "maxSelect": 3,
+                "options": [
+                  {
+                    "id": "opt_sg_gb_tofu_bowl_x1",
+                    "name": "Avocado",
+                    "priceDeltaCents": 200
+                  },
+                  {
+                    "id": "opt_sg_gb_tofu_bowl_x2",
+                    "name": "Extra tofu",
+                    "priceDeltaCents": 250
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sg_green_bowl_c2",
+        "name": "Dishes",
+        "sort": 1,
+        "items": [
+          {
+            "id": "sg_gb_mock_curry",
+            "name": "Mock Meat Curry",
+            "description": "Mock Meat Curry, made fresh to order.",
+            "priceCents": 1000,
+            "imageUrl": "/images/vegetarian.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_sg_gb_mock_curry_spice",
+                "name": "Spice level",
+                "required": true,
+                "minSelect": 1,
+                "maxSelect": 1,
+                "options": [
+                  {
+                    "id": "opt_sg_gb_mock_curry_mild",
+                    "name": "Mild",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_sg_gb_mock_curry_medium",
+                    "name": "Medium",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_sg_gb_mock_curry_hot",
+                    "name": "Hot",
+                    "priceDeltaCents": 0
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "sg_gb_spring",
+            "name": "Vegetarian Spring Rolls",
+            "description": "Vegetarian Spring Rolls, made fresh to order.",
+            "priceCents": 600,
+            "imageUrl": "/images/vegetarian.svg",
+            "isAvailable": true,
+            "groups": []
+          },
+          {
+            "id": "sg_gb_fried_bee",
+            "name": "Vegetarian Bee Hoon",
+            "description": "Vegetarian Bee Hoon, made fresh to order.",
+            "priceCents": 800,
+            "imageUrl": "/images/vegetarian.svg",
+            "isAvailable": true,
+            "groups": []
+          }
+        ]
+      },
+      {
+        "id": "sg_green_bowl_c3",
+        "name": "Drinks",
+        "sort": 2,
+        "items": [
+          {
+            "id": "sg_gb_soy",
+            "name": "Fresh Soy Milk",
+            "description": "Fresh Soy Milk, made fresh to order.",
+            "priceCents": 300,
+            "imageUrl": "/images/vegetarian.svg",
+            "isAvailable": true,
+            "groups": []
+          },
+          {
+            "id": "sg_gb_tea",
+            "name": "Chrysanthemum Tea",
+            "description": "Chrysanthemum Tea, made fresh to order.",
+            "priceCents": 250,
+            "imageUrl": "/images/vegetarian.svg",
+            "isAvailable": true,
+            "groups": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sg_night_noodle",
+    "country": "SG",
+    "districtId": "d_sg_bugis",
+    "name": "Midnight Noodle Bar",
+    "description": "Late-night wanton and noodle shop (closed right now).",
+    "cuisines": [
+      "Chinese",
+      "Noodles"
+    ],
+    "tags": [],
+    "rating": 4.2,
+    "priceLevel": 1,
+    "prepMinutes": 10,
+    "lat": 1.2989,
+    "lng": 103.8539,
+    "imageUrl": "/images/chinese.svg",
+    "isOpen": false,
+    "hasPromo": false,
+    "categories": [
+      {
+        "id": "sg_night_noodle_c1",
+        "name": "Noodles",
+        "sort": 0,
+        "items": [
+          {
+            "id": "sg_nn_wanton",
+            "name": "Wanton Mee",
+            "description": "Wanton Mee, made fresh to order.",
+            "priceCents": 650,
+            "imageUrl": "/images/chinese.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_sg_nn_wanton_size",
+                "name": "Size",
+                "required": true,
+                "minSelect": 1,
+                "maxSelect": 1,
+                "options": [
+                  {
+                    "id": "opt_sg_nn_wanton_regular",
+                    "name": "Regular",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_sg_nn_wanton_large",
+                    "name": "Large",
+                    "priceDeltaCents": 1200
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "sg_nn_fishball",
+            "name": "Fishball Noodles",
+            "description": "Fishball Noodles, made fresh to order.",
+            "priceCents": 600,
+            "imageUrl": "/images/chinese.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_sg_nn_fishball_size",
+                "name": "Size",
+                "required": true,
+                "minSelect": 1,
+                "maxSelect": 1,
+                "options": [
+                  {
+                    "id": "opt_sg_nn_fishball_regular",
+                    "name": "Regular",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_sg_nn_fishball_large",
+                    "name": "Large",
+                    "priceDeltaCents": 1200
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "sg_nn_bak_chor",
+            "name": "Bak Chor Mee",
+            "description": "Bak Chor Mee, made fresh to order.",
+            "priceCents": 700,
+            "imageUrl": "/images/chinese.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_sg_nn_bak_chor_spice",
+                "name": "Spice level",
+                "required": true,
+                "minSelect": 1,
+                "maxSelect": 1,
+                "options": [
+                  {
+                    "id": "opt_sg_nn_bak_chor_mild",
+                    "name": "Mild",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_sg_nn_bak_chor_medium",
+                    "name": "Medium",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_sg_nn_bak_chor_hot",
+                    "name": "Hot",
+                    "priceDeltaCents": 0
+                  }
+                ]
+              },
+              {
+                "id": "g_sg_nn_bak_chor_extras",
+                "name": "Extras",
+                "required": false,
+                "minSelect": 0,
+                "maxSelect": 3,
+                "options": [
+                  {
+                    "id": "opt_sg_nn_bak_chor_x1",
+                    "name": "Extra meat",
+                    "priceDeltaCents": 200
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "sg_nn_dumpling",
+            "name": "Dumpling Soup",
+            "description": "Dumpling Soup, made fresh to order.",
+            "priceCents": 650,
+            "imageUrl": "/images/chinese.svg",
+            "isAvailable": true,
+            "groups": []
+          }
+        ]
+      },
+      {
+        "id": "sg_night_noodle_c2",
+        "name": "Sides",
+        "sort": 1,
+        "items": [
+          {
+            "id": "sg_nn_fried_wanton",
+            "name": "Fried Wanton",
+            "description": "Fried Wanton, made fresh to order.",
+            "priceCents": 400,
+            "imageUrl": "/images/chinese.svg",
+            "isAvailable": true,
+            "groups": []
+          },
+          {
+            "id": "sg_nn_braised",
+            "name": "Braised Egg",
+            "description": "Braised Egg, made fresh to order.",
+            "priceCents": 150,
+            "imageUrl": "/images/chinese.svg",
+            "isAvailable": true,
+            "groups": []
+          },
+          {
+            "id": "sg_nn_greens",
+            "name": "Blanched Greens",
+            "description": "Blanched Greens, made fresh to order.",
+            "priceCents": 400,
+            "imageUrl": "/images/chinese.svg",
+            "isAvailable": true,
+            "groups": []
+          }
+        ]
+      },
+      {
+        "id": "sg_night_noodle_c3",
+        "name": "Drinks",
+        "sort": 2,
+        "items": [
+          {
+            "id": "sg_nn_barley",
+            "name": "Barley Drink",
+            "description": "Barley Drink, made fresh to order.",
+            "priceCents": 200,
+            "imageUrl": "/images/chinese.svg",
+            "isAvailable": true,
+            "groups": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sg_jurong_sushi",
+    "country": "SG",
+    "districtId": "d_sg_jurong",
+    "name": "Jurong Sushi Go",
+    "description": "Affordable sushi, donburi and udon.",
+    "cuisines": [
+      "Japanese"
+    ],
+    "tags": [],
+    "rating": 4.2,
+    "priceLevel": 2,
+    "prepMinutes": 13,
+    "lat": 1.3309,
+    "lng": 103.7466,
+    "imageUrl": "/images/japanese.svg",
+    "isOpen": true,
+    "hasPromo": false,
+    "categories": [
+      {
+        "id": "sg_jurong_sushi_c1",
+        "name": "Sushi",
+        "sort": 0,
+        "items": [
+          {
+            "id": "sg_js_salmon_nigiri",
+            "name": "Salmon Nigiri (4 pcs)",
+            "description": "Salmon Nigiri (4 pcs), made fresh to order.",
+            "priceCents": 1200,
+            "imageUrl": "/images/japanese.svg",
+            "isAvailable": true,
+            "groups": []
+          },
+          {
+            "id": "sg_js_maki",
+            "name": "California Maki",
+            "description": "California Maki, made fresh to order.",
+            "priceCents": 1000,
+            "imageUrl": "/images/japanese.svg",
+            "isAvailable": true,
+            "groups": []
+          },
+          {
+            "id": "sg_js_chirashi",
+            "name": "Chirashi Bowl",
+            "description": "Chirashi Bowl, made fresh to order.",
+            "priceCents": 1800,
+            "imageUrl": "/images/japanese.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_sg_js_chirashi_size",
+                "name": "Size",
+                "required": true,
+                "minSelect": 1,
+                "maxSelect": 1,
+                "options": [
+                  {
+                    "id": "opt_sg_js_chirashi_regular",
+                    "name": "Regular",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_sg_js_chirashi_large",
+                    "name": "Large",
+                    "priceDeltaCents": 1200
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "sg_js_temaki",
+            "name": "Spicy Tuna Temaki",
+            "description": "Spicy Tuna Temaki, made fresh to order.",
+            "priceCents": 900,
+            "imageUrl": "/images/japanese.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_sg_js_temaki_spice",
+                "name": "Spice level",
+                "required": true,
+                "minSelect": 1,
+                "maxSelect": 1,
+                "options": [
+                  {
+                    "id": "opt_sg_js_temaki_mild",
+                    "name": "Mild",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_sg_js_temaki_medium",
+                    "name": "Medium",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_sg_js_temaki_hot",
+                    "name": "Hot",
+                    "priceDeltaCents": 0
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sg_jurong_sushi_c2",
+        "name": "Hot Dishes",
+        "sort": 1,
+        "items": [
+          {
+            "id": "sg_js_udon",
+            "name": "Beef Udon",
+            "description": "Beef Udon, made fresh to order.",
+            "priceCents": 1400,
+            "imageUrl": "/images/japanese.svg",
+            "isAvailable": true,
+            "groups": [
+              {
+                "id": "g_sg_js_udon_size",
+                "name": "Size",
+                "required": true,
+                "minSelect": 1,
+                "maxSelect": 1,
+                "options": [
+                  {
+                    "id": "opt_sg_js_udon_regular",
+                    "name": "Regular",
+                    "priceDeltaCents": 0
+                  },
+                  {
+                    "id": "opt_sg_js_udon_large",
+                    "name": "Large",
+                    "priceDeltaCents": 1200
+                  }
+                ]
+              },
+              {
+                "id": "g_sg_js_udon_extras",
+                "name": "Extras",
+                "required": false,
+                "minSelect": 0,
+                "maxSelect": 3,
+                "options": [
+                  {
+                    "id": "opt_sg_js_udon_x1",
+                    "name": "Egg",
+                    "priceDeltaCents": 100
+                  },
+                  {
+                    "id": "opt_sg_js_udon_x2",
+                    "name": "Tempura",
+                    "priceDeltaCents": 300
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "sg_js_katsu",
+            "name": "Chicken Katsu Don",
+            "description": "Chicken Katsu Don, made fresh to order.",
+            "priceCents": 1400,
+            "imageUrl": "/images/japanese.svg",
+            "isAvailable": true,
+            "groups": []
+          },
+          {
+            "id": "sg_js_tempura",
+            "name": "Tempura Set",
+            "description": "Tempura Set, made fresh to order.",
+            "priceCents": 1600,
+            "imageUrl": "/images/japanese.svg",
+            "isAvailable": true,
+            "groups": []
+          }
+        ]
+      },
+      {
+        "id": "sg_jurong_sushi_c3",
+        "name": "Drinks",
+        "sort": 2,
+        "items": [
+          {
+            "id": "sg_js_green_tea",
+            "name": "Green Tea",
+            "description": "Green Tea, made fresh to order.",
+            "priceCents": 250,
+            "imageUrl": "/images/japanese.svg",
+            "isAvailable": true,
+            "groups": []
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,281 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model District {
+  id          String       @id @default(cuid())
+  country     String
+  name        String
+  lat         Float
+  lng         Float
+  restaurants Restaurant[]
+  addresses   Address[]
+}
+
+model Restaurant {
+  id          String         @id @default(cuid())
+  country     String
+  districtId  String
+  district    District       @relation(fields: [districtId], references: [id])
+  name        String
+  description String
+  cuisines    Json
+  tags        Json
+  rating      Float
+  priceLevel  Int
+  prepMinutes Int
+  lat         Float
+  lng         Float
+  imageUrl    String
+  isOpen      Boolean        @default(true)
+  hasPromo    Boolean        @default(false)
+  categories  MenuCategory[]
+  carts       Cart[]
+  orders      Order[]
+}
+
+model MenuCategory {
+  id           String     @id @default(cuid())
+  restaurantId String
+  restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
+  name         String
+  sort         Int        @default(0)
+  items        MenuItem[]
+}
+
+model MenuItem {
+  id          String          @id @default(cuid())
+  categoryId  String
+  category    MenuCategory    @relation(fields: [categoryId], references: [id])
+  name        String
+  description String          @default("")
+  priceCents  Int
+  imageUrl    String
+  isAvailable Boolean         @default(true)
+  groups      ModifierGroup[]
+  cartItems   CartItem[]
+  orderItems  OrderItem[]
+}
+
+model ModifierGroup {
+  id         String           @id @default(cuid())
+  menuItemId String
+  menuItem   MenuItem         @relation(fields: [menuItemId], references: [id])
+  name       String
+  required   Boolean          @default(false)
+  minSelect  Int              @default(0)
+  maxSelect  Int              @default(1)
+  options    ModifierOption[]
+}
+
+model ModifierOption {
+  id              String        @id @default(cuid())
+  groupId         String
+  group           ModifierGroup @relation(fields: [groupId], references: [id])
+  name            String
+  priceDeltaCents Int           @default(0)
+}
+
+model Promo {
+  id               String @id @default(cuid())
+  code             String
+  country          String
+  type             String
+  value            Int
+  minSubtotalCents Int    @default(0)
+  maxDiscountCents Int?
+
+  @@unique([code, country])
+}
+
+model User {
+  id             String    @id @default(cuid())
+  name           String
+  phone          String
+  defaultCountry String
+  addresses      Address[]
+  cart           Cart?
+  orders         Order[]
+}
+
+model Address {
+  id         String   @id @default(cuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id])
+  country    String
+  districtId String
+  district   District @relation(fields: [districtId], references: [id])
+  label      String
+  line1      String
+  lat        Float
+  lng        Float
+}
+
+model Cart {
+  id           String      @id @default(cuid())
+  userId       String      @unique
+  user         User        @relation(fields: [userId], references: [id])
+  restaurantId String?
+  restaurant   Restaurant? @relation(fields: [restaurantId], references: [id])
+  promoCode    String?
+  updatedAt    DateTime    @updatedAt
+  items        CartItem[]
+}
+
+model CartItem {
+  id                String   @id @default(cuid())
+  cartId            String
+  cart              Cart     @relation(fields: [cartId], references: [id], onDelete: Cascade)
+  menuItemId        String
+  menuItem          MenuItem @relation(fields: [menuItemId], references: [id])
+  qty               Int
+  selectedOptionIds Json
+  note              String?
+}
+
+model Order {
+  id               String       @id @default(cuid())
+  userId           String
+  user             User         @relation(fields: [userId], references: [id])
+  restaurantId     String
+  restaurant       Restaurant   @relation(fields: [restaurantId], references: [id])
+  country          String
+  currency         String
+  addressSnapshot  Json
+  status           String
+  failureReason    String?
+  subtotalCents    Int
+  discountCents    Int
+  deliveryFeeCents Int
+  taxCents         Int
+  totalCents       Int
+  promoCode        String?
+  distanceKm       Float
+  etaMinutes       Int?
+  createdAt        DateTime     @default(now())
+  updatedAt        DateTime     @updatedAt
+  items            OrderItem[]
+  events           OrderEvent[]
+  payments         Payment[]
+  delivery         Delivery?
+}
+
+model OrderItem {
+  id              String   @id @default(cuid())
+  orderId         String
+  order           Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  menuItemId      String
+  menuItem        MenuItem @relation(fields: [menuItemId], references: [id])
+  nameSnapshot    String
+  unitPriceCents  Int
+  qty             Int
+  optionsSnapshot Json
+  note            String?
+}
+
+model OrderEvent {
+  id         String   @id @default(cuid())
+  orderId    String
+  order      Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  fromStatus String?
+  toStatus   String
+  actor      String
+  note       String?
+  createdAt  DateTime @default(now())
+
+  @@index([orderId, createdAt])
+}
+
+model Payment {
+  id             String   @id @default(cuid())
+  orderId        String
+  order          Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  provider       String
+  providerRef    String   @unique
+  amountCents    Int
+  currency       String
+  status         String
+  failureReason  String?
+  idempotencyKey String
+  createdAt      DateTime @default(now())
+  refunds        Refund[]
+}
+
+model Refund {
+  id             String   @id @default(cuid())
+  paymentId      String
+  payment        Payment  @relation(fields: [paymentId], references: [id], onDelete: Cascade)
+  provider       String
+  refundRef      String?  @unique
+  amountCents    Int
+  status         String
+  reason         String
+  failureReason  String?
+  idempotencyKey String
+  createdAt      DateTime @default(now())
+}
+
+model WebhookLog {
+  id             String   @id @default(cuid())
+  provider       String
+  eventId        String
+  eventType      String
+  payload        Json
+  signatureValid Boolean
+  result         String
+  receivedAt     DateTime @default(now())
+
+  @@unique([provider, eventId])
+}
+
+model FakeProviderIntent {
+  ref            String   @id
+  amountCents    Int
+  currency       String
+  status         String
+  idempotencyKey String   @unique
+  lastEvent      Json?
+  updatedAt      DateTime @updatedAt
+}
+
+model FakeProviderRefund {
+  ref            String   @id
+  intentRef      String
+  amountCents    Int
+  status         String
+  idempotencyKey String   @unique
+  lastEvent      Json?
+  updatedAt      DateTime @updatedAt
+}
+
+model Rider {
+  id          String     @id @default(cuid())
+  country     String
+  name        String
+  vehicle     String
+  isAvailable Boolean    @default(true)
+  deliveries  Delivery[]
+}
+
+model Delivery {
+  id          String    @id @default(cuid())
+  orderId     String    @unique
+  order       Order     @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  riderId     String?
+  rider       Rider?    @relation(fields: [riderId], references: [id])
+  assignedAt  DateTime?
+  pickedUpAt  DateTime?
+  deliveredAt DateTime?
+  failedAt    DateTime?
+}
+
+model SimulationSettings {
+  id               String  @id @default("singleton")
+  autoMode         Boolean @default(false)
+  stepDelaySeconds Int     @default(5)
+}

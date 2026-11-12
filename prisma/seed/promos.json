@@ -1,0 +1,34 @@
+[
+  {
+    "code": "WELCOME20",
+    "country": "HK",
+    "type": "PERCENT",
+    "value": 20,
+    "minSubtotalCents": 10000,
+    "maxDiscountCents": 5000
+  },
+  {
+    "code": "FREEDEL",
+    "country": "HK",
+    "type": "FREE_DELIVERY",
+    "value": 0,
+    "minSubtotalCents": 8000,
+    "maxDiscountCents": null
+  },
+  {
+    "code": "SAVE5",
+    "country": "SG",
+    "type": "FLAT",
+    "value": 500,
+    "minSubtotalCents": 2500,
+    "maxDiscountCents": null
+  },
+  {
+    "code": "FREEDEL",
+    "country": "SG",
+    "type": "FREE_DELIVERY",
+    "value": 0,
+    "minSubtotalCents": 1500,
+    "maxDiscountCents": null
+  }
+]

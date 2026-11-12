@@ -1,0 +1,86 @@
+[
+  {
+    "id": "d_hk_central",
+    "country": "HK",
+    "name": "Central",
+    "lat": 22.2819,
+    "lng": 114.158
+  },
+  {
+    "id": "d_hk_wanchai",
+    "country": "HK",
+    "name": "Wan Chai",
+    "lat": 22.2776,
+    "lng": 114.1728
+  },
+  {
+    "id": "d_hk_causeway",
+    "country": "HK",
+    "name": "Causeway Bay",
+    "lat": 22.2802,
+    "lng": 114.1838
+  },
+  {
+    "id": "d_hk_tst",
+    "country": "HK",
+    "name": "Tsim Sha Tsui",
+    "lat": 22.2988,
+    "lng": 114.1722
+  },
+  {
+    "id": "d_hk_mongkok",
+    "country": "HK",
+    "name": "Mong Kok",
+    "lat": 22.3193,
+    "lng": 114.1694
+  },
+  {
+    "id": "d_hk_shatin",
+    "country": "HK",
+    "name": "Sha Tin",
+    "lat": 22.3818,
+    "lng": 114.188
+  },
+  {
+    "id": "d_sg_orchard",
+    "country": "SG",
+    "name": "Orchard",
+    "lat": 1.3048,
+    "lng": 103.8318
+  },
+  {
+    "id": "d_sg_raffles",
+    "country": "SG",
+    "name": "Raffles Place",
+    "lat": 1.284,
+    "lng": 103.8512
+  },
+  {
+    "id": "d_sg_bugis",
+    "country": "SG",
+    "name": "Bugis",
+    "lat": 1.3009,
+    "lng": 103.8559
+  },
+  {
+    "id": "d_sg_tampines",
+    "country": "SG",
+    "name": "Tampines",
+    "lat": 1.3526,
+    "lng": 103.9447
+  },
+  {
+    "id": "d_sg_jurong",
+    "country": "SG",
+    "name": "Jurong East",
+    "lat": 1.3329,
+    "lng": 103.7436
+  },
+  {
+    "id": "d_sg_woodlands",
+    "country": "SG",
+    "name": "Woodlands",
+    "lat": 1.437,
+    "lng": 103.7865
+  }
+]

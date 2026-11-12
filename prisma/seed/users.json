@@ -1,0 +1,80 @@
+[
+  {
+    "id": "u_mei",
+    "name": "Mei Chan",
+    "phone": "+852 5550 0101",
+    "defaultCountry": "HK",
+    "addresses": [
+      {
+        "id": "a_mei_hk",
+        "country": "HK",
+        "districtId": "d_hk_central",
+        "label": "Home",
+        "line1": "12 Wyndham Street, Central",
+        "lat": 22.2819,
+        "lng": 114.158
+      },
+      {
+        "id": "a_mei_sg",
+        "country": "SG",
+        "districtId": "d_sg_orchard",
+        "label": "Hotel",
+        "line1": "270 Orchard Road",
+        "lat": 1.3048,
+        "lng": 103.8318
+      }
+    ]
+  },
+  {
+    "id": "u_arjun",
+    "name": "Arjun Nair",
+    "phone": "+65 5550 0102",
+    "defaultCountry": "SG",
+    "addresses": [
+      {
+        "id": "a_arjun_sg",
+        "country": "SG",
+        "districtId": "d_sg_tampines",
+        "label": "Home",
+        "line1": "1 Tampines Central",
+        "lat": 1.3526,
+        "lng": 103.9447
+      },
+      {
+        "id": "a_arjun_hk",
+        "country": "HK",
+        "districtId": "d_hk_wanchai",
+        "label": "Office",
+        "line1": "88 Gloucester Road, Wan Chai",
+        "lat": 22.2776,
+        "lng": 114.1728
+      }
+    ]
+  },
+  {
+    "id": "u_sam",
+    "name": "Sam Lee",
+    "phone": "+852 5550 0103",
+    "defaultCountry": "HK",
+    "addresses": [
+      {
+        "id": "a_sam_hk",
+        "country": "HK",
+        "districtId": "d_hk_mongkok",
+        "label": "Home",
+        "line1": "45 Nathan Road, Mong Kok",
+        "lat": 22.3193,
+        "lng": 114.1694
+      },
+      {
+        "id": "a_sam_sg",
+        "country": "SG",
+        "districtId": "d_sg_bugis",
+        "label": "Home",
+        "line1": "200 Victoria Street, Bugis",
+        "lat": 1.3009,
+        "lng": 103.8559
+      }
+    ]
+  }
+]

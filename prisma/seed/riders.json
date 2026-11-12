@@ -1,0 +1,58 @@
+[
+  {
+    "id": "r_hk_1",
+    "country": "HK",
+    "name": "Ah Kit",
+    "vehicle": "MOTORBIKE",
+    "isAvailable": true
+  },
+  {
+    "id": "r_hk_2",
+    "country": "HK",
+    "name": "Bo Wing",
+    "vehicle": "BICYCLE",
+    "isAvailable": true
+  },
+  {
+    "id": "r_hk_3",
+    "country": "HK",
+    "name": "Chi Hung",
+    "vehicle": "CAR",
+    "isAvailable": true
+  },
+  {
+    "id": "r_hk_4",
+    "country": "HK",
+    "name": "Dani Ho",
+    "vehicle": "MOTORBIKE",
+    "isAvailable": true
+  },
+  {
+    "id": "r_sg_1",
+    "country": "SG",
+    "name": "Eddie Tan",
+    "vehicle": "MOTORBIKE",
+    "isAvailable": true
+  },
+  {
+    "id": "r_sg_2",
+    "country": "SG",
+    "name": "Farah Ismail",
+    "vehicle": "BICYCLE",
+    "isAvailable": true
+  },
+  {
+    "id": "r_sg_3",
+    "country": "SG",
+    "name": "Gopal Raj",
+    "vehicle": "CAR",
+    "isAvailable": true
+  },
+  {
+    "id": "r_sg_4",
+    "country": "SG",
+    "name": "Hui Min",
+    "vehicle": "MOTORBIKE",
+    "isAvailable": true
+  }
+]
