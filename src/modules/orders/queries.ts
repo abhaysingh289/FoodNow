@@ -3,7 +3,7 @@ import type {
 } from "@prisma/client";
 import { prisma } from "@/lib/db";
 import { NotFound } from "@/lib/errors";
-import type { FailureReason, OrderStatus } from "./stateMachine";
+import { allowedActions, type FailureReason, type OrderAction, type OrderStatus } from "./stateMachine";
 
 export type OrderDetail = Order & {
   items: OrderItem[];
@@ -65,5 +65,35 @@ export async function listOrdersForUser(userId: string, tab: "active" | "history
     country: o.country,
     status: o.status as OrderStatus,
     failureReason: o.failureReason as FailureReason | null,
+  }));
+}
+
+export type OpsOrderSummary = OrderSummary & {
+  etaMinutes: number | null;
+  riderName: string | null;
+  allowedActions: OrderAction[];
+};
+
+const DAY_MS = 24 * 60 * 60 * 1000;
+
+/** Ops board feed: every non-terminal order plus terminal ones updated in the last 24 h, newest first. */
+export async function listOpsOrders(): Promise<OpsOrderSummary[]> {
+  const since = new Date(Date.now() - DAY_MS);
+  const orders = await prisma.order.findMany({
+    where: { OR: [{ status: { notIn: HISTORY } }, { status: { in: HISTORY }, updatedAt: { gte: since } }] },
+    include: { restaurant: { select: { name: true } }, delivery: { include: { rider: true } } },
+    orderBy: [{ createdAt: "desc" }, { id: "desc" }],
+  });
+  return orders.map((o) => ({
+    id: o.id,
+    restaurantName: o.restaurant.name,
+    createdAt: o.createdAt,
+    totalCents: o.totalCents,
+    country: o.country,
+    status: o.status as OrderStatus,
+    failureReason: o.failureReason as FailureReason | null,
+    etaMinutes: o.etaMinutes,
+    riderName: o.delivery?.rider?.name ?? null,
+    allowedActions: allowedActions(o.status as OrderStatus, "OPS"),
   }));
 }
