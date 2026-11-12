@@ -124,8 +124,8 @@ async function processEvent(provider: string, event: ProviderEvent): Promise<Web
     await prisma.$transaction(async (tx) => {
       await tx.webhookLog.create({ data: { ...base, result: "PROCESSED", orderId } });
       if (refund.status === "PENDING") {
-        await tx.refund.update({
-          where: { id: refund.id },
+        await tx.refund.updateMany({
+          where: { id: refund.id, status: "PENDING" },
           data: {
             status: event.type === "refund.succeeded" ? "SUCCEEDED" : "FAILED",
             failureReason: event.type === "refund.failed" ? (event.reason ?? null) : null,
@@ -152,7 +152,11 @@ async function processEvent(provider: string, event: ProviderEvent): Promise<Web
     await transition(orderId, succeeded ? "PAYMENT_SUCCEEDED" : "PAYMENT_FAILED", "PROVIDER", {
       inTx: async (tx) => {
         await tx.webhookLog.create({ data: { ...base, result: "PROCESSED", orderId } });
-        await tx.payment.update({ where: { id: payment.id }, data: paymentUpdate });
+        const decided = await tx.payment.updateMany({
+          where: { id: payment.id, status: "PENDING" },
+          data: paymentUpdate,
+        });
+        if (decided.count === 0) throw new ConcurrentModification("Payment already decided");
       },
     });
     return { httpStatus: 200, result: "PROCESSED" };
@@ -161,7 +165,7 @@ async function processEvent(provider: string, event: ProviderEvent): Promise<Web
   // Attempts are final once decided; otherwise the order has moved on. Record the payment, no transition.
   await prisma.$transaction(async (tx) => {
     await tx.webhookLog.create({ data: { ...base, result: "PROCESSED", orderId } });
-    if (payment.status === "PENDING") await tx.payment.update({ where: { id: payment.id }, data: paymentUpdate });
+    await tx.payment.updateMany({ where: { id: payment.id, status: "PENDING" }, data: paymentUpdate });
   });
   return { httpStatus: 200, result: "PROCESSED" };
 }

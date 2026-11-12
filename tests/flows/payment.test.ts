@@ -1,4 +1,4 @@
-import { beforeAll, beforeEach, describe, expect, it } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 import { prisma } from "@/lib/db";
 import {
   CartConflict, ConcurrentModification, CountryMismatch, InvalidTransition, ItemUnavailable,
@@ -9,6 +9,7 @@ import {
   abandonOrder, getOrderDetail, listOrdersForUser, placeOrder, retryPayment, transition,
 } from "@/modules/orders";
 import { handleWebhook } from "@/modules/payments";
+import { getProvider } from "@/modules/payments/registry";
 import { getFakeControls, setWebhookTransport } from "@/modules/payments/registry";
 import { FAKE_SIGNATURE_HEADER, signFake } from "@/modules/payments/fake/signing";
 import { insertOrder } from "../helpers/fixtures";
@@ -66,7 +67,10 @@ describe("checkout", () => {
     await fillCartMei();
     const results = await Promise.allSettled([placeOrder("u_mei", "a_mei_hk"), placeOrder("u_mei", "a_mei_hk")]);
     expect(results.filter((r) => r.status === "fulfilled")).toHaveLength(1);
+    const lost = results.find((r) => r.status === "rejected") as PromiseRejectedResult;
+    expect(lost.reason).toBeInstanceOf(CartConflict);
     expect(await prisma.order.count()).toBe(1);
+    expect(await prisma.payment.count()).toBe(1);
   });
 
   it("refuses country mismatch, closed restaurant, unavailable items and invalid promos", async () => {
@@ -100,6 +104,43 @@ describe("checkout", () => {
     expect(d).toMatchObject({ promoCode: "FREEDEL", deliveryFeeCents: 0, totalCents: 8400 });
     expect(d.distanceKm).toBe(view.price.distanceKm);
     expect(d.addressSnapshot).toMatchObject({ id: "a_mei_hk" });
+  });
+});
+
+describe("payment start failures", () => {
+  it("lets retryPayment resume after createPayment fails at checkout", async () => {
+    await fillCartMei();
+    const spy = vi.spyOn(getProvider(), "createPayment").mockRejectedValueOnce(new Error("provider down"));
+    await expect(placeOrder("u_mei", "a_mei_hk")).rejects.toThrow("provider down");
+    const order = await prisma.order.findFirstOrThrow();
+    expect(order.status).toBe("PENDING_PAYMENT");
+    expect(await prisma.payment.count()).toBe(0);
+    await expect(retryPayment(order.id, "u_sam")).rejects.toBeInstanceOf(NotFound);
+    expect((await retryPayment(order.id, "u_mei")).type).toBe("fake_sheet");
+    const d = await getOrderDetail(order.id);
+    expect(d.status).toBe("PENDING_PAYMENT");
+    expect(d.payments).toHaveLength(1);
+    expect(d.payments[0].idempotencyKey).toBe(`pay_${order.id}_1`);
+    expect(d.events).toHaveLength(1);
+    spy.mockRestore();
+  });
+
+  it("lets retryPayment resume after createPayment fails on a decline-then-retry", async () => {
+    const orderId = await newOrder();
+    await getFakeControls().decideIntent(await ref(orderId), "fail");
+    const spy = vi.spyOn(getProvider(), "createPayment").mockRejectedValueOnce(new Error("provider down"));
+    await expect(retryPayment(orderId, "u_mei")).rejects.toThrow("provider down");
+    let d = await getOrderDetail(orderId);
+    expect(d.status).toBe("PENDING_PAYMENT");
+    expect(d.payments).toHaveLength(1);
+    await retryPayment(orderId, "u_mei");
+    d = await getOrderDetail(orderId);
+    expect(d.status).toBe("PENDING_PAYMENT");
+    expect(d.payments).toHaveLength(2);
+    expect(d.payments[1].status).toBe("PENDING");
+    await getFakeControls().decideIntent(await ref(orderId), "succeed");
+    expect((await getOrderDetail(orderId)).status).toBe("PLACED");
+    spy.mockRestore();
   });
 });
 

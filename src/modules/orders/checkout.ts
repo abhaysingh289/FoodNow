@@ -79,8 +79,11 @@ async function ownedOrder(orderId: string, userId: string): Promise<Order> {
 }
 
 export async function retryPayment(orderId: string, userId: string): Promise<ClientAction> {
-  await ownedOrder(orderId, userId);
-  await transition(orderId, "RETRY_PAYMENT", "CUSTOMER");
+  const order = await ownedOrder(orderId, userId);
+  // Resume a start that failed after the order reached PENDING_PAYMENT (no attempt exists to wait on).
+  const stuck =
+    order.status === "PENDING_PAYMENT" && (await prisma.payment.count({ where: { orderId, status: "PENDING" } })) === 0;
+  if (!stuck) await transition(orderId, "RETRY_PAYMENT", "CUSTOMER");
   return startPayment(orderId);
 }
 

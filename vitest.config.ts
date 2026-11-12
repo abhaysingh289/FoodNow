@@ -9,5 +9,6 @@ export default defineConfig({
     setupFiles: ["tests/setup.ts"],
     include: ["tests/unit/**/*.test.ts", "tests/flows/**/*.test.ts", "tests/contract/**/*.test.ts"],
     fileParallelism: false,
+    hookTimeout: 30_000,
   },
 });
